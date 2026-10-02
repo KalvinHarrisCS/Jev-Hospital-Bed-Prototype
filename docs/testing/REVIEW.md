@@ -6,7 +6,7 @@ I asked an independent AI agent to review the app with maximum reasoning effort 
 
 The server could accept a Jev Choice answer even when probabilities or confidence were missing. Those fields are required by the [TypeSafe API](https://docs.typesafe.ai/api).
 
-I tightened the response check. It now requires every requested option probability, confidence, and delay probability to be a finite number from 0 to 1. It also rejects an empty model name. The new test failed before the fix and passes after it. The core is still 100 lines.
+I tightened the response check. It now requires every requested option probability, confidence, and delay probability to be a finite number from 0 to 1. It also rejects an empty model name. The new test failed before the fix and passes after it.
 
 ## Five added tests
 

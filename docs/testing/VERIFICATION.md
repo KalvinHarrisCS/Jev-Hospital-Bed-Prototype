@@ -1,6 +1,6 @@
 # Verification record
 
-Here is what I checked, what passed, and what I still cannot claim. Checked October 1, 2026, America/New_York. The core is a 100-line JavaScript Worker with a separate 40-line cleaning module; tests and Docker setup are separate files.
+Here is what I checked, what passed, and what I still cannot claim. Checked October 1, 2026, America/New_York. The core is a JavaScript Worker with a separate cleaning module; tests and Docker setup are separate files.
 
 | Evidence | Result | Limit |
 |---|---|---|
@@ -10,7 +10,7 @@ Here is what I checked, what passed, and what I still cannot claim. Checked Octo
 | Local runtime | HTML and boolean-only key presence checked with and without a fixture key; non-root user verified. | Development server using fictional fixtures. |
 | Container permissions | The new startup check reproduced the old image's `EACCES` error. The corrected image passed without runtime permission errors on both tested architectures. | Applies to the supplied Docker image; does not fix unrelated host permissions. |
 | Provider wiring | Request/response validation, origin checks and error paths passed with a simulated provider. | No inference-quality measurement. |
-| Independent review and five new behavior tests | Fixed acceptance of incomplete or invalid Choice probabilities/confidence. All five tests pass; app remains 100 lines. | Browser behavior uses a simulated DOM, not a full browser test. |
+| Independent review and five new behavior tests | Fixed acceptance of incomplete or invalid Choice probabilities/confidence. All five tests pass. | Browser behavior uses a simulated DOM, not a full browser test. |
 | Actual Worker HTTPS | TypeSafe rejected an invalid fixture key over verified HTTPS on both tested architectures. | Establishes connectivity/authentication error handling, not a successful model evaluation. |
 | Browser UI | Bed selection, fictional note entry, setup check and missing-key behavior checked in Codex. | Patient notes are not saved; cleaning timings have separate local storage. No clinical workflow approval. |
 | Successful valid-key inference | 28 real calls recorded: 8 baseline, 8 tuned retests, 10 fresh notes and 2 browser calls. Returned model `jev-1.13.0`. | All notes fictional; see [results](EVALUATION.md). This is not clinical validation. |

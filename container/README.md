@@ -2,7 +2,7 @@
 
 I put the whole app in a container so you can run the same project without installing Node.js yourself. Jev still uses TypeSafe online. Docker does not include Jev's model or an API key.
 
-The core stays in `worker/index.js` (100 lines); its room-cleaning timer is `worker/cleaning.js` (40 lines). Docker files stay here in `container/`.
+The core stays in `worker/index.js`; its room-cleaning timer is `worker/cleaning.js`. Docker files stay here in `container/`.
 
 ## Build and run
 

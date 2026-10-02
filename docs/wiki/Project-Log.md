@@ -14,7 +14,7 @@ I wanted a small OB/GYN bed demo that I could understand, submit, and give to ot
 - A screenshot walkthrough with cursor markers.
 - Docker files in their own folder, a dependency lock, portable tests, and an MIT license.
 
-The first frontend used bed cards. I simplified the submission to a plain table and one 100-line app file. Tests and packaging stay outside that file.
+The first frontend used bed cards. I simplified the submission to a plain table and one app file. Tests and packaging stay outside that file.
 
 ## Problems I found and fixed
 
@@ -22,7 +22,7 @@ The first connection attempt with a user-supplied key failed because the slim co
 
 The packages were also owned by root while the app ran as a regular user. That caused `EACCES` when Wrangler tried to create its cache. I corrected ownership, reproduced the problem against the old image, and made the startup check reject permission errors.
 
-An independent agent reviewed the app with maximum reasoning effort. It found that incomplete Choice probabilities could pass as a valid answer. I fixed that validation. All five added behavior tests now pass, and the core is still 100 lines.
+An independent agent reviewed the app with maximum reasoning effort. It found that incomplete Choice probabilities could pass as a valid answer. I fixed that validation. All five added behavior tests now pass.
 
 ## Make it easy to run
 
