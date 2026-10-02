@@ -2,7 +2,7 @@
 
 I built this as a demo, not a production hospital system. Use made-up patients and notes only. Do not enter real patient information or connect it to a hospital record system. This project has not been assessed for HIPAA compliance or clinical use.
 
-The release is provided as is, without warranties, with liability disclaimed to the extent permitted by applicable law. See the [demo use and liability notice](DEMO-NOTICE.md) and [MIT license](LICENSE).
+The release is provided as is, without warranties, with liability disclaimed to the extent permitted by applicable law. See the [demo use and liability notice](DEMO-NOTICE.md) and [MIT license](../../LICENSE).
 
 ## What is protected in this demo
 
@@ -35,4 +35,4 @@ These are proposed changes, not features already built.
 | Reliability and clinical workflow | `scripts/` and a hospital-approved validation plan | Test permissions, failure modes, restore procedures and integrations. Evaluate the model with approved data and staff review. Keep discharge and bed release under authorized staff control. |
 | Policies and operations | Hospital procedures outside this small app | Assign privacy/security owners, train users, control workstation access and establish incident response, breach handling and recovery procedures. |
 
-The hospital's team should evaluate the finished deployment before any real patient use. This table is a starting plan, not a complete HIPAA checklist or a compliance claim. For safe changes to the fictional demo, start with [Make it your own](CUSTOMIZE.md).
+The hospital's team should evaluate the finished deployment before any real patient use. This table is a starting plan, not a complete HIPAA checklist or a compliance claim. For safe changes to the fictional demo, start with [Make it your own](../guides/CUSTOMIZE.md).

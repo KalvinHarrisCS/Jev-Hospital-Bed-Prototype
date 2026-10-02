@@ -26,11 +26,11 @@ After the first build:
 docker compose -f container/compose.yaml run --rm bedboard npm test
 ```
 
-These checks use made-up data and make no TypeSafe calls. The base image and dependency versions are fixed in the supplied files. See [repeat the setup](../REPRODUCIBILITY.md).
+These checks use made-up data and make no TypeSafe calls. The base image and dependency versions are fixed in the supplied files. See [repeat the setup](../docs/guides/REPRODUCIBILITY.md).
 
 For an optional network check, run `docker compose -f container/compose.yaml run --rm bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
 
-To change beds or questions, follow [make it your own](../CUSTOMIZE.md), then run the launch command again. The image keeps the source copied during the build. The MIT license is included in the image.
+To change beds or questions, follow [make it your own](../docs/guides/CUSTOMIZE.md), then run the launch command again. The image keeps the source copied during the build. The MIT license is included in the image.
 
 ## Supply the key when running
 
@@ -49,7 +49,7 @@ Windows PowerShell 7.1 or newer:
 $env:TYPESAFE_API_KEY = Read-Host 'TypeSafe API key' -MaskInput
 ```
 
-Compose forwards `TYPESAFE_API_KEY` from that terminal. If it is missing, the app still starts and you can use the password field. The build excludes secret files and Git history. Docker administrators can inspect container environment variables, so use an approved machine. See [key setup](../ENVIRONMENT-SETUP.md) if your key has another variable name.
+Compose forwards `TYPESAFE_API_KEY` from that terminal. If it is missing, the app still starts and you can use the password field. The build excludes secret files and Git history. Docker administrators can inspect container environment variables, so use an approved machine. See [key setup](../docs/guides/ENVIRONMENT-SETUP.md) if your key has another variable name.
 
 Press **Check server setup** in the app. It reports presence only, never the key value. A valid key and TypeSafe billing are checked by a successful Ask Jev request, which sends the fictional note to TypeSafe. The host port is bound to localhost.
 
@@ -68,7 +68,7 @@ Use this where your company allows Docker and access to TypeSafe. Docker itself 
 
 ## Verification
 
-I checked the page, key-presence response, and startup as a regular app user. The permission check fails against the old image and passes against the corrected one. Docker builds and HTTPS checks passed on Linux ARM64 and on Linux AMD64 emulated on this Mac. See [what was tested](../VERIFICATION.md) for the full record. Real-key fictional-note checks passed; [their results](../EVALUATION.md) are included. Clinical accuracy and a physical Windows run are still unverified.
+I checked the page, key-presence response, and startup as a regular app user. The permission check fails against the old image and passes against the corrected one. Docker builds and HTTPS checks passed on Linux ARM64 and on Linux AMD64 emulated on this Mac. See [what was tested](../docs/testing/VERIFICATION.md) for the full record. Real-key fictional-note checks passed; [their results](../docs/testing/EVALUATION.md) are included. Clinical accuracy and a physical Windows run are still unverified.
 
 ## References
 

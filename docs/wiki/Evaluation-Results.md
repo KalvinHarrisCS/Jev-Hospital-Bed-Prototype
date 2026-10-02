@@ -40,7 +40,7 @@ These probabilities are not discharge probabilities or calibrated risks. No deci
 
 ## Repeat it or challenge it
 
-Use [the quick test](Quick-Testing.md) for three ready-made notes. The package file `evaluation-results.json` contains every note, expected label, returned probability, model version, measured time, and token usage, including the two original failures. The questions are in `worker/index.js`.
+Use [the quick test](Quick-Testing.md) for three ready-made notes. The package file `data/evaluation-results.json` contains every note, expected label, returned probability, model version, measured time, and token usage, including the two original failures. The questions are in `worker/index.js`.
 
 Reported usage in these 28 responses totals **13528 input tokens** and **1688 output tokens**. I did not verify billed cost. Model outputs may change on a rerun or when `jev-latest` changes.
 

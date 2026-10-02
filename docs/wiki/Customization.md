@@ -43,7 +43,7 @@ The provider request currently uses `jev-latest`. For a controlled model compari
 
 ## Change the research examples
 
-Edit `fictional-patient-histories.md` or the pages in `docs/wiki/`. Keep invented stays and patient cases labeled fictional, and preserve source links for published guidance. The histories are documentation fixtures; changing them does not train Jev or automatically change the board.
+Edit `docs/research/fictional-patient-histories.md` or the pages in `docs/wiki/`. Keep invented stays and patient cases labeled fictional, and preserve source links for published guidance. The histories are documentation fixtures; changing them does not train Jev or automatically change the board.
 
 ## Check and share your changes
 

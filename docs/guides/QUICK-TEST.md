@@ -35,6 +35,6 @@ Press **Time room cleaning**. Select `MAT-05`, `GYN-05`, or `GYN-09`, which are 
 
 Reload while a timer is running to check that it resumes. Timings stay in this browser on this app's origin; a different browser, device, or port has a separate log. If saving is blocked, the page says so. No patient information is stored with these timings.
 
-Finishing means **awaiting staff release**. It does not make a bed available. This first timer measures start-to-finish elapsed time, including interruptions. It does not yet record the wait for a cleaner or a release timestamp. See the [cleaning research](docs/wiki/Cleaning-Research.md).
+Finishing means **awaiting staff release**. It does not make a bed available. This first timer measures start-to-finish elapsed time, including interruptions. It does not yet record the wait for a cleaner or a release timestamp. See the [cleaning research](../wiki/Cleaning-Research.md).
 
-See [the actual Jev checks](EVALUATION.md), [key setup](ENVIRONMENT-SETUP.md), and [what was tested](VERIFICATION.md).
+See [the actual Jev checks](../testing/EVALUATION.md), [key setup](ENVIRONMENT-SETUP.md), and [what was tested](../testing/VERIFICATION.md).

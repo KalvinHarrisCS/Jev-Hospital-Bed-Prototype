@@ -37,7 +37,7 @@
   "production_ready": false,
   "hipaa_compliance_evaluated": false,
   "real_patient_data_allowed": false,
-  "security_notes": "DEMO-SECURITY.md",
-  "demo_notice": "DEMO-NOTICE.md",
+  "security_notes": "docs/security/DEMO-SECURITY.md",
+  "demo_notice": "docs/security/DEMO-NOTICE.md",
   "project_title": "Jev Hospital Bed Prototype"
 }

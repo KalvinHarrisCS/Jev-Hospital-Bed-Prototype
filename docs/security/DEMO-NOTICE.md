@@ -8,7 +8,7 @@ The displayed patients, bed times and milestones are made up. Model answers and 
 
 The software and documentation are provided **as is, without warranties of any kind**, including warranties of accuracy, fitness for a particular purpose or suitability for hospital use. Use, modification and reliance are at your own risk.
 
-**To the fullest extent permitted by applicable law, the authors and copyright holders disclaim liability for claims, damages or other losses arising from the project, its use or modification, or reliance on its output.** The full warranty and liability terms are in the supplied [MIT license](LICENSE). A disclaimer does not remove obligations or liabilities that applicable law does not allow to be excluded.
+**To the fullest extent permitted by applicable law, the authors and copyright holders disclaim liability for claims, damages or other losses arising from the project, its use or modification, or reliance on its output.** The full warranty and liability terms are in the supplied [MIT license](../../LICENSE). A disclaimer does not remove obligations or liabilities that applicable law does not allow to be excluded.
 
 ## Adapting the project
 

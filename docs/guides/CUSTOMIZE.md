@@ -43,7 +43,7 @@ The provider request currently uses `jev-latest`. For a controlled model compari
 
 ## Change the research examples
 
-Edit `fictional-patient-histories.md` or the pages in `docs/wiki/`. Keep invented stays and patient cases labeled fictional, and preserve source links for published guidance. The histories are documentation fixtures; changing them does not train Jev or automatically change the board.
+Edit `docs/research/fictional-patient-histories.md` or the pages in `docs/wiki/`. Keep invented stays and patient cases labeled fictional, and preserve source links for published guidance. The histories are documentation fixtures; changing them does not train Jev or automatically change the board.
 
 ## Check and share your changes
 
@@ -53,8 +53,8 @@ Share the source, README, lockfile, container folder, tests and license together
 
 ## If I took this toward hospital use
 
-I would keep this fictional demo separate and build a reviewed production version with staff access, protected records, audit logs, managed secrets and an approved provider arrangement. [Demo security and a path to production](DEMO-SECURITY.md) maps each proposed change to the files I would update. This version is not ready for real patient information.
+I would keep this fictional demo separate and build a reviewed production version with staff access, protected records, audit logs, managed secrets and an approved provider arrangement. [Demo security and a path to production](../security/DEMO-SECURITY.md) maps each proposed change to the files I would update. This version is not ready for real patient information.
 
 ## Cleaning records
 
-The timer is `worker/cleaning.js`. It chooses the beds already marked DUE or CLN. Change those fictional records in the core if you want different example rooms. Timings use local browser storage under `obgyn-cleaning-demo-v1` and the computer clock; no patient notes or keys go into that log. The current average is only start-to-finish elapsed minutes. Request, departure and release timestamps are future work, described in the [research](docs/wiki/Cleaning-Research.md).
+The timer is `worker/cleaning.js`. It chooses the beds already marked DUE or CLN. Change those fictional records in the core if you want different example rooms. Timings use local browser storage under `obgyn-cleaning-demo-v1` and the computer clock; no patient notes or keys go into that log. The current average is only start-to-finish elapsed minutes. Request, departure and release timestamps are future work, described in the [research](../wiki/Cleaning-Research.md).
