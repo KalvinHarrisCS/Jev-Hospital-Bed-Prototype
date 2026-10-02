@@ -4,3 +4,4 @@
 .wrangler/
 node_modules/
 *.tar.gz
+pipeline/output/

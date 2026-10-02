@@ -1,0 +1,1458 @@
+[
+  {
+    "schemaVersion": 1,
+    "procedureCode": "PGN003",
+    "procedureDescription": "CESAREAN SECTION",
+    "year": 2023,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "46xm-urtu",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27PGN003%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 65515,
+    "p25PatientDays": 2,
+    "medianPatientDays": 3,
+    "p75PatientDays": 4,
+    "censoredDischarges": 4,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 947
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 18987
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 22732
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 13267
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 5287
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 1794
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 750
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 385
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 233
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 154
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 125
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 87
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 77
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 68
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 63
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 60
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 62
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 43
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 35
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 31
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 31
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 26
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 21
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 19
+      },
+      {
+        "lengthOfStay": "25",
+        "discharges": 20
+      },
+      {
+        "lengthOfStay": "26",
+        "discharges": 15
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "29",
+        "discharges": 15
+      },
+      {
+        "lengthOfStay": "30",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "31",
+        "discharges": 12
+      },
+      {
+        "lengthOfStay": "32",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "33",
+        "discharges": 11
+      },
+      {
+        "lengthOfStay": "34",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "35",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "36",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "38",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "39",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "40",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "41",
+        "discharges": 8
+      },
+      {
+        "lengthOfStay": "42",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "43",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "44",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "45",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "46",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "47",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "48",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "49",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "52",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "53",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "54",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "55",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "56",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "57",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "58",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "59",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "61",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "62",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "63",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "67",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "73",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "77",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "78",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "82",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "120+",
+        "discharges": 4
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "procedureCode": "PGN002",
+    "procedureDescription": "SPONTANEOUS VAGINAL DELIVERY",
+    "year": 2023,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "46xm-urtu",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27PGN002%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 114301,
+    "p25PatientDays": 2,
+    "medianPatientDays": 2,
+    "p75PatientDays": 3,
+    "censoredDischarges": 1,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 17015
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 58193
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 30527
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 5918
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 1376
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 467
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 244
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 116
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 92
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 49
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 49
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 16
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 36
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 20
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 18
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 23
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 12
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 11
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "25",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "26",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "29",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "30",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "31",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "32",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "33",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "34",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "38",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "39",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "40",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "41",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "43",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "44",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "45",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "47",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "49",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "52",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "53",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "56",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "60",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "61",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "62",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "66",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "72",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "75",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "83",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "97",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "120+",
+        "discharges": 1
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "procedureCode": "FRS001",
+    "procedureDescription": "HYSTERECTOMY",
+    "year": 2023,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "46xm-urtu",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27FRS001%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 5826,
+    "p25PatientDays": 1,
+    "medianPatientDays": 2,
+    "p75PatientDays": 3,
+    "censoredDischarges": 1,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 2096
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 1798
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 918
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 352
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 190
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 95
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 60
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 52
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 38
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 36
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 31
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 17
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 14
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 16
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "25",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "29",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "30",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "33",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "34",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "36",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "39",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "40",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "41",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "51",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "62",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "63",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "68",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "100",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "110",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "120+",
+        "discharges": 1
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "procedureCode": "PGN003",
+    "procedureDescription": "CESAREAN SECTION",
+    "year": 2024,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "sf4k-39ay",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27PGN003%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 65817,
+    "p25PatientDays": 2,
+    "medianPatientDays": 3,
+    "p75PatientDays": 4,
+    "censoredDischarges": 3,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 993
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 18601
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 22856
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 13702
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 5326
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 1814
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 783
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 381
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 244
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 163
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 126
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 89
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 73
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 60
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 71
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 50
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 40
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 34
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 26
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 39
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 27
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 29
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 26
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 28
+      },
+      {
+        "lengthOfStay": "25",
+        "discharges": 18
+      },
+      {
+        "lengthOfStay": "26",
+        "discharges": 16
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 14
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "29",
+        "discharges": 16
+      },
+      {
+        "lengthOfStay": "30",
+        "discharges": 11
+      },
+      {
+        "lengthOfStay": "31",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "32",
+        "discharges": 11
+      },
+      {
+        "lengthOfStay": "33",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "34",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "35",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "36",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "38",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "39",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "40",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "41",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "42",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "43",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "44",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "45",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "46",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "47",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "48",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "49",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "51",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "52",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "53",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "55",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "56",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "57",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "59",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "60",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "61",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "62",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "63",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "64",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "66",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "67",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "70",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "75",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "82",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "90",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "120+",
+        "discharges": 3
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "procedureCode": "PGN002",
+    "procedureDescription": "SPONTANEOUS VAGINAL DELIVERY",
+    "year": 2024,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "sf4k-39ay",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27PGN002%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 115706,
+    "p25PatientDays": 2,
+    "medianPatientDays": 2,
+    "p75PatientDays": 3,
+    "censoredDischarges": 0,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 17098
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 58131
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 31587
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 6210
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 1430
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 492
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 230
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 130
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 63
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 51
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 31
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 27
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 28
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 14
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 14
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 25
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 15
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 8
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 13
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 8
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 9
+      },
+      {
+        "lengthOfStay": "26",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "29",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "30",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "31",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "32",
+        "discharges": 4
+      },
+      {
+        "lengthOfStay": "33",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "34",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "36",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "38",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "40",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "43",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "44",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "45",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "46",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "47",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "49",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "52",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "53",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "55",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "56",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "63",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "65",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "66",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "68",
+        "discharges": 1
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "procedureCode": "FRS001",
+    "procedureDescription": "HYSTERECTOMY",
+    "year": 2024,
+    "source": {
+      "kind": "sparcs-public-aggregate",
+      "datasetId": "sf4k-39ay",
+      "retrievedAt": "2026-10-02T22:31:15.594Z",
+      "codingVersion": "CCSR 2025.1",
+      "query": "Histogram: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361\nIndependent count: https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27FRS001%27&%24limit=2"
+    },
+    "unit": "patient_days",
+    "quantileMethod": "weighted_nearest_rank",
+    "discharges": 5257,
+    "p25PatientDays": 1,
+    "medianPatientDays": 2,
+    "p75PatientDays": 3,
+    "censoredDischarges": 0,
+    "smallSample": false,
+    "status": "ok",
+    "histogram": [
+      {
+        "lengthOfStay": "1",
+        "discharges": 1921
+      },
+      {
+        "lengthOfStay": "2",
+        "discharges": 1519
+      },
+      {
+        "lengthOfStay": "3",
+        "discharges": 780
+      },
+      {
+        "lengthOfStay": "4",
+        "discharges": 327
+      },
+      {
+        "lengthOfStay": "5",
+        "discharges": 188
+      },
+      {
+        "lengthOfStay": "6",
+        "discharges": 125
+      },
+      {
+        "lengthOfStay": "7",
+        "discharges": 100
+      },
+      {
+        "lengthOfStay": "8",
+        "discharges": 55
+      },
+      {
+        "lengthOfStay": "9",
+        "discharges": 38
+      },
+      {
+        "lengthOfStay": "10",
+        "discharges": 30
+      },
+      {
+        "lengthOfStay": "11",
+        "discharges": 36
+      },
+      {
+        "lengthOfStay": "12",
+        "discharges": 14
+      },
+      {
+        "lengthOfStay": "13",
+        "discharges": 16
+      },
+      {
+        "lengthOfStay": "14",
+        "discharges": 17
+      },
+      {
+        "lengthOfStay": "15",
+        "discharges": 26
+      },
+      {
+        "lengthOfStay": "16",
+        "discharges": 10
+      },
+      {
+        "lengthOfStay": "17",
+        "discharges": 6
+      },
+      {
+        "lengthOfStay": "18",
+        "discharges": 7
+      },
+      {
+        "lengthOfStay": "19",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "20",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "21",
+        "discharges": 5
+      },
+      {
+        "lengthOfStay": "22",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "23",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "24",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "25",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "26",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "27",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "28",
+        "discharges": 3
+      },
+      {
+        "lengthOfStay": "31",
+        "discharges": 2
+      },
+      {
+        "lengthOfStay": "32",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "35",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "36",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "37",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "44",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "50",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "71",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "80",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "101",
+        "discharges": 1
+      },
+      {
+        "lengthOfStay": "119",
+        "discharges": 1
+      }
+    ]
+  }
+]

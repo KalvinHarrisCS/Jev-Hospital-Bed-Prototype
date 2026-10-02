@@ -25,4 +25,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm test
+      - name: Check the app
+        run: npm run test:app
+      - name: Check the data pipeline
+        run: npm run test:pipeline
