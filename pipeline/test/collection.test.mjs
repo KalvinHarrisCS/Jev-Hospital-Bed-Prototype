@@ -83,3 +83,10 @@ test('Reject a source revision that changed between the count queries', async ()
   });
   await rejectsCollection(request);
 });
+test('Map the public API censored label without turning it into exact days', async () => {
+  const {request} = fakeRequest((url, reply) => {
+    if (url === queryUrls(2023).histogram) reply.value[0].length_of_stay = '120 +'; return reply;
+  });
+  const result = await collect(request);
+  assert.deepEqual(result.cohorts[0].histogram, [{lengthOfStay: '120+', discharges: 10}]);
+});

@@ -12,6 +12,7 @@
     "test:app": "node scripts/check-contract.mjs && node scripts/check-setup.mjs && node scripts/check-behavior.mjs && node scripts/check-cleaning.mjs",
     "test:pipeline": "node --test pipeline/test/*.test.mjs",
     "test:pipeline:fixtures": "node --test pipeline/test/fixtures.test.mjs",
+    "pipeline:collect": "node pipeline/cli.mjs",
     "check:https": "node scripts/check-https.mjs"
   },
   "devDependencies": {

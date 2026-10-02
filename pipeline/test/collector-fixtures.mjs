@@ -21,9 +21,9 @@ export function fakeRequest(change = (url, reply) => reply) {
     for (const year of [2023, 2024]) {
       const source = sourceFor(year); const queries = queryUrls(year);
       let reply;
-      if (url === source.metadataUrl) reply = {value: metadata(year), sha256: 'fictional-metadata-hash'};
-      else if (url === queries.histogram) reply = {value: rows(year), sha256: 'fictional-histogram-hash'};
-      else if (Object.values(queries.totals).includes(url)) reply = {value: [{discharges: '10'}], sha256: 'fictional-count-hash'};
+      if (url === source.metadataUrl) reply = {value: metadata(year), sha256: 'a'.repeat(64)};
+      else if (url === queries.histogram) reply = {value: rows(year), sha256: 'b'.repeat(64)};
+      else if (Object.values(queries.totals).includes(url)) reply = {value: [{discharges: '10'}], sha256: 'c'.repeat(64)};
       else {
         const document = source.documents.find(item => item.url === url);
         if (document) reply = {sha256: document.sha256};

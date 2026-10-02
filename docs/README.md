@@ -19,7 +19,7 @@
 
 ## Testing and results
 
-- [Data pipeline contract, fixtures and tests](../pipeline/README.md)
+- [Public-data pipeline, saved example and tests](../pipeline/README.md)
 - [Reviewing a pull request](testing/CODE-REVIEW.md)
 - [Automated tests and pull request checks](testing/TESTS.md)
 - [What was checked](testing/VERIFICATION.md)

@@ -43,6 +43,7 @@ Live Jev checks use your own TypeSafe key. Follow [key setup](docs/guides/ENVIRO
 | Change the beds and model questions | [Customization](docs/guides/CUSTOMIZE.md) |
 | Security, HIPAA and future hospital use | [Security notes](docs/security/DEMO-SECURITY.md) |
 | Test changes before merging | [Automated tests](docs/testing/TESTS.md) |
+| Try public stay data without an API key | [Data pipeline and saved example](pipeline/README.md) |
 | Results and what was checked | [Verification](docs/testing/VERIFICATION.md) · [Jev evaluation](docs/testing/EVALUATION.md) |
 | Patient examples and research | [Project wiki](docs/wiki/Home.md) |
 

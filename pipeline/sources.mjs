@@ -23,6 +23,7 @@ export function sourceFor(year) {
   if (![2023, 2024].includes(year)) throw new Error('Only the reviewed 2023 and 2024 releases are supported.');
   const source = reviewed[year];
   return {year, datasetId: source.id, codingVersion: 'CCSR 2025.1',
+    stayLabelMapping: {'120 +': '120+'},
     name: 'Hospital Inpatient Discharges (SPARCS De-Identified): ' + year,
     metadataUrl: host + '/api/views/' + source.id + '.json',
     resourceUrl: host + '/resource/' + source.id + '.json',

@@ -44,4 +44,16 @@ Checked October 2, 2026. The summary function passes 106 pipeline tests, and the
 
 The tests cover discharge totals, weighted nearest-rank quartiles, `120+` stays, empty groups, small samples, input validation and source metadata. Extra cases cover whitespace in stay labels, missing rows, inherited fields and keeping output edits separate from input records. No existing acceptance test was removed or skipped.
 
-These checks use fictional counts. They do not show a completed public-data download, clinical accuracy or forecasting accuracy. The collector and saved public-data summaries are still next steps.
+Those summary checks used fictional counts. Public collection and replay were checked separately below.
+
+## Public collection and replay
+
+Checked October 2, 2026. All 163 pipeline tests pass, with no skipped tests, and the existing app checks still pass. Both pass in Docker on Node.js 22.23.3 with network access turned off. Tests use fictional counts and simulated replies.
+
+Live collection succeeded on the host and in Docker for all six procedure/year groups. Histogram totals matched separate count queries. Approved terms and source-document hashes matched, and dataset revisions matched before and after collection. Requests returned aggregate counts only and needed no TypeSafe key or Jev calls.
+
+The [saved public example](../../pipeline/examples/public-2023-2024/README.md) replayed successfully in Docker with network access turned off. The actual command is also tested with network calls blocked: changed file hashes fail, existing outputs are refused and invalid data leaves no final snapshot. The documented Compose command saved its output to a host-mounted folder successfully on Mac Docker; Windows and physical Linux host permissions were not tested.
+
+Independent review found two gaps: positive PHI wording could pass the source check, and saving could accept missing provenance. Both now have negative tests and stricter validation. The collector also handles the source's `120 +` label through an explicit recorded mapping.
+
+These checks establish collection, validation and repeatability. The historical data has not been used to validate clinical decisions or individual bed-release predictions. Revision checks are not a transactional snapshot, and file hashes do not certify compliance. [Run the pipeline](../../pipeline/README.md).

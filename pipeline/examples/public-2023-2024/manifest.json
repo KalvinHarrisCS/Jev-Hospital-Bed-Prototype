@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-10-02T22:31:15.594Z",
+  "terms": {
+    "url": "https://data.ny.gov/download/77gx-ii52/application/pdf",
+    "fileUrl": "https://data.ny.gov/api/views/77gx-ii52/files/ef0c1840-ad54-4240-92fd-6397c49fde46?filename=OPEN-NY_20Terms_20of_20Use.pdf",
+    "sha256": "9437c849705d58df008f01fc23f404444becce6b86676adc3974f9160a4cb650",
+    "reviewedAt": "2026-10-02"
+  },
+  "sources": [
+    {
+      "year": 2023,
+      "datasetId": "46xm-urtu",
+      "codingVersion": "CCSR 2025.1",
+      "stayLabelMapping": {
+        "120 +": "120+"
+      },
+      "name": "Hospital Inpatient Discharges (SPARCS De-Identified): 2023",
+      "metadataUrl": "https://health.data.ny.gov/api/views/46xm-urtu.json",
+      "resourceUrl": "https://health.data.ny.gov/resource/46xm-urtu.json",
+      "datasetUrl": "https://health.data.ny.gov/d/46xm-urtu",
+      "documents": [
+        {
+          "kind": "overview",
+          "assetId": "c1844a97-cb39-4f72-80fd-6d24bab9f931",
+          "sha256": "0e02fe5b02f040bdee040b655dc9e43fce0ccb80edd1030a92e3944e92d221d9",
+          "url": "https://health.data.ny.gov/api/views/46xm-urtu/files/c1844a97-cb39-4f72-80fd-6d24bab9f931?download=true"
+        },
+        {
+          "kind": "dictionary",
+          "assetId": "cf754ac6-e5d5-47f2-88aa-e91a741a4ea0",
+          "sha256": "8530da2d365c9344f155696bf58671a7273d84c830ccde36d632eb13a94833e8",
+          "url": "https://health.data.ny.gov/api/views/46xm-urtu/files/cf754ac6-e5d5-47f2-88aa-e91a741a4ea0?download=true"
+        }
+      ],
+      "rowsUpdatedAt": 1749048995,
+      "queries": {
+        "histogram": "https://health.data.ny.gov/resource/46xm-urtu.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361",
+        "totals": {
+          "PGN003": "https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27PGN003%27&%24limit=2",
+          "PGN002": "https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27PGN002%27&%24limit=2",
+          "FRS001": "https://health.data.ny.gov/resource/46xm-urtu.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272023%27+and+ccsr_procedure_code%3D%27FRS001%27&%24limit=2"
+        }
+      },
+      "responseHashes": {
+        "metadataBefore": "f4477790055292a01265786b42e4691ead4353763eae0291e973effcc041d7c0",
+        "metadataAfter": "f4477790055292a01265786b42e4691ead4353763eae0291e973effcc041d7c0",
+        "histogram": "21601064099afe65f4414dfd5f43db2d8eaaa574d9fb65cc66d963aead9de9fa",
+        "totals": {
+          "PGN003": "a61468c7957c179872bbe9ee3739915f995b2a7fa8f3232a7f7a9015f614a931",
+          "PGN002": "a7225181af0f218502df7362c658d3c821135a33b5aa9b7c3656bd9a741ee34d",
+          "FRS001": "34e054c0e9b340458c968511a9d5f35cc675062e36b8044d60150a7b616188d9"
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "datasetId": "sf4k-39ay",
+      "codingVersion": "CCSR 2025.1",
+      "stayLabelMapping": {
+        "120 +": "120+"
+      },
+      "name": "Hospital Inpatient Discharges (SPARCS De-Identified): 2024",
+      "metadataUrl": "https://health.data.ny.gov/api/views/sf4k-39ay.json",
+      "resourceUrl": "https://health.data.ny.gov/resource/sf4k-39ay.json",
+      "datasetUrl": "https://health.data.ny.gov/d/sf4k-39ay",
+      "documents": [
+        {
+          "kind": "overview",
+          "assetId": "4569ea58-f227-4251-8d10-869f070c0444",
+          "sha256": "929924be8bdcc8270e54548ce407e84d2ceac6371ad76d103d05a7e656c9fed6",
+          "url": "https://health.data.ny.gov/api/views/sf4k-39ay/files/4569ea58-f227-4251-8d10-869f070c0444?download=true"
+        },
+        {
+          "kind": "dictionary",
+          "assetId": "a768e7f9-db7a-42ce-bedc-e2c88186c687",
+          "sha256": "9cc34b24c1c2f20556b218ba43899b45cc63eda87c5a32177081d6e6eff6ee31",
+          "url": "https://health.data.ny.gov/api/views/sf4k-39ay/files/a768e7f9-db7a-42ce-bedc-e2c88186c687?download=true"
+        }
+      ],
+      "rowsUpdatedAt": 1760103462,
+      "queries": {
+        "histogram": "https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=ccsr_procedure_code+as+procedure_code%2Cccsr_procedure_description+as+procedure_description%2Cdischarge_year+as+year%2Clength_of_stay%2Ccount%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code+in%28%27PGN003%27%2C%27PGN002%27%2C%27FRS001%27%29&%24group=ccsr_procedure_code%2Cccsr_procedure_description%2Cdischarge_year%2Clength_of_stay&%24order=ccsr_procedure_code%2Clength_of_stay&%24limit=361",
+        "totals": {
+          "PGN003": "https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27PGN003%27&%24limit=2",
+          "PGN002": "https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27PGN002%27&%24limit=2",
+          "FRS001": "https://health.data.ny.gov/resource/sf4k-39ay.json?%24select=count%28*%29+as+discharges&%24where=discharge_year%3D%272024%27+and+ccsr_procedure_code%3D%27FRS001%27&%24limit=2"
+        }
+      },
+      "responseHashes": {
+        "metadataBefore": "76147c5211ff0d080de554cb9466e7a62e204dba6494761c547d0bbfdcac508e",
+        "metadataAfter": "76147c5211ff0d080de554cb9466e7a62e204dba6494761c547d0bbfdcac508e",
+        "histogram": "6c57d5dc876ace7f21b1480436a89d8ece544d0ef72674c4695b7e039c54ee03",
+        "totals": {
+          "PGN003": "fe00bebe37a7673f642843fb8d1eaad8640a1af2d0195074721ace6a133619b4",
+          "PGN002": "425d1cdc1bcfa32307b73ef6e8b3781c114e5271b429631abd15f8dab4b3d8b8",
+          "FRS001": "7f09d921e73b382bb8458fb4ddbeb502dfbbd1e6b5d7e9b0f46dd8b6f1b4bc0f"
+        }
+      }
+    }
+  ],
+  "files": {
+    "cohorts.json": "ef3111f22e77771029b5113a89a2b8ec56f659161279eeaa925a70de59b0edfd",
+    "summaries.json": "afdd8a51ebc04c8382716bb77eb52bdaacd96468c5cce3f375b668d94615e2ac",
+    "summaries.csv": "b75539e7fc93fdac7af0ffd0ecc870140fdf81fd2e88950244f073358e6072a9"
+  }
+}

@@ -2,7 +2,7 @@
 
 The tests stay with the code so you can run them yourself. GitHub runs the same checks for pull requests and changes to `main`.
 
-The `codex/data-pipeline` branch started with tests before implementation. The stay-summary function now passes those tests, including invalid input and exact quantile ranks at the safe-count limit. The checks still use fictional counts; downloading public data is a separate next step. The existing app checks can be run separately with `npm run test:app`.
+The `codex/data-pipeline` branch started with tests before implementation. The stay-summary function, public collector, saving and replay now pass those tests. The checks use fictional counts and simulated API replies. Live public-data collection was checked separately; see the verification record. The existing app checks can be run separately with `npm run test:app`.
 
 ## Run them locally
 
@@ -27,7 +27,7 @@ docker compose -f container/compose.yaml run --rm bedboard npm test
 | Key setup | Key presence, server/browser setup and fixture credentials staying out of results |
 | Bedboard behavior | Countdown confirmation, submitted-bed context, edited notes and practice answers |
 | Cleaning | Elapsed time, reload, multiple tabs, storage failures and recorded fields |
-| Data pipeline | Fictional cohort fixtures, weighted stay quantiles, source metadata, censoring, empty cohorts and invalid input |
+| Data pipeline | Fictional cohorts, weighted stay quantiles, censoring, empty groups, source documents/terms, independent totals, bounded replies, file hashes, provenance and offline command replay |
 
 The checks use fictional data and simulated provider responses. They need no TypeSafe key and make no live Jev requests. These are software checks; clinical accuracy has not been evaluated.
 
