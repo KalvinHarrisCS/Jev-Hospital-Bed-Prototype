@@ -20,4 +20,4 @@ The automatic settings cannot override CodeRabbit's service limits. CodeRabbit c
 
 Before merging, check that `coderabbitai[bot]` completed a review of the latest commit. A configuration file or a skipped-review message does not mean the review ran. CodeRabbit can also give a passing check when a review is rate limited, so the green check alone is not proof. [Review commands](https://docs.coderabbit.ai/reference/review-commands) · [Current review limits](https://docs.coderabbit.ai/management/plans) · [Rate-limit behavior](https://docs.coderabbit.ai/management/rate-limits)
 
-For the pipeline's tests-first step, failures at `NOT_IMPLEMENTED` are expected. CodeRabbit should still check the sample answers, data rules and tests for mistakes. Keep the pull request in draft until the function is written and GitHub's required `Tests` check passes.
+The pipeline tests use fictional counts. The summary function now passes them. Check the sample answers, data rules and tests when reviewing it, and keep any unfinished work in draft until GitHub's required `Tests` check passes.

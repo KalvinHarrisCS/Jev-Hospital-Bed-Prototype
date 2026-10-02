@@ -56,4 +56,4 @@ The middle-half range describes past stays. It does not promise a stay length fo
 
 Throw an `Error` with `code` equal to `INVALID_INPUT` for invalid fields, metadata, stay bins, counts or unsafe totals; `DUPLICATE_BIN` for repeated stay bins; and `COUNT_MISMATCH` for a valid histogram whose count differs from its independent total. Do not return a partial summary after validation fails.
 
-The function currently throws `NOT_IMPLEMENTED`. The tests fail there until we write the function.
+The summary function implements this contract. The tests use fictional counts and run without downloading data or calling Jev.

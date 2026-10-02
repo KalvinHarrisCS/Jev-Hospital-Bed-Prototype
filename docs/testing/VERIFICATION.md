@@ -37,3 +37,11 @@ The last command sends only an invalid fixture key and fictional note to TypeSaf
 The form layout was checked in the actual local browser at desktop size and at 390 pixels wide, with 20 bed rows and no page-level horizontal overflow. The same seven behavior and four cleaning tests passed after the markup changes. One additional live fictional-note request returned `unclear`; it is recorded separately from the original 28-call evaluation.
 
 Audio/video format and full decoding were checked for the eight-part screenshot walkthrough. Listening quality still requires a listener's review.
+
+## Stay-summary pipeline
+
+Checked October 2, 2026. The summary function passes 106 pipeline tests, and the existing app checks still pass. The same checks pass in the supplied Docker image on Node.js 22.23.3 with network access turned off.
+
+The tests cover discharge totals, weighted nearest-rank quartiles, `120+` stays, empty groups, small samples, input validation and source metadata. Extra cases cover whitespace in stay labels, missing rows, inherited fields and keeping output edits separate from input records. No existing acceptance test was removed or skipped.
+
+These checks use fictional counts. They do not show a completed public-data download, clinical accuracy or forecasting accuracy. The collector and saved public-data summaries are still next steps.

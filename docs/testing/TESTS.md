@@ -2,7 +2,7 @@
 
 The tests stay with the code so you can run them yourself. GitHub runs the same checks for pull requests and changes to `main`.
 
-The `codex/data-pipeline` branch starts with tests before implementation. Its pipeline acceptance tests currently fail with `NOT_IMPLEMENTED`; keep that pull request in draft until the pipeline is written and the checks pass. The existing app checks can be run separately with `npm run test:app`.
+The `codex/data-pipeline` branch started with tests before implementation. The stay-summary function now passes those tests, including invalid input and exact quantile ranks at the safe-count limit. The checks still use fictional counts; downloading public data is a separate next step. The existing app checks can be run separately with `npm run test:app`.
 
 ## Run them locally
 

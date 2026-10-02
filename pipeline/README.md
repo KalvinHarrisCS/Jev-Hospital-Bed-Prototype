@@ -19,15 +19,14 @@ npm run test:pipeline:fixtures
 npm run test:pipeline
 ```
 
-The sample-data checks should pass. The pipeline tests currently fail with `NOT_IMPLEMENTED` because the summary function is still a placeholder. That is where we start. Next, we write the function until those tests pass. The GitHub check will stay red, and the pull request will stay in draft, until that work is done.
+The summary function is now written, and the sample-data and pipeline checks pass. It returns discharge totals, the median and the middle-half stay range. It rejects invalid input or totals that do not match, and keeps `120+` stays labeled instead of treating them as exact times. We wrote the tests first, then built the function against them.
 
 You can run these tests without a key or an internet connection. [The contract](CONTRACT.md) explains what the function needs to return. [The code-review guide](../docs/testing/CODE-REVIEW.md) covers CodeRabbit setup.
 
 ## Next steps
 
-1. Write `summarizeCohort` and get the tests passing.
-2. Add a command to collect public totals and record where they came from.
-3. Save a copy of that data and make CSV/JSON summaries.
-4. Compare 2023 with 2024 and explain what changed. We have already looked at both years, so this is a comparison of past data, not a blind test.
+1. Add a command to collect public totals and record where they came from.
+2. Save a copy of that data and make CSV/JSON summaries.
+3. Compare 2023 with 2024 and explain what changed. We have already looked at both years, so this is a comparison of past data, not a blind test.
 
 Source references: [2023 public release](https://health.data.ny.gov/d/46xm-urtu), [2024 public release](https://health.data.ny.gov/d/sf4k-39ay), and [SPARCS public-use guidance](https://www.health.ny.gov/statistics/sparcs/access/). Source terms will be recorded with the collection step; the project's MIT license does not relicense external data.
