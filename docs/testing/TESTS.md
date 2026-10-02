@@ -1,0 +1,39 @@
+# Automated tests
+
+The tests stay with the code so you can run them yourself. GitHub runs the same checks for pull requests and changes to `main`.
+
+## Run them locally
+
+With Node.js 22 or newer installed, open a terminal in the project root:
+
+```sh
+npm ci
+npm test
+```
+
+After building the Docker image, you can also run:
+
+```sh
+docker compose -f container/compose.yaml run --rm bedboard npm test
+```
+
+## What they cover
+
+| Group | Checks |
+| --- | --- |
+| API contract | Input validation, origin checks, provider response validation and error handling |
+| Key setup | Key presence, server/browser setup and fixture credentials staying out of results |
+| Bedboard behavior | Countdown confirmation, submitted-bed context, edited notes and practice answers |
+| Cleaning | Elapsed time, reload, multiple tabs, storage failures and recorded fields |
+
+The checks use fictional data and simulated provider responses. They need no TypeSafe key and make no live Jev requests. These are software checks; clinical accuracy has not been evaluated.
+
+## Before merging
+
+[The GitHub workflow](../../.github/workflows/tests.yml) installs the locked dependencies and runs `npm test` on Node.js 22. It runs on pull requests targeting `main`, pushes to `main`, and merge queues if one is configured. You can also start it manually from [Actions](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml).
+
+The `Tests` check must pass before a pull request can merge into `main`. There is no required reviewer approval. Make changes on a branch and open a pull request so the tests can run before merging.
+
+The workflow has read-only repository permissions, uses pinned GitHub actions and does not deploy the app.
+
+See [the verification record](VERIFICATION.md) for earlier checks and their limits. The setup follows GitHub's [Node.js testing guide](https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs) and [required status checks](https://docs.github.com/en/pull-requests/reference/status-checks).

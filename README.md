@@ -1,5 +1,7 @@
 # Jev Hospital Bed Prototype
 
+[![Tests](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml/badge.svg)](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml)
+
 Watch the nurse walkthrough:
 
 https://github.com/user-attachments/assets/402d6303-6abf-45cc-8257-ddf5911f9732
@@ -40,6 +42,7 @@ Live Jev checks use your own TypeSafe key. Follow [key setup](docs/guides/ENVIRO
 | Test it quickly | [Quick test](docs/guides/QUICK-TEST.md) |
 | Change the beds and model questions | [Customization](docs/guides/CUSTOMIZE.md) |
 | Security, HIPAA and future hospital use | [Security notes](docs/security/DEMO-SECURITY.md) |
+| Test changes before merging | [Automated tests](docs/testing/TESTS.md) |
 | Results and what was checked | [Verification](docs/testing/VERIFICATION.md) · [Jev evaluation](docs/testing/EVALUATION.md) |
 | Patient examples and research | [Project wiki](docs/wiki/Home.md) |
 

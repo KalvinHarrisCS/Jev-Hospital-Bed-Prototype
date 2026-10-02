@@ -19,6 +19,7 @@
 
 ## Testing and results
 
+- [Automated tests and pull request checks](testing/TESTS.md)
 - [What was checked](testing/VERIFICATION.md)
 - [Jev evaluation](testing/EVALUATION.md)
 - [Review and fixes](testing/REVIEW.md)
