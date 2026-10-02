@@ -1,0 +1,17 @@
+**
+!worker/
+!worker/index.js
+!worker/cleaning.js
+!wrangler.jsonc
+!package.json
+!package-lock.json
+!LICENSE
+!scripts/
+!scripts/check-contract.mjs
+!scripts/check-setup.mjs
+!scripts/check-behavior.mjs
+!scripts/check-cleaning.mjs
+!scripts/check-https.mjs
+!container/
+!container/Dockerfile
+!container/Dockerfile.dockerignore

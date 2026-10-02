@@ -1,0 +1,6 @@
+{
+  "name": "obgyn-bedboard-local",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-04-01",
+  "secrets": { "required": ["TYPESAFE_API_KEY"] }
+}

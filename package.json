@@ -1,0 +1,17 @@
+{
+  "name": "jev-hospital-bed-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node scripts/check-contract.mjs && node scripts/check-setup.mjs && node scripts/check-behavior.mjs && node scripts/check-cleaning.mjs",
+    "check:https": "node scripts/check-https.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.146.0"
+  }
+}

@@ -1,0 +1,12 @@
+name: obgyn-bedboard
+services:
+  bedboard:
+    build:
+      context: ..
+      dockerfile: container/Dockerfile
+    image: obgyn-bedboard:demo
+    ports:
+      - "127.0.0.1:${BEDBOARD_PORT:-8787}:8787"
+    environment:
+      TYPESAFE_API_KEY: "${TYPESAFE_API_KEY:-}"
+    init: true
