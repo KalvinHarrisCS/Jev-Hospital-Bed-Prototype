@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+tone_instructions: >-
+  Keep it plain and direct. Explain the issue, why it matters,
+  and the smallest fix. Skip hype, poems and style nitpicks.
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: false
+  poem: false
+  in_progress_fortune: false
+  sequence_diagrams: false
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    drafts: true
+    base_branches:
+      - "^main$"
+  path_instructions:
+    - path: "pipeline/**"
+      instructions: >-
+        Keep this pipeline small and readable. Follow pipeline/CONTRACT.md.
+        During the documented tests-first step, NOT_IMPLEMENTED failures
+        are expected. Check the contract and fictional examples for mistakes.
+        Do not suggest skipping tests or weakening checks to make them pass.
+        Later implementation must pass the contract or explain a reviewed
+        contract change. Check weighted quantiles, matching totals, empty
+        groups and 120+ stays. Patient days measure the whole admission;
+        they are not hours after surgery. Use approved public SPARCS sources.
+        Keep credentials and real patient notes out of the repository.
+chat:
+  auto_reply: false
