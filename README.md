@@ -71,7 +71,7 @@ I used [TypeSafe's API documentation](https://docs.typesafe.ai/api) and this [pu
 - [Windows / Mac environment setup](ENVIRONMENT-SETUP.md)
 - [Docker setup](container/README.md)
 
-`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `nurse-walkthrough.pdf` shows the nurse steps with screenshots and cursor markers. The narrated video is at the top of this page; the accompanying audio is included in the project.
+`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `nurse-walkthrough.pdf` shows the nurse steps with screenshots and cursor markers. The narrated video is at the top of this page.
 
 Every patient is made up. I chose a 1-5 pain scale for this example. This app saves only cleaning room IDs and timestamps in the browser. It does not save patient notes or decide when someone can leave hospital.
 
