@@ -866,7 +866,7 @@
       "bedId": "MAT-01",
       "note": "Update received. Recovery trend is not stated.",
       "expected": "unclear",
-      "source": "Actual Codex browser -> running Docker Worker -> TypeSafe",
+      "source": "Local browser -> running Docker Worker -> TypeSafe",
       "displayed_seconds": 0.3,
       "response": {
         "model": "jev-1.13.0",
@@ -896,7 +896,7 @@
       "bedId": "MAT-01",
       "note": "Update received. Recovery trend is not stated.",
       "expected": "unclear",
-      "source": "Actual Codex browser -> running Docker Worker -> TypeSafe",
+      "source": "Local browser -> running Docker Worker -> TypeSafe",
       "displayed_seconds": 0.2,
       "response": {
         "model": "jev-1.13.0",
