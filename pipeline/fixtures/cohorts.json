@@ -1,0 +1,39 @@
+{
+  "notice": "Fictional frequency tables for software tests. These are not SPARCS observations.",
+  "sources": {
+    "2023": {"kind": "synthetic", "datasetId": "fixture-2023", "retrievedAt": "2026-10-02T12:00:00.000Z", "codingVersion": "fixture-v1"},
+    "2024": {"kind": "synthetic", "datasetId": "fixture-2024", "retrievedAt": "2026-10-02T12:00:00.000Z", "codingVersion": "fixture-v1"}
+  },
+  "cohorts": [
+    {
+      "name": "C-section 2023", "year": 2023, "procedureCode": "PGN003", "procedureDescription": "CESAREAN SECTION",
+      "histogram": [{"lengthOfStay": "1", "discharges": 1}, {"lengthOfStay": "2", "discharges": 3}, {"lengthOfStay": "3", "discharges": 4}, {"lengthOfStay": "4", "discharges": 2}],
+      "expected": {"discharges": 10, "p25PatientDays": 2, "medianPatientDays": 3, "p75PatientDays": 3}
+    },
+    {
+      "name": "C-section 2024", "year": 2024, "procedureCode": "PGN003", "procedureDescription": "CESAREAN SECTION",
+      "histogram": [{"lengthOfStay": "2", "discharges": 2}, {"lengthOfStay": "3", "discharges": 5}, {"lengthOfStay": "4", "discharges": 2}, {"lengthOfStay": "6", "discharges": 1}],
+      "expected": {"discharges": 10, "p25PatientDays": 3, "medianPatientDays": 3, "p75PatientDays": 4}
+    },
+    {
+      "name": "Spontaneous vaginal delivery 2023", "year": 2023, "procedureCode": "PGN002", "procedureDescription": "SPONTANEOUS VAGINAL DELIVERY",
+      "histogram": [{"lengthOfStay": "1", "discharges": 2}, {"lengthOfStay": "2", "discharges": 6}, {"lengthOfStay": "3", "discharges": 2}],
+      "expected": {"discharges": 10, "p25PatientDays": 2, "medianPatientDays": 2, "p75PatientDays": 2}
+    },
+    {
+      "name": "Spontaneous vaginal delivery 2024", "year": 2024, "procedureCode": "PGN002", "procedureDescription": "SPONTANEOUS VAGINAL DELIVERY",
+      "histogram": [{"lengthOfStay": "1", "discharges": 1}, {"lengthOfStay": "2", "discharges": 5}, {"lengthOfStay": "3", "discharges": 3}, {"lengthOfStay": "4", "discharges": 1}],
+      "expected": {"discharges": 10, "p25PatientDays": 2, "medianPatientDays": 2, "p75PatientDays": 3}
+    },
+    {
+      "name": "Hysterectomy 2023", "year": 2023, "procedureCode": "FRS001", "procedureDescription": "HYSTERECTOMY",
+      "histogram": [{"lengthOfStay": "1", "discharges": 5}, {"lengthOfStay": "2", "discharges": 3}, {"lengthOfStay": "3", "discharges": 1}, {"lengthOfStay": "5", "discharges": 1}],
+      "expected": {"discharges": 10, "p25PatientDays": 1, "medianPatientDays": 1, "p75PatientDays": 2}
+    },
+    {
+      "name": "Hysterectomy 2024", "year": 2024, "procedureCode": "FRS001", "procedureDescription": "HYSTERECTOMY",
+      "histogram": [{"lengthOfStay": "1", "discharges": 4}, {"lengthOfStay": "2", "discharges": 3}, {"lengthOfStay": "3", "discharges": 2}, {"lengthOfStay": "7", "discharges": 1}],
+      "expected": {"discharges": 10, "p25PatientDays": 1, "medianPatientDays": 2, "p75PatientDays": 3}
+    }
+  ]
+}

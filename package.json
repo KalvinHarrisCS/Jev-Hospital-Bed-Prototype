@@ -8,7 +8,10 @@
   },
   "scripts": {
     "dev": "wrangler dev",
-    "test": "node scripts/check-contract.mjs && node scripts/check-setup.mjs && node scripts/check-behavior.mjs && node scripts/check-cleaning.mjs",
+    "test": "npm run test:app && npm run test:pipeline",
+    "test:app": "node scripts/check-contract.mjs && node scripts/check-setup.mjs && node scripts/check-behavior.mjs && node scripts/check-cleaning.mjs",
+    "test:pipeline": "node --test pipeline/test/*.test.mjs",
+    "test:pipeline:fixtures": "node --test pipeline/test/fixtures.test.mjs",
     "check:https": "node scripts/check-https.mjs"
   },
   "devDependencies": {

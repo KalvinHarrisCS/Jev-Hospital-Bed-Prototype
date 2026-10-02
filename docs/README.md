@@ -19,6 +19,7 @@
 
 ## Testing and results
 
+- [Data pipeline contract, fixtures and tests](../pipeline/README.md)
 - [Automated tests and pull request checks](testing/TESTS.md)
 - [What was checked](testing/VERIFICATION.md)
 - [Jev evaluation](testing/EVALUATION.md)

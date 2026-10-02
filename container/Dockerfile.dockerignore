@@ -12,6 +12,12 @@
 !scripts/check-behavior.mjs
 !scripts/check-cleaning.mjs
 !scripts/check-https.mjs
+!pipeline/
+!pipeline/summarize.mjs
+!pipeline/fixtures/
+!pipeline/fixtures/cohorts.json
+!pipeline/test/
+!pipeline/test/*.mjs
 !container/
 !container/Dockerfile
 !container/Dockerfile.dockerignore
