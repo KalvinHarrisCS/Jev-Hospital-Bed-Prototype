@@ -57,3 +57,13 @@ The [saved public example](../../pipeline/examples/public-2023-2024/README.md) r
 Independent review found two gaps: positive PHI wording could pass the source check, and saving could accept missing provenance. Both now have negative tests and stricter validation. The collector also handles the source's `120 +` label through an explicit recorded mapping.
 
 These checks establish collection, validation and repeatability. The historical data has not been used to validate clinical decisions or individual bed-release predictions. Revision checks are not a transactional snapshot, and file hashes do not certify compliance. [Run the pipeline](../../pipeline/README.md).
+
+## Bed-readiness tests first
+
+Checked October 2, 2026 on the bed-readiness draft branch. There are 51 complete fictional scenarios, two forecast invariants and 105 invalid-input assertions. Both fixture checks pass; all 158 forecast/validation assertions fail against the NOT_IMPLEMENTED placeholder. No tests are skipped. This is the expected red stage before writing the timing function, not a working predictor.
+
+The same 160-test result was reproduced in Docker with network access turned off. The existing app checks and all 163 public-data pipeline tests pass on the host and in Docker. No TypeSafe key or live model call was used.
+
+Independent review checked the scenario arithmetic, fixed queue order, status precedence and separate earliest/latest overlap checks. It identified two missing cases, which were added: only the latest scenario failing to fit, and a busy-task window partly elapsed at the snapshot. Invalid-input checks verify named issues, input immutability and multiple independent errors.
+
+The [draft instructions](../../readiness/README.md) explain the placeholder and the test commands. GitHub runs the new suite as part of its required Tests check; this draft must not merge while the new assertions fail. Planning notes remain outside the repository.

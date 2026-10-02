@@ -30,6 +30,12 @@
 !pipeline/fixtures/cohorts.json
 !pipeline/test/
 !pipeline/test/*.mjs
+!readiness/
+!readiness/forecast.mjs
+!readiness/fixtures/
+!readiness/fixtures/cases.json
+!readiness/test/
+!readiness/test/*.mjs
 !container/
 !container/Dockerfile
 !container/Dockerfile.dockerignore
