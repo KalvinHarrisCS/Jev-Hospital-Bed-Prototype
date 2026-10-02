@@ -1,5 +1,9 @@
 # Jev Hospital Bed Prototype
 
+Watch the nurse walkthrough:
+
+https://github.com/user-attachments/assets/402d6303-6abf-45cc-8257-ddf5911f9732
+
 I put this together to explore a basic hospital question: which bed is available, and when might the next one be ready?
 
 I kept it small: 20 made-up beds, status codes, time estimates, and a place to try Jev on a nurse's progress note. This is a gift to anyone who wants to run it, change it, or learn from it.
@@ -10,7 +14,7 @@ I kept it small: 20 made-up beds, status codes, time estimates, and a place to t
 
 The Jev connection was checked against published examples. The included tests let you check your own copy.
 
-Start with the [narrated walkthrough](nurse-walkthrough.mp4), [screenshot guide](nurse-walkthrough.pdf), or [project wiki](docs/wiki/Home.md).
+Start with the [screenshot guide](nurse-walkthrough.pdf) or [project wiki](docs/wiki/Home.md). You can also [download the narrated walkthrough](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.0.0/obgyn-narrated-walkthrough.mp4).
 
 ## Run it with Docker
 
@@ -67,7 +71,7 @@ I used [TypeSafe's API documentation](https://docs.typesafe.ai/api) and this [pu
 - [Windows / Mac environment setup](ENVIRONMENT-SETUP.md)
 - [Docker setup](container/README.md)
 
-`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `nurse-walkthrough.pdf` shows the nurse steps with screenshots and cursor markers. The submission also includes a narrated walkthrough video and accompanying audio.
+`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `nurse-walkthrough.pdf` shows the nurse steps with screenshots and cursor markers. The narrated video is at the top of this page; the accompanying audio is included in the project.
 
 Every patient is made up. I chose a 1-5 pain scale for this example. This app saves only cleaning room IDs and timestamps in the browser. It does not save patient notes or decide when someone can leave hospital.
 
