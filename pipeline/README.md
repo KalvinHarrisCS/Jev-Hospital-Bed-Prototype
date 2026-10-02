@@ -21,7 +21,7 @@ npm run test:pipeline
 
 The summary function is now written, and the sample-data and pipeline checks pass. It returns discharge totals, the median and the middle-half stay range. It rejects invalid input or totals that do not match, and keeps `120+` stays labeled instead of treating them as exact times. We wrote the tests first, then built the function against them.
 
-You can run these tests without a key or an internet connection. [The contract](CONTRACT.md) explains what the function needs to return. [The code-review guide](../docs/testing/CODE-REVIEW.md) covers CodeRabbit setup.
+You can run these tests without a key or an internet connection. [The contract](CONTRACT.md) explains what the function needs to return. [The review guide](../docs/testing/CODE-REVIEW.md) explains what to check before merging.
 
 ## Next steps
 
