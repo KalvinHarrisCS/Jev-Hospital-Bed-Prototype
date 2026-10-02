@@ -8,16 +8,16 @@ I want changes to go through a pull request with tests and another review. GitHu
 2. Choose `KalvinHarrisCS`, then **Only select repositories**.
 3. Select **Jev-Hospital-Bed-Prototype** and finish the GitHub App installation.
 
-[The review settings](../../.coderabbit.yaml) live with the code. They allow draft reviews, keep comments short and leave the pull request wording alone. Adding this file sets the rules; the GitHub App still needs access to the repository before it can review anything. CodeRabbit reads the settings from the branch being reviewed. [Configuration guide](https://docs.coderabbit.ai/getting-started/yaml-configuration)
+[The review settings](../../.coderabbit.yaml) live with the code. They request a review for every pull request, including drafts and every target branch. New commits request another review, with no pause after five reviewed commits and no author, title or label filters. Comments stay short and the pull request wording stays yours. Adding this file sets the rules; the GitHub App still needs access to the repository. CodeRabbit reads the settings from the branch being reviewed, or the target branch for a fork. Keep this file when creating a branch. [Configuration guide](https://docs.coderabbit.ai/getting-started/yaml-configuration) · [Automatic review settings](https://docs.coderabbit.ai/configuration/auto-review)
 
 ## Ask for a review
 
-CodeRabbit currently requires a manual trigger for public repositories with fewer than ten stars. After installation, add this comment to the pull request:
+The automatic settings cannot override CodeRabbit's service limits. CodeRabbit currently requires a manual trigger for public repositories with fewer than ten stars. If a review is skipped, use **Trigger review** in its status comment or add this comment to the pull request:
 
 ```text
 @coderabbitai full review
 ```
 
-Look for a completed review from `coderabbitai[bot]` and the CodeRabbit check. A configuration file or a skipped-review message does not mean the review ran. [Review commands](https://docs.coderabbit.ai/reference/review-commands) · [Current review limits](https://docs.coderabbit.ai/management/plans)
+Before merging, check that `coderabbitai[bot]` completed a review of the latest commit. A configuration file or a skipped-review message does not mean the review ran. CodeRabbit can also give a passing check when a review is rate limited, so the green check alone is not proof. [Review commands](https://docs.coderabbit.ai/reference/review-commands) · [Current review limits](https://docs.coderabbit.ai/management/plans) · [Rate-limit behavior](https://docs.coderabbit.ai/management/rate-limits)
 
 For the pipeline's tests-first step, failures at `NOT_IMPLEMENTED` are expected. CodeRabbit should still check the sample answers, data rules and tests for mistakes. Keep the pull request in draft until the function is written and GitHub's required `Tests` check passes.
