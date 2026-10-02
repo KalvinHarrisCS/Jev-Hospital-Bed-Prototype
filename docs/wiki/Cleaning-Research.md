@@ -18,7 +18,7 @@ Routine cleaning happens while a room is occupied. Terminal cleaning happens aft
 
 ## What I would record
 
-The current 40-line timer records cleaning start and finish, elapsed minutes, and the local average. It saves these made-up room timings in the browser and does not release beds. It does not yet record request, departure or release times.
+The cleaning timer records cleaning start and finish, elapsed minutes, and the local average. It saves these made-up room timings in the browser and does not release beds. It does not yet record request, departure or release times.
 
 For a fuller version, my proposed event record is:
 

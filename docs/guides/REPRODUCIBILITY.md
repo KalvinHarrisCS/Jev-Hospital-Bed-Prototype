@@ -4,7 +4,7 @@ I want someone else to be able to unzip this and run it. The ZIP includes the so
 
 ## What is fixed
 
-- Core: `worker/index.js`, 100 lines; `worker/cleaning.js`, 40 lines in this release, with the fictional records included.
+- Core: `worker/index.js` and `worker/cleaning.js`, with the fictional records included.
 - Container base: official `node:22-bookworm-slim` pinned to the digest in `container/Dockerfile`.
 - HTTPS trust: Debian CA certificates and OpenSSL versions are pinned in the Dockerfile. These provide the trusted system roots used by the Worker runtime.
 - Wrangler: version `4.146.0`; its dependency versions and package integrity values are recorded in `package-lock.json`.

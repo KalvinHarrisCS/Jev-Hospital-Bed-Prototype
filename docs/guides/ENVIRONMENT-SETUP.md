@@ -67,7 +67,7 @@ Replace `MY_JEV_KEY` with your existing variable's name. The webpage does not ac
 
 The supplied `wrangler.jsonc` declares the required secret name, so Wrangler can load it from the launching process. Node.js 22 or newer and npm are required for this local setup. The optional [container](../../container/README.md) supplies its own Node.js runtime. You can alternatively put `TYPESAFE_API_KEY="your-key"` in an ignored `.dev.vars` file in the project folder. Do not include `.dev.vars` or `.env` files in Git or submission archives. They are excluded by the supplied `.gitignore`.
 
-The core source is `worker/index.js` (100 lines), with `worker/cleaning.js` (40 lines) for timing; local configuration, dependency lockfiles and checks are separate tooling. `npm ci` installs the locked runtime versions. Run `npm test` before trying a live request.
+The core source is `worker/index.js`, with `worker/cleaning.js` for timing; local configuration, dependency lockfiles and checks are separate tooling. `npm ci` installs the locked runtime versions. Run `npm test` before trying a live request.
 
 ## Evidence and references
 
