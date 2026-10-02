@@ -2,7 +2,7 @@
 
 The tests stay with the code so you can run them yourself. GitHub runs the same checks for pull requests and changes to `main`.
 
-The `codex/data-pipeline` branch started with tests before implementation. The stay-summary function, public collector, saving and replay now pass those tests. The checks use fictional counts and simulated API replies. Live public-data collection was checked separately; see the verification record. The existing app checks can be run separately with `npm run test:app`.
+The data pipeline started with tests before implementation. The stay-summary function, public collector, saving and replay now pass those tests. The checks use fictional counts and simulated API replies. Live public-data collection was checked separately; see the verification record. The existing app checks can be run separately with `npm run test:app`.
 
 ## Run them locally
 
@@ -36,6 +36,8 @@ The checks use fictional data and simulated provider responses. They need no Typ
 [The GitHub workflow](../../.github/workflows/tests.yml) installs the locked dependencies and runs the app and pipeline checks in separate steps on Node.js 22. Together these are the same checks as `npm test`. It runs on pull requests targeting `main`, pushes to `main`, and merge queues if one is configured. You can also start it manually from [Actions](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml).
 
 The `Tests` check must pass before a pull request can merge into `main`. There is no required reviewer approval. Make changes on a branch and open a pull request so the tests can run before merging.
+
+Before merging, check that the change matches the pull request, the tests cover likely mistakes, no keys or private data were added, and the instructions still match the app. Keep unfinished work in draft and fix failing tests before merging.
 
 The workflow has read-only repository permissions, uses pinned GitHub actions and does not deploy the app.
 
