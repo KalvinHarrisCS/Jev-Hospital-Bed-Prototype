@@ -2,7 +2,7 @@
 
 The tests stay with the code so you can run them yourself. GitHub runs the same checks for pull requests and changes to `main`.
 
-The bed-readiness draft adds a new tests-first suite. Its fixture checks pass; its forecast and validation assertions intentionally fail against the placeholder function. The draft cannot merge until those pass. [Run the readiness tests](../../readiness/README.md). Existing app and public-data checks remain separate commands.
+The bed-readiness function now passes its tests-first suite, including the complete fictional forecasts and structured invalid-input errors. [Run the readiness tests or a sample](../../readiness/README.md). Existing app and public-data checks remain separate commands.
 
 The data pipeline started with tests before implementation. The stay-summary function, public collector, saving and replay now pass those tests. The checks use fictional counts and simulated API replies. Live public-data collection was checked separately; see the verification record. The existing app checks can be run separately with `npm run test:app`.
 

@@ -32,6 +32,16 @@
 !pipeline/test/*.mjs
 !readiness/
 !readiness/forecast.mjs
+!readiness/demo.mjs
+!readiness/queue.mjs
+!readiness/reasons.mjs
+!readiness/schedule.mjs
+!readiness/validate.mjs
+!readiness/validate-schema.mjs
+!readiness/validate-time.mjs
+!readiness/validate-beds.mjs
+!readiness/validate-cleaner.mjs
+!readiness/validate-queue.mjs
 !readiness/fixtures/
 !readiness/fixtures/cases.json
 !readiness/test/

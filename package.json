@@ -15,6 +15,7 @@
     "pipeline:collect": "node pipeline/cli.mjs",
     "test:readiness": "node --test readiness/test/*.test.mjs",
     "test:readiness:fixtures": "node --test readiness/test/fixtures.test.mjs",
+    "readiness:demo": "node readiness/demo.mjs",
     "check:https": "node scripts/check-https.mjs"
   },
   "devDependencies": {

@@ -60,10 +60,20 @@ These checks establish collection, validation and repeatability. The historical 
 
 ## Bed-readiness tests first
 
-Checked October 2, 2026 on the bed-readiness draft branch. There are 51 complete fictional scenarios, two forecast invariants and 105 invalid-input assertions. Both fixture checks pass; all 158 forecast/validation assertions fail against the NOT_IMPLEMENTED placeholder. No tests are skipped. This is the expected red stage before writing the timing function, not a working predictor.
+At the tests-first commit `fc37e43`, checked October 2, 2026, there were 51 complete fictional scenarios, two forecast invariants and 105 invalid-input assertions. Both fixture checks passed; all 158 forecast/validation assertions failed against the NOT_IMPLEMENTED placeholder. No tests were skipped. This recorded the expected red stage before writing the timing function.
 
 The same 160-test result was reproduced in Docker with network access turned off. The existing app checks and all 163 public-data pipeline tests pass on the host and in Docker. No TypeSafe key or live model call was used.
 
 Independent review checked the scenario arithmetic, fixed queue order, status precedence and separate earliest/latest overlap checks. It identified two missing cases, which were added: only the latest scenario failing to fit, and a busy-task window partly elapsed at the snapshot. Invalid-input checks verify named issues, input immutability and multiple independent errors.
 
-The [draft instructions](../../readiness/README.md) explain the placeholder and the test commands. GitHub runs the new suite as part of its required Tests check; this draft must not merge while the new assertions fail. Planning notes remain outside the repository.
+GitHub ran the new suite as part of its required Tests check and blocked the unfinished draft from merging. Planning notes remained outside the repository. The implementation results follow below.
+
+## Bed-readiness implementation
+
+Checked October 2, 2026. All 168 readiness tests now pass with no skipped tests. This includes the original 160 checks, four sparse-array validation regressions and four ordering/precision checks. No original acceptance tests or expected fixture answers were weakened or removed.
+
+The existing app checks and all 163 pipeline tests pass too. The full `npm test` command passes on the host and in Docker with network access turned off. The two-room command prints the expected fixture result on both, without a key or a model call.
+
+Independent review compared 500 fictional forecasts covering 2,500 rooms with a separate calculation, including multiple unsorted breaks, fractional minutes, busy staff, queue dependencies and input immutability. Review found a Unicode ID ordering mismatch and duration precision that could round positive intervals to zero. New tests reproduced both before the fixes. IDs now use code-point order, and duration bounds must resolve to positive whole milliseconds. Sparse-array checks also failed before validation was fixed.
+
+[Run a fictional example or the tests](../../readiness/README.md). This establishes the agreed same-day scheduling calculation, not clinical accuracy or real hospital readiness. The function has not yet been connected to the bedboard. It preserves actual bed status and leaves every estimated ready time pending staff release.
