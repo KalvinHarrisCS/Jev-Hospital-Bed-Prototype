@@ -66,7 +66,9 @@ The forecast statuses, in priority order, are:
 
 Departures use two exact demo source labels: `fictional nurse-entered estimate` for estimates and `fictional observed departure` for recorded events. Other labels, including Jev/model output, produce `needs_review` and no time. These labels restrict demo inputs; they do not authenticate who entered a real record.
 
-An occupied bed needs an estimated departure. A bed awaiting cleaning needs an observed departure, recorded at or after the event. Contradictions need review. Departure records, including observed events, also need review when their update age exceeds `maxUpdateAgeMinutes`; exactly the limit passes. This flags record freshness and keeps the observed event intact.
+An occupied bed needs an estimated departure. A bed awaiting cleaning needs an observed departure, recorded at or after the event. Contradictions need review. Departure records, including observed events, also need review when their update age exceeds `maxUpdateAgeMinutes`; exactly the limit passes. This flags record freshness and keeps the observed event intact. Staff records use the same age rule. A decimal limit of 4.1 minutes includes an update exactly 246000 milliseconds old; one millisecond older needs review.
+
+Queue order needs departure bounds with the matching approved demo source, or an explicit staff-entered override. With more than one non-held room, a missing bound or unapproved/missing source makes the queue unknown. Changing a model-supplied time cannot move another room ahead of it. Rooms with trusted bounds receive `upstream_queue_unknown`; rooms lacking those bounds keep their direct reasons. A single room still has a known position, but unapproved or missing inputs cannot produce a time. An override can establish order without making those inputs trustworthy.
 
 Cases cover busy cleaners, breaks, shift boundaries, update age, holds, missing information, queue order and note-label failure. Held rooms leave the queue; a queued room with an untrusted completion blocks later estimates. Earliest and latest scenarios are checked separately, including their no-overlap rules.
 

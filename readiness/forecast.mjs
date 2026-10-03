@@ -2,6 +2,7 @@ import {validateRequest} from './validate.mjs';
 import {directReasons, statusFor} from './reasons.mjs';
 import {queueOrder} from './queue.mjs';
 import {workPeriods, scheduleBed} from './schedule.mjs';
+import {hasTrustedDepartureBound} from './departure.mjs';
 
 export function forecastBeds(input) {
   validateRequest(input);
@@ -20,7 +21,9 @@ export function forecastBeds(input) {
   };
   if (queue === null) {
     for (const bed of input.beds) {
-      if (!bed.holds.length && bed.departure?.window) addReason(rows.get(bed.bedId), 'upstream_queue_unknown');
+      if (!bed.holds.length && hasTrustedDepartureBound(bed)) {
+        addReason(rows.get(bed.bedId), 'upstream_queue_unknown');
+      }
     }
   } else {
     const periods = workPeriods(input.cleaner);
