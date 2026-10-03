@@ -2,14 +2,25 @@ import {procedures, fields, sourceFor, queryUrls, terms} from './sources.mjs';
 import {readPublic, collectionError} from './request.mjs';
 import {summarizeCohort} from './summarize.mjs';
 
+function isRecord(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value) &&
+    [Object.prototype, null].includes(Object.getPrototypeOf(value));
+}
+
+function hasMetadataRecords(value) {
+  return isRecord(value) && isRecord(value.license) && isRecord(value.metadata) &&
+    Array.isArray(value.columns) && Array.from(value.columns).every(isRecord) &&
+    Array.isArray(value.metadata.attachments) && Array.from(value.metadata.attachments).every(isRecord);
+}
+
 function checkMetadata(value, source) {
-  if (value?.id !== source.datasetId || value.name !== source.name ||
+  if (!hasMetadataRecords(value) || value.id !== source.datasetId || value.name !== source.name ||
       !Number.isSafeInteger(value.rowsUpdatedAt) || value.rowsUpdatedAt <= 0 ||
       typeof value.description !== 'string' || !/de-identified/i.test(value.description) ||
       !/does not contain(?: data that is)? protected health information/i.test(value.description) || !value.description.includes('HIPAA') ||
-      value.license?.name !== 'See Terms of Use' || !Array.isArray(value.columns) ||
+      value.license.name !== 'See Terms of Use' ||
       !fields.every(field => value.columns.filter(column => column.fieldName === field && column.dataTypeName === 'text').length === 1) ||
-      !source.documents.every(document => value.metadata?.attachments?.some(item => item.assetId === document.assetId))) {
+      !source.documents.every(document => value.metadata.attachments.some(item => item.assetId === document.assetId))) {
     throw collectionError('The public source metadata changed or is incomplete. Review it before continuing.');
   }
 }

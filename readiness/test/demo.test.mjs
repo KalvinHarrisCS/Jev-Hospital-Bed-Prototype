@@ -26,19 +26,32 @@ test('The JSON option preserves the complete forecast output', () => {
   assert.deepEqual(output, cases.find(item => item.id === 'two-rooms').expected);
 });
 
+test('The JSON option works before a case ID or with the default case', () => {
+  for (const [arguments_, name] of [[['--json', 'two-rooms'], 'two-rooms'], [['--json'], 'after-break']]) {
+    assert.deepEqual(JSON.parse(runDemo(...arguments_)), cases.find(item => item.id === name).expected);
+  }
+});
+
 test('A separate input file can be adjusted without editing test fixtures', t => {
-  const folder = mkdtempSync(join(tmpdir(), 'jev-demo-'));
+  const folder = mkdtempSync(join(tmpdir(), 'jev demo '));
   t.after(() => rmSync(folder, {recursive: true, force: true}));
   const file = join(folder, 'fictional-input.json');
   const input = inputFor('two-rooms');
   input.beds[0].bedId = 'DEMO-01';
   writeFileSync(file, JSON.stringify(input));
-  const result = JSON.parse(runDemo('--input', file, '--json'));
-  assert.equal(result.beds[0].bedId, 'DEMO-01');
-  assert.equal(result.beds[0].actualStatus, 'occupied');
+  for (const arguments_ of [['--input', file, '--json'], ['--json', '--input', file]]) {
+    const result = JSON.parse(runDemo(...arguments_));
+    assert.equal(result.beds[0].bedId, 'DEMO-01');
+    assert.equal(result.beds[0].actualStatus, 'occupied');
+  }
 });
 
-for (const arguments_ of [['not-a-case'], ['two-rooms', 'extra'], ['--input']]) {
+for (const arguments_ of [
+  ['not-a-case'], ['two-rooms', 'extra'], ['', 'two-rooms'], ['--input'], ['--input', '--json'],
+  ['--json', '--json'], ['--input', 'file.json', '--input', 'other.json'],
+  ['--input', 'file.json', 'two-rooms'], ['two-rooms', '--input', 'file.json'],
+  ['--unknown'], ['two-rooms', '--unknown'],
+]) {
   test('Invalid demo arguments fail clearly: ' + arguments_.join(' '), () => {
     const result = spawnSync(process.execPath, [command, ...arguments_], {encoding: 'utf8'});
     assert.equal(result.status, 1);
