@@ -10,9 +10,9 @@ I kept it small: 20 made-up beds, status codes, time estimates, and a place to t
 
 The Jev connection was checked against published examples. The included tests let you check your own copy.
 
-Start with the [4:10 project walkthrough](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-project-walkthrough.mp4). It has 12 parts, Kalvin narration, actual app captures and a moving cursor. [The chapter list](../wiki/Nurse-Walkthrough.md) and [transcript](../walkthrough/nurse-walkthrough-script.md) help you follow along. The [PDF screenshot guide](../walkthrough/nurse-walkthrough.pdf) is the earlier quick guide.
+Start with the [four-minute project walkthrough](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.1/jev-project-walkthrough.mp4). It has 12 parts, Kalvin narration, actual app captures and a moving cursor. [The chapter list](../wiki/Nurse-Walkthrough.md) and [transcript](../walkthrough/nurse-walkthrough-script.md) help you follow along. The [PDF screenshot guide](../walkthrough/nurse-walkthrough.pdf) is the earlier quick guide.
 
-The video runs the three written practice cases without an API key. Their answers say **SAMPLE ONLY**; no live Jev response appears in this recording. It also shows editing a note, checking server setup, timing cleaning across a reload, and the separate readiness and public-data examples.
+The video runs the three written practice cases without an API key. Their answers say **SAMPLE ONLY**. It then uses **Ask Jev (uses your API)** with a fictional MAT-02 note and a configured server key. The genuine response is **needs review**, with a delay score of 0.97; MAT-02 stays occupied and its estimate stays unknown. It also shows editing a note, timing cleaning across a reload, and the separate readiness and public-data examples.
 
 ## Run it with Docker
 
@@ -63,7 +63,7 @@ The [public-data pipeline](../../pipeline/README.md) can replay saved New York a
 
 ## What I checked
 
-The video was made after a run with 502 passing automated tests and Docker build-exclusion checks. [Testing](../testing/TESTS.md) explains how to run those checks on your own copy. The earlier setup and software checks are recorded in [Verification](../testing/VERIFICATION.md). [The Jev evaluation](../testing/EVALUATION.md) includes earlier fictional notes, returned answers and original failures. These checks do not establish clinical accuracy.
+The app, data pipeline and timing checks passed in Docker before recording. GitHub also checks Docker build exclusions. [Testing](../testing/TESTS.md) explains how to run those checks on your own copy. The earlier setup and software checks are recorded in [Verification](../testing/VERIFICATION.md). [The Jev evaluation](../testing/EVALUATION.md) includes earlier fictional notes, returned answers and original failures. These checks do not establish clinical accuracy.
 
 To run the included checks after building:
 
