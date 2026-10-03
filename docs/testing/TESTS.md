@@ -15,11 +15,13 @@ npm ci
 npm test
 ```
 
-After building the Docker image, you can also run:
+With Docker available, rebuild the image and run:
 
 ```sh
-docker compose -f container/compose.yaml run --rm bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm test
 ```
+
+For an optional check of Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It uses a temporary copy of tracked files and synthetic environment/dependency paths, then inspects Docker's actual output. Ignored local `.env` and `.dev.vars` files are never read. The probe removes its temporary files, image and stopped container.
 
 ## What they cover
 

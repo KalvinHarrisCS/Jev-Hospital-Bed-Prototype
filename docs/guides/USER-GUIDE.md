@@ -51,7 +51,7 @@ The setup and software checks are recorded in [Verification](../testing/VERIFICA
 To run the included checks after building:
 
 ```sh
-docker compose -f container/compose.yaml run --rm bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm test
 ```
 
 I used [TypeSafe's API documentation](https://docs.typesafe.ai/api) and this [published Jev server example](https://github.com/davila7/jev-explained/blob/main/src/app/api/jev/route.ts) to check the connection pattern.

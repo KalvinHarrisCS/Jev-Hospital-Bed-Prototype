@@ -86,4 +86,4 @@ The local Worker started successfully on Mac with a fake process-environment key
 
 An export applies only to that terminal and processes it starts. If the app is already running, press Ctrl+C, then run the Compose launch command again from the same terminal. Open **Jev connection & setup**, then press **Check server setup** on the local page.
 
-The container includes the system certificates needed for HTTPS. The optional `docker compose -f container/compose.yaml run --rm bedboard npm run check:https` checks connectivity using an invalid test key and catches startup permission errors. It does not attempt a request with your real key.
+The container includes the system certificates needed for HTTPS. The optional `docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https` checks connectivity using an invalid test key and catches startup permission errors. It does not attempt a request with your real key.

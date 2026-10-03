@@ -20,15 +20,19 @@ To remove the stopped Compose container, run `docker compose -f container/compos
 
 ## Run the checks
 
-After the first build:
+Run the checks against the current source:
 
 ```sh
-docker compose -f container/compose.yaml run --rm bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm test
 ```
 
 These checks use made-up data and make no TypeSafe calls. The base image and dependency versions are fixed in the supplied files. See [repeat the setup](../docs/guides/REPRODUCIBILITY.md).
 
-For an optional network check, run `docker compose -f container/compose.yaml run --rm bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
+The `--build` flag refreshes the image before the checks run.
+
+To check Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It checks the actual copied files using synthetic environment files and dependency folders. It never reads ignored local secret files and removes its temporary files, image and stopped container.
+
+For an optional network check, run `docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
 
 To change beds or questions, follow [make it your own](../docs/guides/CUSTOMIZE.md), then run the launch command again. The image keeps the source copied during the build. The MIT license is included in the image.
 
