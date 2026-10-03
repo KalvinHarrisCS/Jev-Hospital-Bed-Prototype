@@ -34,6 +34,31 @@ Press **Try a nurse note**, choose a practice case and press **Show expected ans
 
 Live Jev checks use your own TypeSafe key. Follow [key setup](docs/guides/ENVIRONMENT-SETUP.md), then press **Ask Jev (uses your API)**. Staff still review the answer and confirm bed readiness. A countdown never frees a bed automatically.
 
+## How it works
+
+Jev reads the submitted nurse note and returns a progress label (`improving`, `needs_review` or `unclear`) and a score for an unresolved delay. The page shows the answer for staff to review.
+
+The browser sends the note to `/api/jev`. The server calls TypeSafe, checks the answer's structure and numeric ranges, then sends it back to the page. This never changes a bed's actual status.
+
+| Code | What it does |
+| --- | --- |
+| [worker/index.js](worker/index.js) | Bed examples, page and server routes |
+| [worker/cleaning.js](worker/cleaning.js) | Room cleaning timer and saved local records |
+| [scripts](scripts) | Automated app checks |
+| [pipeline](pipeline/README.md) | Optional public stay-data collector and summaries; the board does not use them yet |
+| [container](container/README.md) | Docker setup |
+
+## Check a change
+
+With Node.js 22 or newer installed, run from the project root:
+
+```sh
+npm ci
+npm test
+```
+
+The tests use fictional data and simulated replies. They need no TypeSafe key. [Test instructions](docs/testing/TESTS.md) also cover Docker and GitHub checks.
+
 ## Read more
 
 | What you need | Where to go |
