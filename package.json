@@ -8,11 +8,14 @@
   },
   "scripts": {
     "dev": "wrangler dev",
-    "test": "npm run test:app && npm run test:pipeline",
+    "test": "npm run test:app && npm run test:pipeline && npm run test:readiness",
     "test:app": "node scripts/check-contract.mjs && node scripts/check-setup.mjs && node scripts/check-behavior.mjs && node scripts/check-cleaning.mjs",
     "test:pipeline": "node --test pipeline/test/*.test.mjs",
     "test:pipeline:fixtures": "node --test pipeline/test/fixtures.test.mjs",
     "pipeline:collect": "node pipeline/cli.mjs",
+    "test:readiness": "node --test readiness/test/*.test.mjs",
+    "test:readiness:fixtures": "node --test readiness/test/fixtures.test.mjs",
+    "readiness:demo": "node readiness/demo.mjs",
     "check:https": "node scripts/check-https.mjs"
   },
   "devDependencies": {

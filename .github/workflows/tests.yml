@@ -29,3 +29,5 @@ jobs:
         run: npm run test:app
       - name: Check the data pipeline
         run: npm run test:pipeline
+      - name: Check bed readiness
+        run: npm run test:readiness
