@@ -12,10 +12,10 @@ function parseArguments(arguments_) {
       options.asJson = true;
     } else if (argument === '--input') {
       const file = arguments_[++index];
-      if (options.inputFile || options.caseId || !file || file.startsWith('--')) throw new Error(usage);
+      if (options.inputFile !== null || options.caseId !== null || !file || file.startsWith('--')) throw new Error(usage);
       options.inputFile = file;
     } else {
-      if (argument.startsWith('--') || options.caseId || options.inputFile) throw new Error(usage);
+      if (argument.startsWith('--') || options.caseId !== null || options.inputFile !== null) throw new Error(usage);
       options.caseId = argument;
     }
   }

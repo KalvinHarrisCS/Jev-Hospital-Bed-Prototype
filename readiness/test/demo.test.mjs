@@ -47,7 +47,7 @@ test('A separate input file can be adjusted without editing test fixtures', t =>
 });
 
 for (const arguments_ of [
-  ['not-a-case'], ['two-rooms', 'extra'], ['--input'], ['--input', '--json'],
+  ['not-a-case'], ['two-rooms', 'extra'], ['', 'two-rooms'], ['--input'], ['--input', '--json'],
   ['--json', '--json'], ['--input', 'file.json', '--input', 'other.json'],
   ['--input', 'file.json', 'two-rooms'], ['two-rooms', '--input', 'file.json'],
   ['--unknown'], ['two-rooms', '--unknown'],
