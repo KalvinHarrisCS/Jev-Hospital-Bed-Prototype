@@ -10,16 +10,20 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const context = mkdtempSync(join(tmpdir(), 'jev-docker-context-'));
 const image = 'jev-docker-context-check:' + randomUUID();
 const maxBuffer = 20 * 1024 * 1024;
+const environmentFolders = [
+  '', 'worker', 'pipeline', 'pipeline/test/nested',
+  'pipeline/examples/public-2023-2024', 'readiness', 'readiness/test/nested',
+];
+const environmentNames = [
+  '.env', '.env.local', '.env.synthetic', '.dev.vars', '.dev.vars.local', '.dev.vars.synthetic',
+];
 const excluded = [
-  '.env.synthetic', '.dev.vars.synthetic', 'node_modules/synthetic.mjs',
-  'worker/.env.synthetic', 'worker/.dev.vars.synthetic', 'worker/node_modules/synthetic.mjs',
-  'pipeline/.env.synthetic', 'pipeline/.dev.vars.synthetic',
-  'pipeline/test/nested/.env.synthetic', 'pipeline/test/nested/.dev.vars.synthetic',
-  'pipeline/examples/public-2023-2024/.dev.vars.synthetic',
-  'pipeline/test/node_modules/synthetic.mjs',
-  'readiness/.env.synthetic', 'readiness/.dev.vars.synthetic',
-  'readiness/test/nested/.env.synthetic', 'readiness/test/nested/.dev.vars.synthetic',
+  ...environmentFolders.flatMap(folder => environmentNames.map(name => folder ? folder + '/' + name : name)),
+  'node_modules/synthetic.mjs', 'worker/node_modules/synthetic.mjs', 'pipeline/test/node_modules/synthetic.mjs',
   'readiness/test/nested/node_modules/synthetic.mjs',
+  'pipeline/output/synthetic-run/cohorts.json',
+  'pipeline/output/synthetic-run/manifest.json',
+  'pipeline/output/synthetic-run/nested/synthetic.mjs',
 ];
 const included = [
   'worker/index.js', 'worker/cleaning.js', 'readiness/duration.mjs',
@@ -30,7 +34,7 @@ let container;
 let built = false;
 
 try {
-  // Archive tracked files only; never read or copy ignored local secret files.
+  // Archive tracked files only; never read or copy ignored local secrets or generated output.
   const tracked = execFileSync('git', ['archive', '--format=tar', 'HEAD'], {cwd: root, maxBuffer});
   execFileSync('tar', ['-xf', '-', '-C', context], {input: tracked});
   const ignore = 'container/Dockerfile.dockerignore';
@@ -55,7 +59,7 @@ try {
   const leaked = excluded.filter(path => files.has(path));
   assert.deepEqual(leaked, [], 'Synthetic files leaked into Docker context: ' + leaked.join(', '));
   console.log('Passed: actual Docker context excludes all ' + excluded.length +
-    ' synthetic environment/dependency paths and retains ' + included.length + ' required files.');
+    ' synthetic environment/dependency/output paths and retains ' + included.length + ' required files.');
 } finally {
   try {
     if (container) execFileSync('docker', ['rm', container], {stdio: 'ignore'});

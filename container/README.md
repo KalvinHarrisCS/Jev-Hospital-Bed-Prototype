@@ -30,7 +30,7 @@ These checks use made-up data and make no TypeSafe calls. The base image and dep
 
 The `--build` flag refreshes the image before the checks run.
 
-To check Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It checks the actual copied files using synthetic environment files and dependency folders. It never reads ignored local secret files and removes its temporary files, image and stopped container.
+To check Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It checks the actual copied files using synthetic environment files, dependency folders and generated collection output. It never reads ignored local secret files or collection output and removes its temporary files, image and stopped container.
 
 For an optional network check, run `docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
 
