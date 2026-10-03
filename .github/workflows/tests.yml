@@ -31,3 +31,5 @@ jobs:
         run: npm run test:pipeline
       - name: Check bed readiness
         run: npm run test:readiness
+      - name: Check Docker build exclusions
+        run: npm run check:docker-context
