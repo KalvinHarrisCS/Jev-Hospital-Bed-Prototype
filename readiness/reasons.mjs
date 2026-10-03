@@ -1,24 +1,18 @@
+import {hasTrustedDepartureSource, hasMatchingDepartureState, hasObservedRecordMismatch} from './departure.mjs';
+
 const reviewReasons = new Set([
   'stale_departure', 'stale_staff', 'departure_estimate_passed', 'task_estimate_passed',
   'untrusted_departure_source', 'departure_state_mismatch', 'departure_record_mismatch',
 ]);
 
-// Demo labels restrict fictional inputs; they do not authenticate a record's source.
-const approvedDepartureSources = {
-  estimated: 'fictional nurse-entered estimate',
-  observed: 'fictional observed departure',
-};
-
 function departureSafetyReasons(bed) {
   const departure = bed.departure;
   const reasons = [];
-  if (departure.source !== null && departure.source !== approvedDepartureSources[departure.kind]) {
+  if (departure.source !== null && !hasTrustedDepartureSource(departure)) {
     reasons.push('untrusted_departure_source');
   }
-  const expectedState = departure.kind === 'observed' ? 'awaiting_cleaning' : 'occupied';
-  if (bed.actualStatus !== expectedState) reasons.push('departure_state_mismatch');
-  if (departure.kind === 'observed' && departure.window && departure.updatedAt !== null &&
-      Date.parse(departure.updatedAt) < Date.parse(departure.window[0])) {
+  if (!hasMatchingDepartureState(bed)) reasons.push('departure_state_mismatch');
+  if (hasObservedRecordMismatch(departure)) {
     reasons.push('departure_record_mismatch');
   }
   return reasons;
@@ -32,10 +26,13 @@ export function statusFor(reasons) {
 
 export function directReasons(input, bed) {
   const reasons = []; const now = Date.parse(input.snapshot);
-  const ageLimit = input.maxUpdateAgeMinutes * 60000;
   const freshness = (time, missing, stale) => {
-    if (time === null) reasons.push(missing);
-    else if (now - Date.parse(time) > ageLimit) reasons.push(stale);
+    if (time === null) {
+      reasons.push(missing);
+      return;
+    }
+    const ageMinutes = (now - Date.parse(time)) / 60000;
+    if (ageMinutes > input.maxUpdateAgeMinutes) reasons.push(stale);
   };
   if (bed.holds.length) reasons.push('unresolved_hold');
   const departure = bed.departure;

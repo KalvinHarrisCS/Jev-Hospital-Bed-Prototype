@@ -35,6 +35,7 @@
 !readiness/demo.mjs
 !readiness/demo-format.mjs
 !readiness/duration.mjs
+!readiness/departure.mjs
 !readiness/queue.mjs
 !readiness/reasons.mjs
 !readiness/schedule.mjs
