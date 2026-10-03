@@ -1,4 +1,4 @@
-import {hasTrustedDepartureSource} from './departure.mjs';
+import {hasTrustedDepartureSource, hasMatchingDepartureState, hasObservedRecordMismatch} from './departure.mjs';
 
 const reviewReasons = new Set([
   'stale_departure', 'stale_staff', 'departure_estimate_passed', 'task_estimate_passed',
@@ -11,10 +11,8 @@ function departureSafetyReasons(bed) {
   if (departure.source !== null && !hasTrustedDepartureSource(departure)) {
     reasons.push('untrusted_departure_source');
   }
-  const expectedState = departure.kind === 'observed' ? 'awaiting_cleaning' : 'occupied';
-  if (bed.actualStatus !== expectedState) reasons.push('departure_state_mismatch');
-  if (departure.kind === 'observed' && departure.window && departure.updatedAt !== null &&
-      Date.parse(departure.updatedAt) < Date.parse(departure.window[0])) {
+  if (!hasMatchingDepartureState(bed)) reasons.push('departure_state_mismatch');
+  if (hasObservedRecordMismatch(departure)) {
     reasons.push('departure_record_mismatch');
   }
   return reasons;

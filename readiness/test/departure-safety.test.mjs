@@ -85,7 +85,8 @@ for (const problem of problems) {
     const input = inputFor('two-rooms');
     problem.change(input.beds[0]);
     const result = forecastWithoutChanges(input);
-    assert.deepEqual(result.queue, problem.reason === 'untrusted_departure_source' ? null : ['MAT-01', 'MAT-02']);
+    const unknownOrder = ['untrusted_departure_source', 'departure_state_mismatch', 'departure_record_mismatch'].includes(problem.reason);
+    assert.deepEqual(result.queue, unknownOrder ? null : ['MAT-01', 'MAT-02']);
     assertUnavailable(result.beds[0], 'needs_review', [problem.reason]);
     assertUnavailable(result.beds[1], 'unknown', ['upstream_queue_unknown']);
   });
