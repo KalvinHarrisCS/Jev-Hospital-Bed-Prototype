@@ -20,59 +20,623 @@ const beds = [
   {id:'DAY-02',procedure:'Next day-case patient',status:'AVL',ready:null,note:'Departure, cleaning and staffing confirmed.'},
   {id:'DAY-03',patient:'C112',procedure:'Diagnostic laparoscopy',status:'OCC',ready:'2026-10-01T16:15:00-04:00',pain:2,progress:'3/8 milestones met',note:'Observation and recovery milestones in progress.'},
   {id:'DAY-04',procedure:'Staffing hold',status:'HLD',ready:null,note:'Staffing confirmation pending. Resolution time unknown.'}];
-const page = String.raw`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jev Hospital Bed Prototype</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2319846c'/%3E%3Ctext x='8' y='24' fill='white' font-size='24'%3EB%3C/text%3E%3C/svg%3E">
-<style>body{font:16px/1.5 Arial,sans-serif;background:#edf1f5;color:#172d43;margin:0;padding:24px}*{box-sizing:border-box}main,header,footer{max-width:1320px;margin:auto}header{background:#fff;border-top:6px solid #16456b;padding:22px 26px;border-bottom:1px solid #bccbd7}.masthead,.form-title,.actions{display:flex;align-items:center;justify-content:space-between;gap:16px}.eyebrow,.reference{font-size:13px;letter-spacing:1px;font-weight:bold}h1{font-size:28px;margin:6px 0}h2{font-size:18px;margin:0}p{margin:10px 0}.muted,small{color:#516476}.reference{text-align:right}.demo{font-size:14px;padding:5px 10px;color:#735019;background:#fff4d5;border:1px solid #dcc58b}.stats{display:grid;grid-template-columns:repeat(5,1fr);background:#f7fafc;border-bottom:1px solid #bccbd7}.stats div{padding:14px 20px;border-right:1px solid #d4dfe7}.stats strong{display:block;font-size:24px;line-height:1.2}.stats span{font-size:14px}.workspace{display:grid;grid-template-columns:minmax(360px,0.95fr) minmax(480px,1.25fr);gap:20px;margin-top:20px}.sheet{min-width:0;background:white;border:1px solid #bccbd7}.section-head{background:#f3f7fa;border-bottom:1px solid #bccbd7;padding:15px 20px}.section-head p{font-size:14px;margin:4px 0}.content{padding:18px 20px}.number{color:#3f6581;margin-right:10px}fieldset{padding:0;border:0;border-bottom:1px solid #d4dfe7;margin:0 0 18px}legend{font-size:14px;font-weight:bold;padding:0;margin-bottom:4px}label{display:block;font-size:14px;font-weight:bold;margin:10px 0 6px}input,select,textarea,button{font:inherit;padding:10px 12px;max-width:100%;border:1px solid #9fb2c2;border-radius:3px}select,input,textarea{width:100%;background:white;color:#172d43}textarea{display:block;min-height:138px;line-height:28px;background:repeating-linear-gradient(white,white 27px,#e4ebf0 28px);resize:vertical}button{cursor:pointer;background:#fff;color:#16456b;font-size:14px;font-weight:bold;min-height:44px}button:hover{background:#eaf2f8}button:disabled{opacity:.5;cursor:default}#submit,#clean-start{background:#16456b;border-color:#16456b;color:#fff}#progress{background:#f6f8fa;border:1px solid #d4dfe7;padding:12px;font-size:14px;min-height:66px}.form-title{flex-wrap:wrap}.helper{font-size:14px;color:#516476}.helper a{color:#16456b}details{font-size:14px;margin:12px 0}summary{cursor:pointer;font-weight:bold;color:#16456b}pre{font:14px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f7fafc;border:1px solid #d4dfe7;padding:14px;margin:8px 0}#feedback:not(:empty),#clean-status{padding:12px;border-left:4px solid #386e91;background:#eef5fa;font-size:14px}#feedback:empty{display:none}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:12px 10px;border-bottom:1px solid #d4dfe7;text-align:left;vertical-align:top}th{background:#f3f7fa;font-size:12px;text-transform:uppercase;letter-spacing:.5px;position:sticky;top:0}td:first-child{font-weight:bold;white-space:nowrap}td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}tr[data-state="AVL"]{background:#f0f8f3}tr[data-state="HLD"]{background:#fcf5e8}.scroll{overflow:auto;max-height:610px}.legend{padding:12px 20px;font-size:13px;border-top:1px solid #bccbd7}.legend span{display:inline-block;margin-right:10px}.record-footer{font-size:13px;color:#516476;padding:12px 20px;border-top:1px solid #d4dfe7}a{color:#16456b}#cleaning{margin-top:20px}footer{padding:18px 0;font-size:13px;color:#516476}.clean-controls{display:grid;grid-template-columns:minmax(160px,300px) auto;gap:20px;align-items:end}.clean-controls p{margin:0}.clean-controls label{margin:0}.actions{justify-content:flex-start;flex-wrap:wrap}
-@media(max-width:950px){.workspace{grid-template-columns:minmax(0,1fr)}.scroll{max-height:460px}}@media(max-width:600px){body{padding:12px}.masthead{align-items:flex-start;flex-direction:column}.reference{text-align:left}.stats{grid-template-columns:repeat(3,1fr)}.stats div{padding:12px}.content,header{padding:16px}.clean-controls{grid-template-columns:1fr}h1{font-size:24px}.actions button{flex:1}}@media print{body{background:#fff;padding:0}.workspace{display:block}.sheet{margin-bottom:20px;break-inside:avoid}.scroll{max-height:none;overflow:visible}button,details{display:none}header{border-top:3px solid #16456b}}</style></head><body>
-<header><div class="masthead"><div><div class="eyebrow">JEV HOSPITAL BED PROTOTYPE</div><h1>Bed readiness &amp; nursing update</h1><p class="muted">Maternity · Gynecology · Day surgery</p></div><div class="reference"><span class="demo">DEMO · NOT FOR PRODUCTION</span></div></div><div class="form-title helper"><span>Demo clock · New York: <span id="clock"></span></span><span><a href="#analyze">Try a nurse note</a> · <a href="#cleaning">Time room cleaning</a></span></div></header>
-<main><div class="stats"><div><strong>20</strong><span>Total beds</span></div><div><strong>3</strong><span>Available</span></div><div><strong>12</strong><span>Occupied</span></div><div><strong>3</strong><span>In turnaround</span></div><div><strong>2</strong><span>On hold</span></div></div><div class="workspace"><section class="sheet" aria-labelledby="nurse-title"><div class="section-head"><h2 id="nurse-title"><span class="number">01</span>Nursing observation</h2><p>Record what changed and which follow-up is pending.</p></div><div class="content"><form id="analyze"><fieldset><legend>Bed &amp; patient</legend><label>Selected bed <select id="bed"></select></label><p id="progress"></p><p class="helper">Pain scale: 1–5.</p></fieldset>
-<fieldset><legend>Progress note</legend><label>Fictional progress note <textarea id="note" rows="4" maxlength="2000" required></textarea></label><p class="helper">Include changes in pain, walking or meals, and any pending reassessment.</p></fieldset><fieldset><legend>Practice case (optional)</legend><label>Practice note <select id="scenario"><option value="">Choose a case</option><option value="improving" data-note="Recovery is improving. Walking farther and tolerating meals better than yesterday." data-delay="No explicit blocker mentioned">Improving</option>
-<option value="needs_review" data-note="Pain limits walking. Nursing reassessment is pending; departure is delayed." data-delay="Explicit blocker and pending assessment">Needs review</option>
-<option value="unclear" data-note="Update received. Recovery trend is not stated." data-delay="No explicit blocker mentioned">Unclear</option></select></label><p class="helper">A practice answer is written in advance. Jev checks your submitted note.</p></fieldset><div class="actions"><button id="submit">Ask Jev (uses your API)</button><button id="sample" type="button">Show expected answer (no API)</button></div><p id="feedback" role="status" aria-live="polite"></p>
-<details><summary>Jev connection &amp; setup</summary><p class="helper">Server variable: <code>TYPESAFE_API_KEY</code></p><button id="check-env" type="button">Check server setup</button><p id="env-status" role="status" aria-live="polite"></p>
-<details><summary>Connect Jev with your key (optional)</summary><label>TypeSafe API key <input id="key" type="password" autocomplete="off" maxlength="1024" placeholder="Paste your key here"></label><p><a href="https://console.typesafe.ai" target="_blank" rel="noopener noreferrer">Get an API key from TypeSafe</a>. Your key is used for this tab only and is not saved.</p><details><summary>Windows / Mac environment setup</summary><p>This page checks the running server, not your computer. For local use, set <code>TYPESAFE_API_KEY</code> and run the app locally. Windows PowerShell: <code>$env:TYPESAFE_API_KEY</code>. Mac Terminal: <code>export TYPESAFE_API_KEY</code>. See the included Environment Setup guide for complete commands. A configured server key lets you leave the password field blank.</p></details></details></details></form>
-<details><summary>Submitted note &amp; result</summary><pre id="result" role="status" aria-live="polite">Choose a practice note, or ask Jev with your key.</pre></details></div><div class="record-footer">Staff confirm departure and bed readiness.</div></section><section class="sheet" aria-labelledby="register-title"><div class="section-head"><h2 id="register-title"><span class="number">02</span>Ward bed register</h2><p>Read the status and estimate together. DAY beds are separate day-case capacity.</p></div><div class="scroll"><table><thead><tr><th>Bed</th><th>Procedure</th><th>Status</th><th>Estimated ready<br>(New York)</th><th>Countdown</th></tr></thead><tbody id="rows"></tbody></table></div><div class="legend"><span>AVL · Available</span><span>OCC · Occupied</span><span>CLN · Cleaning</span><span>DUE · Awaiting cleaning</span><span>HLD · Hold</span></div><div class="record-footer">Estimates never release beds. An expired countdown requires staff confirmation.</div></section></div>
-<script>
+const page = String.raw`<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Jev Hospital Bed Prototype</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2319846c'/%3E%3Ctext x='8' y='24' fill='white' font-size='24'%3EB%3C/text%3E%3C/svg%3E">
+    <style>
+body{
+  font: 16px/1.5 Arial,sans-serif;
+  background: #edf1f5;
+  color: #172d43;
+  margin: 0;
+  padding: 24px
+}
+*{
+  box-sizing: border-box
+}
+main,header,footer{
+  max-width: 1320px;
+  margin: auto
+}
+header{
+  background: #fff;
+  border-top: 6px solid #16456b;
+  padding: 22px 26px;
+  border-bottom: 1px solid #bccbd7
+}
+.masthead,.form-title,.actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px
+}
+.eyebrow,.reference{
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: bold
+}
+h1{
+  font-size: 28px;
+  margin: 6px 0
+}
+h2{
+  font-size: 18px;
+  margin: 0
+}
+p{
+  margin: 10px 0
+}
+.muted,small{
+  color: #516476
+}
+.reference{
+  text-align: right
+}
+.demo{
+  font-size: 14px;
+  padding: 5px 10px;
+  color: #735019;
+  background: #fff4d5;
+  border: 1px solid #dcc58b
+}
+.stats{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  background: #f7fafc;
+  border-bottom: 1px solid #bccbd7
+}
+.stats div{
+  padding: 14px 20px;
+  border-right: 1px solid #d4dfe7
+}
+.stats strong{
+  display: block;
+  font-size: 24px;
+  line-height: 1.2
+}
+.stats span{
+  font-size: 14px
+}
+.workspace{
+  display: grid;
+  grid-template-columns: minmax(360px,0.95fr) minmax(480px,1.25fr);
+  gap: 20px;
+  margin-top: 20px
+}
+.sheet{
+  min-width: 0;
+  background: white;
+  border: 1px solid #bccbd7
+}
+.section-head{
+  background: #f3f7fa;
+  border-bottom: 1px solid #bccbd7;
+  padding: 15px 20px
+}
+.section-head p{
+  font-size: 14px;
+  margin: 4px 0
+}
+.content{
+  padding: 18px 20px
+}
+.number{
+  color: #3f6581;
+  margin-right: 10px
+}
+fieldset{
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid #d4dfe7;
+  margin: 0 0 18px
+}
+legend{
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0;
+  margin-bottom: 4px
+}
+label{
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0 6px
+}
+input,select,textarea,button{
+  font: inherit;
+  padding: 10px 12px;
+  max-width: 100%;
+  border: 1px solid #9fb2c2;
+  border-radius: 3px
+}
+select,input,textarea{
+  width: 100%;
+  background: white;
+  color: #172d43
+}
+textarea{
+  display: block;
+  min-height: 138px;
+  line-height: 28px;
+  background: repeating-linear-gradient(white,white 27px,#e4ebf0 28px);
+  resize: vertical
+}
+button{
+  cursor: pointer;
+  background: #fff;
+  color: #16456b;
+  font-size: 14px;
+  font-weight: bold;
+  min-height: 44px
+}
+button:hover{
+  background: #eaf2f8
+}
+button:disabled{
+  opacity: .5;
+  cursor: default
+}
+#submit,#clean-start{
+  background: #16456b;
+  border-color: #16456b;
+  color: #fff
+}
+#progress{
+  background: #f6f8fa;
+  border: 1px solid #d4dfe7;
+  padding: 12px;
+  font-size: 14px;
+  min-height: 66px
+}
+.form-title{
+  flex-wrap: wrap
+}
+.helper{
+  font-size: 14px;
+  color: #516476
+}
+.helper a{
+  color: #16456b
+}
+details{
+  font-size: 14px;
+  margin: 12px 0
+}
+summary{
+  cursor: pointer;
+  font-weight: bold;
+  color: #16456b
+}
+pre{
+  font: 14px/1.6 ui-monospace,monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #f7fafc;
+  border: 1px solid #d4dfe7;
+  padding: 14px;
+  margin: 8px 0
+}
+#feedback:not(:empty),#clean-status{
+  padding: 12px;
+  border-left: 4px solid #386e91;
+  background: #eef5fa;
+  font-size: 14px
+}
+#feedback:empty{
+  display: none
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px
+}
+th,td{
+  padding: 12px 10px;
+  border-bottom: 1px solid #d4dfe7;
+  text-align: left;
+  vertical-align: top
+}
+th{
+  background: #f3f7fa;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  position: sticky;
+  top: 0
+}
+td:first-child{
+  font-weight: bold;
+  white-space: nowrap
+}
+td:last-child{
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap
+}
+tr[data-state="AVL"]{
+  background: #f0f8f3
+}
+tr[data-state="HLD"]{
+  background: #fcf5e8
+}
+.scroll{
+  overflow: auto;
+  max-height: 610px
+}
+.legend{
+  padding: 12px 20px;
+  font-size: 13px;
+  border-top: 1px solid #bccbd7
+}
+.legend span{
+  display: inline-block;
+  margin-right: 10px
+}
+.record-footer{
+  font-size: 13px;
+  color: #516476;
+  padding: 12px 20px;
+  border-top: 1px solid #d4dfe7
+}
+a{
+  color: #16456b
+}
+#cleaning{
+  margin-top: 20px
+}
+footer{
+  padding: 18px 0;
+  font-size: 13px;
+  color: #516476
+}
+.clean-controls{
+  display: grid;
+  grid-template-columns: minmax(160px,300px) auto;
+  gap: 20px;
+  align-items: end
+}
+.clean-controls p{
+  margin: 0
+}
+.clean-controls label{
+  margin: 0
+}
+.actions{
+  justify-content: flex-start;
+  flex-wrap: wrap
+}
+@media(max-width:950px){
+  .workspace{
+    grid-template-columns: minmax(0,1fr)
+  }
+  .scroll{
+    max-height: 460px
+  }
+}
+@media(max-width:600px){
+  body{
+    padding: 12px
+  }
+  .masthead{
+    align-items: flex-start;
+    flex-direction: column
+  }
+  .reference{
+    text-align: left
+  }
+  .stats{
+    grid-template-columns: repeat(3,1fr)
+  }
+  .stats div{
+    padding: 12px
+  }
+  .content,header{
+    padding: 16px
+  }
+  .clean-controls{
+    grid-template-columns: 1fr
+  }
+  h1{
+    font-size: 24px
+  }
+  .actions button{
+    flex: 1
+  }
+}
+@media print{
+  body{
+    background: #fff;
+    padding: 0
+  }
+  .workspace{
+    display: block
+  }
+  .sheet{
+    margin-bottom: 20px;
+    break-inside: avoid
+  }
+  .scroll{
+    max-height: none;
+    overflow: visible
+  }
+  button,details{
+    display: none
+  }
+  header{
+    border-top: 3px solid #16456b
+  }
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="masthead">
+        <div>
+          <div class="eyebrow">JEV HOSPITAL BED PROTOTYPE</div>
+          <h1>Bed readiness &amp; nursing update</h1>
+          <p class="muted">Maternity · Gynecology · Day surgery</p>
+        </div>
+        <div class="reference"><span class="demo">DEMO · NOT FOR PRODUCTION</span></div>
+      </div>
+      <div class="form-title helper"><span>Demo clock · New York: <span id="clock"></span></span><span><a href="#analyze">Try a nurse note</a> · <a href="#cleaning">Time room cleaning</a></span></div>
+    </header>
+    <main>
+      <div class="stats">
+        <div><strong id="count-total">${beds.length}</strong><span>Total beds</span></div>
+        <div><strong id="count-available">${beds.filter(bed => bed.status === 'AVL').length}</strong><span>Available</span></div>
+        <div><strong id="count-occupied">${beds.filter(bed => bed.status === 'OCC').length}</strong><span>Occupied</span></div>
+        <div><strong id="count-turnaround">${beds.filter(bed => ['CLN', 'DUE'].includes(bed.status)).length}</strong><span>In turnaround</span></div>
+        <div><strong id="count-held">${beds.filter(bed => bed.status === 'HLD').length}</strong><span>On hold</span></div>
+      </div>
+      <div class="workspace">
+        <section class="sheet" aria-labelledby="nurse-title">
+          <div class="section-head">
+            <h2 id="nurse-title"><span class="number">01</span>Nursing observation</h2>
+            <p>Record what changed and which follow-up is pending.</p>
+          </div>
+          <div class="content">
+            <form id="analyze">
+              <fieldset>
+                <legend>Bed &amp; patient</legend>
+                <label>Selected bed <select id="bed"></select></label>
+                <p id="progress"></p>
+                <p class="helper">Pain scale: 1–5.</p>
+              </fieldset>
+              <fieldset>
+                <legend>Progress note</legend>
+                <label>Fictional progress note <textarea id="note" rows="4" maxlength="2000" required></textarea></label>
+                <p class="helper">Include changes in pain, walking or meals, and any pending reassessment.</p>
+              </fieldset>
+              <fieldset>
+                <legend>Practice case (optional)</legend>
+                <label>Practice note <select id="scenario">
+                    <option value="">Choose a case</option>
+                    <option value="improving" data-note="Recovery is improving. Walking farther and tolerating meals better than yesterday." data-delay="No explicit blocker mentioned">Improving</option>
+                    <option value="needs_review" data-note="Pain limits walking. Nursing reassessment is pending; departure is delayed." data-delay="Explicit blocker and pending assessment">Needs review</option>
+                    <option value="unclear" data-note="Update received. Recovery trend is not stated." data-delay="No explicit blocker mentioned">Unclear</option>
+                </select></label>
+                <p class="helper">A practice answer is written in advance. Jev checks your submitted note.</p>
+              </fieldset>
+              <div class="actions"><button id="submit">Ask Jev (uses your API)</button><button id="sample" type="button">Show expected answer (no API)</button></div>
+              <p id="feedback" role="status" aria-live="polite"></p>
+              <details><summary>Jev connection &amp; setup</summary>
+                <p class="helper">Server variable: <code>TYPESAFE_API_KEY</code></p>
+                <button id="check-env" type="button">Check server setup</button>
+                <p id="env-status" role="status" aria-live="polite"></p>
+                <details><summary>Connect Jev with your key (optional)</summary>
+                  <label>TypeSafe API key <input id="key" type="password" autocomplete="off" maxlength="1024" placeholder="Paste your key here"></label>
+                  <p><a href="https://console.typesafe.ai" target="_blank" rel="noopener noreferrer">Get an API key from TypeSafe</a>. Your key is used for this tab only and is not saved.</p>
+                  <details><summary>Windows / Mac environment setup</summary>
+                    <p>This page checks the running server, not your computer. For local use, set <code>TYPESAFE_API_KEY</code> and run the app locally. Windows PowerShell: <code>$env:TYPESAFE_API_KEY</code>. Mac Terminal: <code>export TYPESAFE_API_KEY</code>. See the included Environment Setup guide for complete commands. A configured server key lets you leave the password field blank.</p>
+                  </details>
+                </details>
+              </details>
+            </form>
+            <details><summary>Submitted note &amp; result</summary>
+              <pre id="result" role="status" aria-live="polite">Choose a practice note, or ask Jev with your key.</pre>
+            </details>
+          </div>
+          <div class="record-footer">Staff confirm departure and bed readiness.</div>
+        </section>
+        <section class="sheet" aria-labelledby="register-title">
+          <div class="section-head">
+            <h2 id="register-title"><span class="number">02</span>Ward bed register</h2>
+            <p>Read the status and estimate together. DAY beds are separate day-case capacity.</p>
+          </div>
+          <div class="scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bed</th>
+                  <th>Procedure</th>
+                  <th>Status</th>
+                  <th>Estimated ready<br>(New York)</th>
+                  <th>Countdown</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <div class="legend"><span>AVL · Available</span><span>OCC · Occupied</span><span>CLN · Cleaning</span><span>DUE · Awaiting cleaning</span><span>HLD · Hold</span></div>
+          <div class="record-footer">Estimates never release beds. An expired countdown requires staff confirmation.</div>
+        </section>
+      </div>
+      <script>
 const beds = ${JSON.stringify(beds)};
-const byId = id => document.getElementById(id), format = value => new Date(value).toLocaleString('en-US',{timeZone:'America/New_York'});
-const started = Date.now(), base = Date.parse('2026-10-01T10:00:00-04:00');
-byId('bed').innerHTML = beds.map(b => '<option>'+b.id+'</option>').join('');
+const byId = id => document.getElementById(id);
+const format = value => new Date(value).toLocaleString('en-US', {timeZone: 'America/New_York'});
+const started = Date.now();
+const base = Date.parse('2026-10-01T10:00:00-04:00');
+let apiKey = '';
+let serverConfigured = false;
+
+byId('bed').innerHTML = beds.map(bed => '<option>' + bed.id + '</option>').join('');
+
+function updateCounts() {
+  byId('count-total').textContent = String(beds.length);
+  byId('count-available').textContent = String(beds.filter(bed => bed.status === 'AVL').length);
+  byId('count-occupied').textContent = String(beds.filter(bed => bed.status === 'OCC').length);
+  byId('count-turnaround').textContent = String(beds.filter(bed => ['CLN', 'DUE'].includes(bed.status)).length);
+  byId('count-held').textContent = String(beds.filter(bed => bed.status === 'HLD').length);
+}
+
 function updateNote() {
-  const b = beds.find(b => b.id === byId('bed').value);
-  byId('note').value = b.note;
-  byId('progress').textContent = b.patient ? 'Patient '+b.patient+' · '+b.procedure+' · Pain '+(b.pain ?? 'unknown')+'/5 · '+b.progress : b.note;
-  byId('scenario').value = ''; byId('feedback').textContent = ''; byId('result').textContent = 'Choose a practice note, or ask Jev with your key.';
+  const bed = beds.find(bed => bed.id === byId('bed').value);
+  byId('note').value = bed.note;
+  byId('progress').textContent = bed.patient ?
+    'Patient ' + bed.patient + ' · ' + bed.procedure + ' · Pain ' + (bed.pain ?? 'unknown') + '/5 · ' + bed.progress :
+    bed.note;
+  byId('scenario').value = '';
+  byId('feedback').textContent = '';
+  byId('result').textContent = 'Choose a practice note, or ask Jev with your key.';
 }
-byId('scenario').onchange = () => { const option = byId('scenario').selectedOptions[0]; if (option.value) byId('note').value = option.dataset.note; byId('feedback').textContent = ''; byId('result').textContent = 'Practice note loaded. Show the expected answer, or ask Jev.'; };
-byId('sample').onclick = () => { const option = byId('scenario').selectedOptions[0]; byId('result').textContent = option.value && byId('note').value===option.dataset.note ? 'SAMPLE ONLY — expected answer, no model call.\nProgress: '+option.value+'\nDelay/blocker: '+option.dataset.delay+'\nBed state unchanged.' : 'Choose a practice note first. Expected answers apply only to the unchanged practice note.'; byId('feedback').textContent = byId('result').textContent; };
+
+function loadPracticeNote() {
+  const option = byId('scenario').selectedOptions[0];
+  if (option.value) byId('note').value = option.dataset.note;
+  byId('feedback').textContent = '';
+  byId('result').textContent = 'Practice note loaded. Show the expected answer, or ask Jev.';
+}
+
+function showExpectedAnswer() {
+  const option = byId('scenario').selectedOptions[0];
+  const unchangedPractice = option.value && byId('note').value === option.dataset.note;
+  byId('result').textContent = unchangedPractice ?
+    'SAMPLE ONLY — expected answer, no model call.\nProgress: ' + option.value +
+    '\nDelay/blocker: ' + option.dataset.delay + '\nBed state unchanged.' :
+    'Choose a practice note first. Expected answers apply only to the unchanged practice note.';
+  byId('feedback').textContent = byId('result').textContent;
+}
+
+function countdown(bed, now) {
+  if (bed.status === 'AVL') return 'Available now';
+  if (!bed.ready) return 'Unknown';
+  const seconds = Math.ceil((Date.parse(bed.ready) - now) / 1000);
+  if (seconds <= 0) return 'Confirm readiness';
+  const parts = [Math.floor(seconds / 3600), Math.floor(seconds % 3600 / 60), seconds % 60];
+  return parts.map(value => String(value).padStart(2, '0')).join(':');
+}
+
+function bedRow(bed, now) {
+  return '<tr data-state="' + bed.status + '">' +
+    '<td>' + bed.id + '</td>' +
+    '<td>' + bed.procedure + '</td>' +
+    '<td>' + bed.status + '</td>' +
+    '<td>' + (bed.ready ? format(bed.ready) : '—') + '</td>' +
+    '<td>' + countdown(bed, now) + '</td></tr>';
+}
+
 function tick() {
-  const now = base + Date.now() - started; byId('clock').textContent = format(now);
-  byId('rows').innerHTML = beds.map(b => {
-    const seconds = Math.ceil((Date.parse(b.ready)-now)/1000);
-    const timer = b.status==='AVL' ? 'Available now' : !b.ready ? 'Unknown' : seconds<=0 ? 'Confirm readiness' : [Math.floor(seconds/3600),Math.floor(seconds%3600/60),seconds%60].map(n=>String(n).padStart(2,'0')).join(':');
-    return '<tr data-state="'+b.status+'"><td>'+b.id+'</td><td>'+b.procedure+'</td><td>'+b.status+'</td><td>'+(b.ready?format(b.ready):'—')+'</td><td>'+timer+'</td></tr>';
-  }).join('');
+  const now = base + Date.now() - started;
+  byId('clock').textContent = format(now);
+  byId('rows').innerHTML = beds.map(bed => bedRow(bed, now)).join('');
 }
-let apiKey = '', serverConfigured = false;
+
 async function checkEnv() {
-  try { const response = await fetch('/api/config'); if (!response.ok) throw Error(); serverConfigured = (await response.json()).configured === true; byId('env-status').textContent = serverConfigured ? ' Server key configured (not yet verified).' : ' No server key; enter a key below.'; }
-  catch { serverConfigured = false; byId('env-status').textContent = ' Could not check server setup; enter a key below.'; }
-}
-byId('analyze').onsubmit = async event => {
-  event.preventDefault(); apiKey = byId('key').value.trim() || apiKey; byId('key').value = '';
-  if (!apiKey && !serverConfigured) { byId('feedback').textContent = byId('result').textContent = 'Configure TYPESAFE_API_KEY on this server, or enter your key in Jev connection & setup.'; return; }
-  const bedId = byId('bed').value, note = byId('note').value, requestStarted = Date.now();
-  byId('submit').disabled = byId('sample').disabled = byId('scenario').disabled = true; byId('feedback').textContent = 'Checking the submitted note…'; byId('result').textContent = 'Calling Jev…';
   try {
-    const response = await fetch('/api/jev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({bedId,note,apiKey})});
-    const data = await response.json(); if (!response.ok) throw Error(data.error); byId('env-status').textContent = ' Last Jev request succeeded.';
-    byId('feedback').textContent = 'Submitted note for '+bedId+': '+(data.answers.progress.choice==='unclear' ? 'The note may need more detail. Add what changed in pain, walking or meals, and whether reassessment is pending.' : data.answers.progress.choice==='needs_review' ? 'The note suggests a blocker or worsening. Review the observations and pending follow-up.' : 'The note describes improvement. This does not confirm discharge or bed readiness.');
-    byId('result').textContent = 'Result for '+bedId+' (submitted note):\n'+note+'\n'+JSON.stringify(data,null,2)+'\nRequest time: '+((Date.now()-requestStarted)/1000).toFixed(1)+'s.\nModel probabilities are not clinical certainty. Bed state unchanged.';
-  } catch (error) { byId('feedback').textContent = byId('result').textContent = error.message; }
-  finally { byId('submit').disabled = byId('sample').disabled = byId('scenario').disabled = false; }
-};
-byId('bed').onchange = updateNote; byId('note').oninput = () => { byId('scenario').value = ''; byId('feedback').textContent = ''; byId('result').textContent = 'Note edited. Show an unchanged practice case, or ask Jev again.'; }; byId('check-env').onclick = checkEnv; checkEnv(); updateNote(); tick(); setInterval(tick,1000);
-</script><section id="cleaning" class="sheet" aria-label="Room cleaning record"></section><script src="/cleaning.js"></script></main></body></html>`;
+    const response = await fetch('/api/config');
+    if (!response.ok) throw Error();
+    serverConfigured = (await response.json()).configured === true;
+    byId('env-status').textContent = serverConfigured ?
+      ' Server key configured (not yet verified).' : ' No server key; enter a key below.';
+  } catch {
+    serverConfigured = false;
+    byId('env-status').textContent = ' Could not check server setup; enter a key below.';
+  }
+}
+
+function showMessage(message) {
+  byId('feedback').textContent = message;
+  byId('result').textContent = message;
+}
+
+function setRequestBusy(busy) {
+  byId('submit').disabled = busy;
+  byId('sample').disabled = busy;
+  byId('scenario').disabled = busy;
+}
+
+function noteFeedback(choice) {
+  if (choice === 'unclear') {
+    return 'The note may need more detail. Add what changed in pain, walking or meals, and whether reassessment is pending.';
+  }
+  if (choice === 'needs_review') {
+    return 'The note suggests a blocker or worsening. Review the observations and pending follow-up.';
+  }
+  return 'The note describes improvement. This does not confirm discharge or bed readiness.';
+}
+
+async function askJev(bedId, note) {
+  const response = await fetch('/api/jev', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({bedId, note, apiKey}),
+  });
+  const data = await response.json();
+  if (!response.ok) throw Error(data.error);
+  return data;
+}
+
+function showSubmittedResult(bedId, note, data, requestStarted) {
+  byId('env-status').textContent = ' Last Jev request succeeded.';
+  byId('feedback').textContent = 'Submitted note for ' + bedId + ': ' + noteFeedback(data.answers.progress.choice);
+  const elapsed = ((Date.now() - requestStarted) / 1000).toFixed(1);
+  byId('result').textContent = 'Result for ' + bedId + ' (submitted note):\n' + note + '\n' +
+    JSON.stringify(data, null, 2) + '\nRequest time: ' + elapsed +
+    's.\nModel probabilities are not clinical certainty. Bed state unchanged.';
+}
+
+async function submitNote(event) {
+  event.preventDefault();
+  apiKey = byId('key').value.trim() || apiKey;
+  byId('key').value = '';
+  if (!apiKey && !serverConfigured) {
+    showMessage('Configure TYPESAFE_API_KEY on this server, or enter your key in Jev connection & setup.');
+    return;
+  }
+  const bedId = byId('bed').value;
+  const note = byId('note').value;
+  const requestStarted = Date.now();
+  setRequestBusy(true);
+  byId('feedback').textContent = 'Checking the submitted note…';
+  byId('result').textContent = 'Calling Jev…';
+  try {
+    const data = await askJev(bedId, note);
+    showSubmittedResult(bedId, note, data, requestStarted);
+  } catch (error) {
+    showMessage(error.message);
+  } finally {
+    setRequestBusy(false);
+  }
+}
+
+function markNoteEdited() {
+  byId('scenario').value = '';
+  byId('feedback').textContent = '';
+  byId('result').textContent = 'Note edited. Show an unchanged practice case, or ask Jev again.';
+}
+
+byId('scenario').onchange = loadPracticeNote;
+byId('sample').onclick = showExpectedAnswer;
+byId('analyze').onsubmit = submitNote;
+byId('bed').onchange = updateNote;
+byId('note').oninput = markNoteEdited;
+byId('check-env').onclick = checkEnv;
+checkEnv();
+updateNote();
+updateCounts();
+tick();
+setInterval(tick, 1000);
+      </script>
+      <section id="cleaning" class="sheet" aria-label="Room cleaning record"></section>
+      <script src="/cleaning.js"></script>
+    </main>
+  </body>
+</html>
+`;
 const questions = {
   progress: {
     type: 'choice',
