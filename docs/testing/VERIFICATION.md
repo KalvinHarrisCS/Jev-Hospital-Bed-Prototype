@@ -77,3 +77,13 @@ The existing app checks and all 163 pipeline tests pass too. The full `npm test`
 Independent review compared 500 fictional forecasts covering 2,500 rooms with a separate calculation, including multiple unsorted breaks, fractional minutes, busy staff, queue dependencies and input immutability. Review found a Unicode ID ordering mismatch and duration precision that could round positive intervals to zero. New tests reproduced both before the fixes. IDs now use code-point order, and duration bounds must resolve to positive whole milliseconds. Sparse-array checks also failed before validation was fixed.
 
 [Run a fictional example or the tests](../../readiness/README.md). This establishes the agreed same-day scheduling calculation, not clinical accuracy or real hospital readiness. The function has not yet been connected to the bedboard. It preserves actual bed status and leaves every estimated ready time pending staff release.
+
+## Bed-readiness review fixes
+
+Checked October 2, 2026. All 200 readiness tests pass, alongside the existing app checks and 163 pipeline tests, on the host and in Docker with network access turned off. The original fixture file and expected answers remain unchanged.
+
+New tests reproduced unapproved departure sources, contradictory bed/departure states and records dated before the observed event. These now require review, return no windows and keep later queued rooms uncertain. The two approved source labels restrict fictional inputs; they do not establish real-world provenance or staff authorization.
+
+Decimal durations such as 16.1 and 32.7 minutes now convert to whole milliseconds with a tightly bounded floating-point tolerance. New tests failed before this fix and check exact shift/break endings too. Genuine fractional milliseconds remain invalid.
+
+The added coverage also checks snapshot clamping, freshness at 30:01 and 30:59, held beds with missing departures, and breaks before a shift. Demo tests check local display, unchanged JSON output and separate adjustable input files. The demo labels New York time; its JSON option preserves UTC forecast endpoints and the original snapshot offset. Planning notes remain outside the repository.

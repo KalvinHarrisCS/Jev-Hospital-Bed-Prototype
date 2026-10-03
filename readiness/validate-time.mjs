@@ -1,3 +1,5 @@
+import {minutesToMilliseconds} from './duration.mjs';
+
 const pattern = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{1,3}))?([+-]\d{2}:\d{2})$/;
 const clock = new Intl.DateTimeFormat('en-US', {timeZone: 'America/New_York', timeZoneName: 'longOffset'});
 
@@ -48,8 +50,15 @@ export function window(value, path, context) {
 
 export function duration(value, path, context) {
   if (value === null) return;
-  if (!Array.isArray(value) || value.length !== 2 ||
-      Array.from(value).some(item => typeof item !== 'number' || item <= 0 ||
-        !Number.isSafeInteger(item * 60000)) ||
-      value[0] > value[1]) context.issue(path, 'invalid_duration');
+  if (!Array.isArray(value) || value.length !== 2) {
+    context.issue(path, 'invalid_duration');
+    return;
+  }
+
+  const milliseconds = Array.from(value, minutesToMilliseconds);
+  const invalidBound = milliseconds.some(bound => bound === null);
+  const reversedBounds = value[0] > value[1];
+  if (invalidBound || reversedBounds) {
+    context.issue(path, 'invalid_duration');
+  }
 }

@@ -33,6 +33,8 @@
 !readiness/
 !readiness/forecast.mjs
 !readiness/demo.mjs
+!readiness/demo-format.mjs
+!readiness/duration.mjs
 !readiness/queue.mjs
 !readiness/reasons.mjs
 !readiness/schedule.mjs
@@ -44,6 +46,8 @@
 !readiness/validate-queue.mjs
 !readiness/fixtures/
 !readiness/fixtures/cases.json
+!readiness/examples/
+!readiness/examples/two-rooms.json
 !readiness/test/
 !readiness/test/*.mjs
 !container/

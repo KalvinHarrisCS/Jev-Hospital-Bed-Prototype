@@ -1,3 +1,5 @@
+import {minutesToMilliseconds} from './duration.mjs';
+
 export function workPeriods(cleaner) {
   if (!cleaner?.shift || !cleaner.breaks) return [];
   const [shiftStart, shiftEnd] = cleaner.shift.map(Date.parse);
@@ -11,19 +13,20 @@ export function workPeriods(cleaner) {
   return periods;
 }
 
-function startInPeriod(earliest, maximumMinutes, periods) {
+function startInPeriod(earliest, maximumMilliseconds, periods) {
   for (const [open, close] of periods) {
     const start = Math.max(earliest, open);
-    if (start + maximumMinutes * 60000 <= close) return start;
+    if (start + maximumMilliseconds <= close) return start;
   }
   return null;
 }
 
 export function scheduleBed(input, bed, previous, periods) {
+  const durations = bed.cleaning.minutes.map(minutesToMilliseconds);
   const starts = [0, 1].map(bound => startInPeriod(
     Math.max(Date.parse(input.snapshot), Date.parse(bed.departure.window[bound]), previous[bound]),
-    bed.cleaning.minutes[1], periods));
+    durations[1], periods));
   if (starts.some(start => start === null)) return null;
-  const completions = starts.map((start, bound) => start + bed.cleaning.minutes[bound] * 60000);
+  const completions = starts.map((start, bound) => start + durations[bound]);
   return {starts, completions};
 }

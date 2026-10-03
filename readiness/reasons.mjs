@@ -1,4 +1,28 @@
-const reviewReasons = new Set(['stale_departure', 'stale_staff', 'departure_estimate_passed', 'task_estimate_passed']);
+const reviewReasons = new Set([
+  'stale_departure', 'stale_staff', 'departure_estimate_passed', 'task_estimate_passed',
+  'untrusted_departure_source', 'departure_state_mismatch', 'departure_record_mismatch',
+]);
+
+// Demo labels restrict fictional inputs; they do not authenticate a record's source.
+const approvedDepartureSources = {
+  estimated: 'fictional nurse-entered estimate',
+  observed: 'fictional observed departure',
+};
+
+function departureSafetyReasons(bed) {
+  const departure = bed.departure;
+  const reasons = [];
+  if (departure.source !== null && departure.source !== approvedDepartureSources[departure.kind]) {
+    reasons.push('untrusted_departure_source');
+  }
+  const expectedState = departure.kind === 'observed' ? 'awaiting_cleaning' : 'occupied';
+  if (bed.actualStatus !== expectedState) reasons.push('departure_state_mismatch');
+  if (departure.kind === 'observed' && departure.window && departure.updatedAt !== null &&
+      Date.parse(departure.updatedAt) < Date.parse(departure.window[0])) {
+    reasons.push('departure_record_mismatch');
+  }
+  return reasons;
+}
 
 export function statusFor(reasons) {
   if (reasons.includes('unresolved_hold')) return 'blocked';
@@ -17,6 +41,7 @@ export function directReasons(input, bed) {
   const departure = bed.departure;
   if (!departure?.window) reasons.push('missing_departure');
   if (departure) {
+    reasons.push(...departureSafetyReasons(bed));
     freshness(departure.updatedAt, 'missing_departure_update', 'stale_departure');
     if (departure.source === null) reasons.push('missing_departure_source');
     if (departure.kind === 'estimated' && bed.actualStatus === 'occupied' && departure.window &&
