@@ -169,6 +169,37 @@ test('unclear output asks for note detail and names the submitted bed without ju
   assert.equal(client.nodes.get('feedback').textContent, '');
 });
 
+test('Jev choices must be exact allowed strings, not lists that stringify to them', async () => {
+  for (const choice of [['improving'], ['needs_review'], ['unclear']]) {
+    const malformed = structuredClone(fixture);
+    malformed.answers.progress.choice = choice;
+    await withProvider(() => Response.json(malformed), async () => {
+      const response = await app.fetch(request(input), {});
+      assert.equal(response.status, 502);
+      assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+    });
+  }
+});
+
+const invalidAnswerCases = [
+  {name: 'a model name must be a string', change(data) {data.model = 123;}},
+  {name: 'a model name must contain text', change(data) {data.model = ' ';}},
+  {name: 'progress must have Choice type', change(data) {data.answers.progress.type = 'noul';}},
+  {name: 'delay must have NouL type', change(data) {data.answers.delay.type = 'choice';}},
+];
+
+for (const example of invalidAnswerCases) {
+  test(example.name, async () => {
+    const malformed = structuredClone(fixture);
+    example.change(malformed);
+    await withProvider(() => Response.json(malformed), async () => {
+      const response = await app.fetch(request(input), {});
+      assert.equal(response.status, 502);
+      assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+    });
+  });
+}
+
 test('browser request failure leaves the note editable and allows a later retry', async () => {
   let fail = true;
   const client = await browser(() => {
