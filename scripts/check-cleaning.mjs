@@ -1,9 +1,7 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import test from 'node:test';
-const source = await readFile(new URL('../worker/cleaning.js',import.meta.url),'utf8');
-const {default: script} = await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+import script from '../worker/cleaning.js';
 const key = 'obgyn-cleaning-demo-v1', initial = Date.parse('2026-10-01T10:00:00-04:00');
 function client(storage=new Map(), failStorage=false, initialTime=initial) {
   let now=initialTime, tick, storageEvent;

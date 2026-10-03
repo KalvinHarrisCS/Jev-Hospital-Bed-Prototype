@@ -1,9 +1,7 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-const source=(await readFile(new URL('../worker/index.js',import.meta.url),'utf8')).replace("import cleaning from './cleaning.js';",(await readFile(new URL('../worker/cleaning.js',import.meta.url),'utf8')).replace('export default','const cleaning ='));
+import app from '../worker/index.js';
 
-const {default:app}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 const configRequest=new Request('https://bedboard.test/api/config');
 for(const [key,configured] of [[undefined,false],['',false],['   ',false],['fixture-server-key',true]]) {
   const response=await app.fetch(configRequest,{TYPESAFE_API_KEY:key});

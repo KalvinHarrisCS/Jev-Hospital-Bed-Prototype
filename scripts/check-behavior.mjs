@@ -1,11 +1,9 @@
 // Fixture-only behavior checks. No server, environment secrets, or provider calls.
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
 import test from 'node:test';
 import vm from 'node:vm';
+import app from '../worker/index.js';
 
-const source = (await readFile(new URL('../worker/index.js', import.meta.url), 'utf8')).replace("import cleaning from './cleaning.js';", (await readFile(new URL('../worker/cleaning.js', import.meta.url), 'utf8')).replace('export default','const cleaning ='));
-const {default: app} = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
 const html = await (await app.fetch(new Request('https://bedboard.test/'), {})).text();
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const fixture = {
