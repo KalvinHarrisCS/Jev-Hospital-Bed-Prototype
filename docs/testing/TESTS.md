@@ -15,11 +15,15 @@ npm ci
 npm test
 ```
 
-After building the Docker image, you can also run:
+With Docker available, rebuild the image and run:
 
 ```sh
-docker compose -f container/compose.yaml run --rm bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm test
 ```
+
+For an optional check of Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It uses a temporary copy of tracked files and synthetic environment files, dependency folders and generated collection output, then inspects Docker's actual output. Ignored local environment files and collection output are never read. The probe removes its temporary files, image and stopped container.
+
+GitHub also runs this Docker check on each pull request.
 
 ## What they cover
 
@@ -31,12 +35,13 @@ docker compose -f container/compose.yaml run --rm bedboard npm test
 | Cleaning | Elapsed time, reload, multiple tabs, storage failures and recorded fields |
 | Data pipeline | Fictional cohorts, weighted stay quantiles, censoring, empty groups, source documents/terms, independent totals, bounded replies, file hashes, provenance and offline command replay |
 | Bed readiness | Complete fictional scenarios, clock boundaries, fixed queues, missing/stale records, holds, unchanged actual status and structured invalid-input errors |
+| Docker build context | Literal and variant environment filenames, nested dependency folders and generated collection output stay excluded while required files remain included |
 
 The checks use fictional data and simulated provider responses. They need no TypeSafe key and make no live Jev requests. These are software checks; clinical accuracy has not been evaluated.
 
 ## Before merging
 
-[The GitHub workflow](../../.github/workflows/tests.yml) installs the locked dependencies and runs the app, pipeline and readiness checks in separate steps on Node.js 22. Together these are the same checks as `npm test`. It runs on pull requests targeting `main`, pushes to `main`, and merge queues if one is configured. You can also start it manually from [Actions](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml).
+[The GitHub workflow](../../.github/workflows/tests.yml) installs the locked dependencies and runs the app, pipeline and readiness checks in separate steps on Node.js 22, matching `npm test`. It also checks Docker's build exclusions. It runs on pull requests targeting `main`, pushes to `main`, and merge queues if one is configured. You can also start it manually from [Actions](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml).
 
 The `Tests` check must pass before a pull request can merge into `main`. There is no required reviewer approval. Make changes on a branch and open a pull request so the tests can run before merging.
 

@@ -1,6 +1,6 @@
 # Make it your own
 
-I kept the app in one file so you can see what it does and change it: `worker/index.js`. Open it in any text editor. Keep a working copy before trying changes. Docker files stay in `container/`.
+The bedboard uses two runtime files: `worker/index.js` contains the page, fictional beds and server routes; `worker/cleaning.js` contains the cleaning timer. Open them in any text editor. Keep a working copy before trying changes. Docker files stay in `container/`.
 
 ## Change a fictional bed
 
@@ -27,11 +27,11 @@ After changing a record, press Ctrl+C to stop the app, then rebuild and start it
 docker compose -f container/compose.yaml up --build
 ```
 
-The new `MAT-06` should show pain 3/5 and an unknown readiness time. To check your changes, run `docker compose -f container/compose.yaml run --rm bedboard npm test` from another terminal. With local Node.js, restart `npm run dev` if needed.
+The new `MAT-06` should show pain 3/5 and an unknown readiness time. To check your changes, run `docker compose -f container/compose.yaml run --rm --build bedboard npm test` from another terminal. With local Node.js, restart `npm run dev` if needed.
 
 ## Change the board size or timeline
 
-Add or remove records in `beds`, then update the five values in the HTML's `stats` section: Total beds, Available, Occupied, In turnaround and On hold. Those values are a fixed demo summary; they do not calculate counts automatically. Bed rows and the selection menu use the array.
+Add or remove fictional records in `beds`. The header counts, bed rows and selection menu all use that array. Total beds counts every record; Available counts `AVL`, Occupied counts `OCC`, In turnaround counts `CLN` and `DUE`, and On hold counts `HLD`. Rebuild and restart the app to load your changes.
 
 The browser script's `base` value sets the fictional demo clock. If you change the scenario date, update that value and all `ready` dates together. The default clock starts October 1, 2026 at 10 a.m. New York time and resets on reload. `format` displays New York time; change its timezone if adapting the scenario to another location. A countdown reaching zero shows **Confirm readiness** and does not change the bed status.
 

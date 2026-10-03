@@ -23,11 +23,25 @@ npm run readiness:demo -- two-rooms --json
 
 ## Change an example
 
-Copy [two-rooms.json](examples/two-rooms.json) to a new file, adjust its fictional inputs, then run:
+From the project root, copy [two-rooms.json](examples/two-rooms.json) to your own file. On Mac or Linux:
+
+```sh
+cp readiness/examples/two-rooms.json my-rooms.json
+```
+
+On Windows PowerShell:
+
+```powershell
+Copy-Item readiness/examples/two-rooms.json my-rooms.json
+```
+
+Adjust the fictional inputs in `my-rooms.json`, then run:
 
 ```sh
 npm run readiness:demo -- --input my-rooms.json
 ```
+
+`--json` works before or after a case ID or the `--input file.json` pair. Choose one case ID or one input file per run.
 
 You can also choose another case ID from [cases.json](fixtures/cases.json). Keep that file unchanged when experimenting: it holds the expected answers used by the tests.
 

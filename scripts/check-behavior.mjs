@@ -26,7 +26,7 @@ async function withProvider(provider, run) {
   };
   try { await run(); } finally { globalThis.fetch = original; }
 }
-async function browser(provider = async () => Response.json(fixture)) {
+async function browser(provider = async () => Response.json(fixture), fictionalBeds = null) {
   const nodes = new Map(), calls = [];
   let time = 0, tick;
   class DemoDate extends Date { static now() { return time; } }
@@ -43,7 +43,9 @@ async function browser(provider = async () => Response.json(fixture)) {
     calls.push(JSON.parse(options.body));
     return provider();
   }});
-  new vm.Script(script).runInContext(context);
+  const clientScript = fictionalBeds === null ? script :
+    script.replace(/const beds = .*;/, 'const beds = ' + JSON.stringify(fictionalBeds) + ';');
+  new vm.Script(clientScript).runInContext(context);
   await new Promise(setImmediate);
   return {nodes, calls, advance(ms) { time += ms; tick(); }, submit() { return nodes.get('analyze').onsubmit({preventDefault() {}}); }};
 }
@@ -53,6 +55,26 @@ function rows(client) {
     return [cells[0], cells];
   }));
 }
+
+function headerCounts(client) {
+  const initial = [...html.matchAll(/<strong(?: [^>]*)?>(\d+)<\/strong>/g)].map(match => Number(match[1]));
+  return ['count-total', 'count-available', 'count-occupied', 'count-turnaround', 'count-held']
+    .map((id, index) => Number(client.nodes.get(id)?.textContent || initial[index]));
+}
+
+test('Header counts follow a changed fictional board and never infer release from elapsed time', async () => {
+  const fictionalBeds = ['AVL', 'OCC', 'AVL', 'CLN', 'DUE', 'HLD', 'HLD'].map((status, index) => ({
+    id: 'MAT-' + String(index + 1).padStart(2, '0'),
+    procedure: 'Fictional test procedure', status, ready: null, note: 'Fictional test observation.',
+  }));
+  const client = await browser(undefined, fictionalBeds);
+  assert.equal(rows(client).size, 7);
+  assert.deepEqual(headerCounts(client), [7, 2, 1, 2, 2]);
+  client.advance(4 * 60 * 60 * 1000);
+  assert.deepEqual(headerCounts(client), [7, 2, 1, 2, 2]);
+  assert.deepEqual([...rows(client).values()].map(cells => cells[2]), fictionalBeds.map(bed => bed.status));
+  assert.equal(client.calls.length, 0);
+});
 
 test('elapsed estimates require confirmation and never make occupied or cleaning beds available', async () => {
   const client = await browser();
@@ -180,6 +202,28 @@ test('Jev choices must be exact allowed strings, not lists that stringify to the
     });
   }
 });
+
+test('A null provider reply is reported as an unexpected answer', async () => {
+  await withProvider(() => Response.json(null), async () => {
+    const response = await app.fetch(request(input), {});
+    assert.equal(response.status, 502);
+    assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+  });
+});
+
+for (const [status, message] of [
+  [401, 'TypeSafe rejected the API key.'],
+  [429, 'TypeSafe rate limit reached. Try again later.'],
+]) {
+  test('A provider HTTP ' + status + ' response gives the expected guidance', async () => {
+    await withProvider(() => new Response('Private provider detail', {status}), async () => {
+      const response = await app.fetch(request(input), {});
+      assert.equal(response.status, 502);
+      assert.equal(response.headers.get('Cache-Control'), 'no-store');
+      assert.deepEqual(await response.json(), {error: message});
+    });
+  });
+}
 
 const invalidAnswerCases = [
   {name: 'a model name must be a string', change(data) {data.model = 123;}},

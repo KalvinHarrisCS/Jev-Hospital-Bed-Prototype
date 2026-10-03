@@ -26,8 +26,8 @@ Commands recipients can repeat:
 
 ```sh
 docker compose -f container/compose.yaml up --build
-docker compose -f container/compose.yaml run --rm bedboard npm test
-docker compose -f container/compose.yaml run --rm bedboard npm run check:https
+docker compose -f container/compose.yaml run --rm --build bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https
 ```
 
 The last command sends only an invalid fixture key and fictional note to TypeSafe. It requires network access. Ordinary `npm test` makes no provider calls.
