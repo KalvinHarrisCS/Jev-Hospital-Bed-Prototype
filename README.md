@@ -2,9 +2,11 @@
 
 [![Tests](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml/badge.svg)](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/actions/workflows/tests.yml)
 
-Watch the nurse walkthrough:
+Watch the full project walkthrough:
 
-https://github.com/user-attachments/assets/402d6303-6abf-45cc-8257-ddf5911f9732
+https://github.com/user-attachments/assets/e7ee4f1c-c191-4fc5-a37e-168f0a188521
+
+Four minutes through Docker setup, nurse notes, cleaning, timing examples and tests. [Chapters and transcript](docs/walkthrough/nurse-walkthrough-script.md).
 
 I put this together to explore a basic hospital question: which bed is available, and when might the next one be ready?
 
@@ -12,7 +14,7 @@ I kept it small: 20 made-up beds, nurse notes, status codes, time estimates and 
 
 **Demo only. Not for production or real patient information.** This project has not been assessed for HIPAA compliance or clinical use.
 
-[Download the ZIP](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.0.0/jev-hospital-bed-prototype.zip) · [Documentation](docs/README.md) · [Screenshot guide](docs/walkthrough/nurse-walkthrough.pdf)
+[Download the ZIP](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-hospital-bed-prototype.zip) · [Download the full video](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-project-walkthrough.mp4) · [Documentation](docs/README.md) · [Screenshot guide](docs/walkthrough/nurse-walkthrough.pdf)
 
 ## Run the demo
 
@@ -45,6 +47,7 @@ The browser sends the note to `/api/jev`. The server calls TypeSafe, checks the 
 | [worker/index.js](worker/index.js) | Bed examples, page and server routes |
 | [worker/cleaning.js](worker/cleaning.js) | Room cleaning timer and saved local records |
 | [scripts](scripts) | Automated app checks |
+| [readiness](readiness/README.md) | Separate fictional timing examples; estimates stay pending staff release |
 | [pipeline](pipeline/README.md) | Optional public stay-data collector and summaries; the board does not use them yet |
 | [container](container/README.md) | Docker setup |
 

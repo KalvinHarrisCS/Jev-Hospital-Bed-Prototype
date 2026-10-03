@@ -10,11 +10,20 @@ I kept it small: 20 made-up beds, status codes, time estimates, and a place to t
 
 The Jev connection was checked against published examples. The included tests let you check your own copy.
 
-Start with the [screenshot guide](../walkthrough/nurse-walkthrough.pdf) or [project wiki](../wiki/Home.md). You can also [download the narrated walkthrough](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.0.0/obgyn-narrated-walkthrough.mp4).
+Start with the [4:10 project walkthrough](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-project-walkthrough.mp4). It has 12 parts, Kalvin narration, actual app captures and a moving cursor. [The chapter list](../wiki/Nurse-Walkthrough.md) and [transcript](../walkthrough/nurse-walkthrough-script.md) help you follow along. The [PDF screenshot guide](../walkthrough/nurse-walkthrough.pdf) is the earlier quick guide.
+
+The video runs the three written practice cases without an API key. Their answers say **SAMPLE ONLY**; no live Jev response appears in this recording. It also shows editing a note, checking server setup, timing cleaning across a reload, and the separate readiness and public-data examples.
 
 ## Run it with Docker
 
-Start Docker Desktop. Unzip the project and open a terminal in the folder with this README. Run this one command:
+Start Docker Desktop. Clone the project and move into its folder:
+
+```sh
+git clone https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype.git
+cd Jev-Hospital-Bed-Prototype
+```
+
+If you downloaded a ZIP, unzip it and open a terminal in the project folder instead. Then run:
 
 ```sh
 docker compose -f container/compose.yaml up --build
@@ -32,21 +41,29 @@ If you prefer Node.js 22 or newer, run `npm ci`, `npm test`, then `npm run dev`.
 
 ## Use the demonstration
 
-For a quick run, press **Try a nurse note**, choose a practice case, and press **Show expected answer (no API)**. No key is needed for that written example. See [the quick test](QUICK-TEST.md).
+For a quick run, press **Try a nurse note**, choose a practice case, and press **Show expected answer (no API)**. No key is needed for that written example. Try **Improving**, **Needs review**, and **Unclear**. Each expected answer is marked **SAMPLE ONLY**, with **Bed state unchanged**. See [the quick test](QUICK-TEST.md).
 
-Select a bed and read the status, pain score, milestones, and note. You can edit the made-up note.
+Select a bed and read the status, pain score, milestones, and note. You can edit the made-up note. Editing clears the old answer and resets the practice selection. Changing the bed also clears the old result. A written expected answer applies only to its unchanged practice note.
 
 To try Jev, expand **Jev connection & setup**, then press **Check server setup**. If your server has a key, leave the password field blank. Otherwise, get your own key from [TypeSafe](https://console.typesafe.ai) and enter it in the password field. Press **Ask Jev (uses your API)**. The app keeps a pasted key in this tab only; a reload clears it.
 
 If you already exported `TYPESAFE_API_KEY`, the Docker command picks it up from that same terminal. See [key setup](ENVIRONMENT-SETUP.md). Jev still calls TypeSafe online, so its account and billing requirements apply.
 
-Jev returns a progress category and a probability that the note affirms a current delay or blocker. An unclear note gets a suggestion to add more detail. A nurse still reviews that answer. The bed times are made-up examples, and a countdown reaching zero says **Confirm readiness**. It never frees a bed automatically. The demo clock starts October 1, 2026 at 10 a.m. New York time.
+Jev returns a progress category and a probability that the note affirms a current delay or blocker. A live unclear answer gets a suggestion to add more detail. A nurse still reviews that answer. The bed times are made-up examples, and a countdown reaching zero says **Confirm readiness**. It never frees a bed automatically. The demo clock starts October 1, 2026 at 10 a.m. New York time.
 
 Press **Time room cleaning** to record start, finish, elapsed minutes and the local average. The timer saves room IDs and timestamps in this browser and survives a reload. Finishing still leaves staff release to confirm. The [research](../wiki/Cleaning-Research.md) separates cleaning time from total turnover.
 
+The video records a short cleaning interval to show the controls. Those few seconds are not a typical cleaning duration.
+
+## Try the separate examples
+
+The [readiness example](../../readiness/README.md) runs from the command line without a Jev key. It uses departure windows, cleaner availability, breaks and a shift to estimate room-ready windows. The two-room example prints New York times and keeps both rooms occupied with staff release pending. This function is not connected to the bedboard.
+
+The [public-data pipeline](../../pipeline/README.md) can replay saved New York aggregate counts for 2023 and 2024 offline. Its stay lengths cover the whole admission. They are not individual bed-release forecasts and do not change the board.
+
 ## What I checked
 
-The setup and software checks are recorded in [Verification](../testing/VERIFICATION.md). [The Jev evaluation](../testing/EVALUATION.md) includes the fictional notes, returned answers and original failures. These checks do not establish clinical accuracy.
+The video was made after a run with 502 passing automated tests and Docker build-exclusion checks. [Testing](../testing/TESTS.md) explains how to run those checks on your own copy. The earlier setup and software checks are recorded in [Verification](../testing/VERIFICATION.md). [The Jev evaluation](../testing/EVALUATION.md) includes earlier fictional notes, returned answers and original failures. These checks do not establish clinical accuracy.
 
 To run the included checks after building:
 
@@ -67,7 +84,7 @@ I used [TypeSafe's API documentation](https://docs.typesafe.ai/api) and this [pu
 - [Windows / Mac environment setup](ENVIRONMENT-SETUP.md)
 - [Docker setup](../../container/README.md)
 
-`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `docs/walkthrough/nurse-walkthrough.pdf` shows the nurse steps with screenshots and cursor markers. The narrated video is on the [project front page](../../README.md).
+`docs/wiki/` has the research, 22 made-up patient histories, milestones, and the model comparison plan. `docs/walkthrough/nurse-walkthrough.pdf` is the earlier nurse screenshot guide. The current narrated video is on the [project front page](../../README.md).
 
 Every patient is made up. I chose a 1-5 pain scale for this example. This app saves only cleaning room IDs and timestamps in the browser. It does not save patient notes or decide when someone can leave hospital.
 
