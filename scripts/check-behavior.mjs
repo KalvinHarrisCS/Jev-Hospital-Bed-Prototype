@@ -181,6 +181,14 @@ test('Jev choices must be exact allowed strings, not lists that stringify to the
   }
 });
 
+test('A null provider reply is reported as an unexpected answer', async () => {
+  await withProvider(() => Response.json(null), async () => {
+    const response = await app.fetch(request(input), {});
+    assert.equal(response.status, 502);
+    assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+  });
+});
+
 const invalidAnswerCases = [
   {name: 'a model name must be a string', change(data) {data.model = 123;}},
   {name: 'a model name must contain text', change(data) {data.model = ' ';}},
