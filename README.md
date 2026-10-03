@@ -4,9 +4,9 @@
 
 Watch the full project walkthrough:
 
-https://github.com/user-attachments/assets/e7ee4f1c-c191-4fc5-a37e-168f0a188521
+https://github.com/user-attachments/assets/60c21a36-537c-4a62-b571-9450f3d46f6c
 
-Four minutes through Docker setup, nurse notes, cleaning, timing examples and tests. [Chapters and transcript](docs/walkthrough/nurse-walkthrough-script.md).
+Four minutes through Docker setup, nurse notes, a real Ask Jev response, cleaning and timing examples. [Chapters and transcript](docs/walkthrough/nurse-walkthrough-script.md).
 
 I put this together to explore a basic hospital question: which bed is available, and when might the next one be ready?
 
@@ -14,7 +14,7 @@ I kept it small: 20 made-up beds, nurse notes, status codes, time estimates and 
 
 **Demo only. Not for production or real patient information.** This project has not been assessed for HIPAA compliance or clinical use.
 
-[Download the ZIP](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-hospital-bed-prototype.zip) · [Download the full video](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-project-walkthrough.mp4) · [Documentation](docs/README.md) · [Screenshot guide](docs/walkthrough/nurse-walkthrough.pdf)
+[Download the ZIP](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.1/jev-hospital-bed-prototype.zip) · [Download the full video](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.1/jev-project-walkthrough.mp4) · [Documentation](docs/README.md) · [Screenshot guide](docs/walkthrough/nurse-walkthrough.pdf)
 
 ## Run the demo
 
