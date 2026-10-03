@@ -23,7 +23,7 @@ Unzip into a new folder and follow the README commands. Do not copy `.env`, `.de
 |---|---|
 | `scripts/check-contract.mjs` | Request validation, same-origin enforcement, typed result handling and safe error responses, using a simulated provider. |
 | `scripts/check-setup.mjs` | Boolean-only key presence, server-key precedence, blank-variable fallback and browser setup behavior, using fixtures. |
-| `scripts/check-behavior.mjs` | Five checks for countdown safety, trusted patient context, complete probabilities, tab-key reuse, result labels and retry behavior. |
+| `scripts/check-behavior.mjs` | Checks for countdown safety, trusted patient context, complete probabilities, tab-key reuse, result labels and retry behavior. |
 | Open the local page | The browser renders the board and form in your environment. |
 | Optional `npm run check:https` inside a clean container | Startup has no permission errors; the Worker reaches TypeSafe over HTTPS and gets the expected rejection for an invalid test key. No real-key inference is attempted. |
 | Analyze a fictional note with your own valid key | The external TypeSafe connection works for your account at that time. This is separate from the fixture tests. |

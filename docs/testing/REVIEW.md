@@ -30,4 +30,4 @@ Real-key Jev checks now passed on fictional notes. A physical Windows run and cl
 
 ## Follow-up checks
 
-The same agent found two more demo bugs: an old sample answer stayed visible after editing a note, and a second browser tab could overwrite cleaning records. I clear answers on note input, read the latest stored timings before a change, and listen for changes from other tabs. The regressions now pass. There are seven bedboard behavior tests and four cleaning tests, alongside the contract and key-setup checks. The timer is local browser storage, not a hospital database.
+The same agent found two more demo bugs: an old sample answer stayed visible after editing a note, and a second browser tab could overwrite cleaning records. I clear answers on note input, read the latest stored timings before a change, and listen for changes from other tabs. The regressions passed. That follow-up had seven bedboard behavior tests and four cleaning tests, alongside the contract and key-setup checks. The timer is local browser storage, not a hospital database.
