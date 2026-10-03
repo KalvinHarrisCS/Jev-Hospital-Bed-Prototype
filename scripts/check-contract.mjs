@@ -1,9 +1,7 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-const source=(await readFile(new URL('../worker/index.js',import.meta.url),'utf8')).replace("import cleaning from './cleaning.js';",(await readFile(new URL('../worker/cleaning.js',import.meta.url),'utf8')).replace('export default','const cleaning ='));
+import app from '../worker/index.js';
 
-const {default:app}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 const request=(data,origin='https://bedboard.test')=>new Request('https://bedboard.test/api/jev',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:typeof data==='string'?data:JSON.stringify(data)});
 const input={bedId:'MAT-02',note:'Pain 4/5; mobility assessment pending.',apiKey:'test-only-not-a-real-key'};
 const html=await (await app.fetch(new Request('https://bedboard.test/'),{})).text();
