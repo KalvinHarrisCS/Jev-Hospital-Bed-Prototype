@@ -1,0 +1,487 @@
+1
+00:00:00,000 --> 00:00:01,064
+Hey, I'm Kalvin.
+
+2
+00:00:01,064 --> 00:00:03,193
+I put this project together to
+
+3
+00:00:03,193 --> 00:00:04,967
+explore a basic hospital question:
+
+4
+00:00:04,967 --> 00:00:07,096
+which bed is available, and when
+
+5
+00:00:07,096 --> 00:00:09,224
+might the next one be ready?
+
+6
+00:00:09,224 --> 00:00:11,353
+It is a small prototype with
+
+7
+00:00:11,353 --> 00:00:13,482
+fictional patients. I wanted to make
+
+8
+00:00:13,482 --> 00:00:15,610
+something others could run, change, and
+
+9
+00:00:15,610 --> 00:00:16,320
+learn from.
+
+10
+00:00:16,958 --> 00:00:18,935
+The files live on GitHub.
+
+11
+00:00:18,935 --> 00:00:21,308
+With Docker Desktop running, clone the
+
+12
+00:00:21,308 --> 00:00:23,680
+repository, move into the project folder,
+
+13
+00:00:23,680 --> 00:00:26,052
+and run the Compose command shown
+
+14
+00:00:26,052 --> 00:00:28,424
+here. Open localhost, port eighty-seven eighty-seven.
+
+15
+00:00:28,424 --> 00:00:30,006
+Leave the terminal running.
+
+16
+00:00:30,006 --> 00:00:31,983
+The first build needs internet.
+
+17
+00:00:31,983 --> 00:00:33,564
+Docker packages the app;
+
+18
+00:00:33,564 --> 00:00:35,937
+it does not include Jev's model
+
+19
+00:00:35,937 --> 00:00:37,518
+or an API key.
+
+20
+00:00:38,125 --> 00:00:40,611
+The board shows twenty made-up beds
+
+21
+00:00:40,611 --> 00:00:43,098
+across maternity, gynecology, and day surgery.
+
+22
+00:00:43,098 --> 00:00:45,584
+There are three available, twelve occupied,
+
+23
+00:00:45,584 --> 00:00:48,071
+three in turnaround, and two on
+
+24
+00:00:48,071 --> 00:00:50,557
+hold. Read each status with its
+
+25
+00:00:50,557 --> 00:00:53,043
+estimated time. An unknown estimate stays
+
+26
+00:00:53,043 --> 00:00:55,530
+unknown. This board uses a fixed
+
+27
+00:00:55,530 --> 00:00:58,016
+demo clock. A countdown never releases
+
+28
+00:00:58,016 --> 00:00:58,845
+a bed.
+
+29
+00:00:59,458 --> 00:01:01,595
+For a nurse, start by selecting
+
+30
+00:01:01,595 --> 00:01:03,731
+a bed. Here we have MAT
+
+31
+00:01:03,731 --> 00:01:05,868
+zero two, a fictional cesarean patient,
+
+32
+00:01:05,868 --> 00:01:08,004
+pain rated four out of five,
+
+33
+00:01:08,004 --> 00:01:10,141
+and four of eight milestones met.
+
+34
+00:01:10,141 --> 00:01:12,277
+The progress note should say what
+
+35
+00:01:12,277 --> 00:01:14,414
+changed and which follow-up is pending.
+
+36
+00:01:14,414 --> 00:01:16,550
+These examples do not replace a
+
+37
+00:01:16,550 --> 00:01:17,618
+care team's assessment.
+
+38
+00:01:18,250 --> 00:01:20,181
+Choose the Improving practice note.
+
+39
+00:01:20,181 --> 00:01:22,498
+It explicitly says walking and meals
+
+40
+00:01:22,498 --> 00:01:24,042
+are better than yesterday.
+
+41
+00:01:24,042 --> 00:01:25,587
+Press Show expected answer.
+
+42
+00:01:25,587 --> 00:01:27,904
+The result is marked sample only.
+
+43
+00:01:27,904 --> 00:01:30,221
+This is a written example answer,
+
+44
+00:01:30,221 --> 00:01:31,765
+with no model call.
+
+45
+00:01:31,765 --> 00:01:34,082
+It describes improvement in the note,
+
+46
+00:01:34,082 --> 00:01:36,399
+but it does not confirm discharge
+
+47
+00:01:36,399 --> 00:01:38,330
+or change the bed's status.
+
+48
+00:01:38,958 --> 00:01:40,502
+Now choose Needs review.
+
+49
+00:01:40,502 --> 00:01:42,817
+Pain is limiting walking, nursing reassessment
+
+50
+00:01:42,817 --> 00:01:45,132
+is pending, and departure is delayed.
+
+51
+00:01:45,132 --> 00:01:46,676
+Those are explicit blockers.
+
+52
+00:01:46,676 --> 00:01:48,991
+The written expected answer is needs
+
+53
+00:01:48,991 --> 00:01:51,307
+review. That means the observations and
+
+54
+00:01:51,307 --> 00:01:52,464
+follow-up need attention.
+
+55
+00:01:52,464 --> 00:01:54,780
+It is not an instruction to
+
+56
+00:01:54,780 --> 00:01:57,095
+discharge the patient or assign the
+
+57
+00:01:57,095 --> 00:01:58,638
+bed to someone else.
+
+58
+00:01:59,250 --> 00:02:01,415
+The Unclear case says an update
+
+59
+00:02:01,415 --> 00:02:03,579
+was received, but it gives no
+
+60
+00:02:03,579 --> 00:02:05,744
+recovery trend. Its written expected category
+
+61
+00:02:05,744 --> 00:02:07,908
+is unclear. For a live unclear
+
+62
+00:02:07,908 --> 00:02:10,073
+answer, the app asks for more
+
+63
+00:02:10,073 --> 00:02:12,237
+detail about changes in pain, walking
+
+64
+00:02:12,237 --> 00:02:14,041
+or meals, and pending reassessment.
+
+65
+00:02:14,041 --> 00:02:16,205
+That is feedback on the note,
+
+66
+00:02:16,205 --> 00:02:18,370
+not a grade for the nurse.
+
+67
+00:02:19,000 --> 00:02:21,212
+If I edit the note, the
+
+68
+00:02:21,212 --> 00:02:23,424
+old answer clears and the practice
+
+69
+00:02:23,424 --> 00:02:25,637
+selection resets. The app says to
+
+70
+00:02:25,637 --> 00:02:27,849
+use an unchanged practice case or
+
+71
+00:02:27,849 --> 00:02:28,955
+ask Jev again.
+
+72
+00:02:28,955 --> 00:02:31,167
+That keeps an answer from quietly
+
+73
+00:02:31,167 --> 00:02:32,642
+following a different note.
+
+74
+00:02:32,642 --> 00:02:34,854
+Changing the selected bed also clears
+
+75
+00:02:34,854 --> 00:02:35,960
+the old result.
+
+76
+00:02:36,583 --> 00:02:38,609
+No key was needed for those
+
+77
+00:02:38,609 --> 00:02:40,635
+practice cases. Open Jev connection and
+
+78
+00:02:40,635 --> 00:02:42,323
+setup, then check server setup.
+
+79
+00:02:42,323 --> 00:02:44,349
+This copy has no server key.
+
+80
+00:02:44,349 --> 00:02:46,375
+Someone can supply their own key
+
+81
+00:02:46,375 --> 00:02:48,400
+in the optional field or through
+
+82
+00:02:48,400 --> 00:02:49,413
+the server environment.
+
+83
+00:02:49,413 --> 00:02:51,439
+Ask Jev is the button that
+
+84
+00:02:51,439 --> 00:02:53,465
+sends the fictional note to TypeSafe.
+
+85
+00:02:53,465 --> 00:02:55,490
+We are not making that call
+
+86
+00:02:55,490 --> 00:02:56,503
+in this walkthrough.
+
+87
+00:02:57,125 --> 00:02:59,525
+Choose Time room cleaning and select
+
+88
+00:02:59,525 --> 00:03:00,725
+a turnaround room.
+
+89
+00:03:00,725 --> 00:03:03,125
+Start cleaning records the computer's actual
+
+90
+00:03:03,125 --> 00:03:05,525
+time. The timer saves room IDs
+
+91
+00:03:05,525 --> 00:03:07,925
+and timestamps in this browser, and
+
+92
+00:03:07,925 --> 00:03:09,525
+resumes after a reload.
+
+93
+00:03:09,525 --> 00:03:11,925
+Finish cleaning records elapsed minutes and
+
+94
+00:03:11,925 --> 00:03:13,525
+updates the local average.
+
+95
+00:03:13,525 --> 00:03:15,925
+It still says awaiting staff release.
+
+96
+00:03:15,925 --> 00:03:18,325
+These few seconds only demonstrate the
+
+97
+00:03:18,325 --> 00:03:20,725
+timer; they are not a typical
+
+98
+00:03:20,725 --> 00:03:21,525
+cleaning duration.
+
+99
+00:03:22,125 --> 00:03:24,276
+There is also a separate readiness
+
+100
+00:03:24,276 --> 00:03:26,428
+example you can run from the
+
+101
+00:03:26,428 --> 00:03:28,579
+command line. It considers departure windows,
+
+102
+00:03:28,579 --> 00:03:30,731
+cleaner availability, breaks, and a shift.
+
+103
+00:03:30,731 --> 00:03:32,882
+The two-room example shows estimated windows
+
+104
+00:03:32,882 --> 00:03:34,316
+in New York time.
+
+105
+00:03:34,316 --> 00:03:36,468
+Both rooms remain occupied, with release
+
+106
+00:03:36,468 --> 00:03:38,619
+pending. This timing function is not
+
+107
+00:03:38,619 --> 00:03:40,771
+connected to the board yet and
+
+108
+00:03:40,771 --> 00:03:42,205
+needs no Jev key.
+
+109
+00:03:42,833 --> 00:03:44,977
+The separate data pipeline can replay
+
+110
+00:03:44,977 --> 00:03:47,120
+saved public aggregate counts from New
+
+111
+00:03:47,120 --> 00:03:49,264
+York for twenty twenty-three and twenty
+
+112
+00:03:49,264 --> 00:03:51,408
+twenty-four, offline. Those stay lengths cover
+
+113
+00:03:51,408 --> 00:03:52,479
+the whole admission;
+
+114
+00:03:52,479 --> 00:03:54,623
+they are not individual bed-release forecasts.
+
+115
+00:03:54,623 --> 00:03:56,766
+The project has five hundred and
+
+116
+00:03:56,766 --> 00:03:57,838
+two automated tests.
+
+117
+00:03:57,838 --> 00:03:59,982
+GitHub also checks Docker build exclusions.
+
+118
+00:03:59,982 --> 00:04:01,411
+It is a gift:
+
+119
+00:04:01,411 --> 00:04:03,554
+try it, change it, or build
+
+120
+00:04:03,554 --> 00:04:05,698
+on it. Keep it to fictional
+
+121
+00:04:05,698 --> 00:04:07,842
+patients. This is a demo for
+
+122
+00:04:07,842 --> 00:04:08,913
+learning and review.

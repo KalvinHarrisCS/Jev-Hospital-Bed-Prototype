@@ -34,4 +34,5 @@
 - [Fictional patient histories](research/fictional-patient-histories.md)
 - [Third-party references](research/THIRD-PARTY.md)
 - [Nurse screenshot guide](walkthrough/nurse-walkthrough.pdf)
-- [Walkthrough script](walkthrough/nurse-walkthrough-script.md)
+- [Current video and 12-part chapter list](wiki/Nurse-Walkthrough.md)
+- [Current walkthrough transcript](walkthrough/nurse-walkthrough-script.md)

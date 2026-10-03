@@ -1,13 +1,34 @@
 # Nurse walkthrough
 
-I made a five-step screenshot guide with numbered cursor markers. Every patient is made up.
+I updated the walkthrough to cover the whole project in 12 parts. It runs for about 4 minutes 10 seconds, with Kalvin narration, actual UI captures and an animated cursor. Every patient is made up.
 
-1. Read the bed status and estimate. An expired countdown asks for confirmation.
-2. Select a bed and use a practice note or write a fictional update.
-3. Try the expected answer without a key, or set up your own TypeSafe connection.
-4. Press **Ask Jev (uses your API)**. An unclear note asks for more detail. The guide shows a real returned answer, not a sample model result.
-5. Start and finish a room-cleaning timer. It saves elapsed minutes in this browser; staff release remains separate.
+[Download the video](https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype/releases/download/v1.1.0/jev-project-walkthrough.mp4) or watch it on the [project front page](../../README.md). The [transcript](../walkthrough/nurse-walkthrough-script.md) has the full narration.
 
-The package includes `docs/walkthrough/nurse-walkthrough.pdf`. These screenshots demonstrate the local app, not clinical accuracy or a real cleaning-quality assessment. See [the quick test](Quick-Testing.md) and [the Jev checks](Evaluation-Results.md).
+| Start | Part |
+| --- | --- |
+| 0:00 | Why I made it |
+| 0:17 | Run your own copy |
+| 0:38 | Read status and time together |
+| 0:59 | A nurse's observation |
+| 1:18 | Practice: improving |
+| 1:39 | Practice: needs review |
+| 1:59 | Practice: unclear |
+| 2:19 | An edited note needs a fresh answer |
+| 2:37 | Optional Jev connection |
+| 2:57 | Time room cleaning |
+| 3:22 | Separate timing example |
+| 3:43 | Data, checks and sharing |
 
-The layout uses a nursing form, ward bed register and cleaning record. The submission includes an eight-part narrated video walkthrough.
+## Follow along without a key
+
+Select a bed, choose **Improving**, **Needs review**, or **Unclear**, then press **Show expected answer (no API)**. These are written expected answers marked **SAMPLE ONLY**. The recording makes no live Jev call. **Ask Jev (uses your API)** is a separate action for someone using their own TypeSafe key.
+
+Editing the note clears the old result and resets the practice selection. A written expected answer applies only to its unchanged practice note. Feedback on a live unclear answer asks for more specific observations; it does not grade the nurse.
+
+The cleaning section shows a timer started, resumed after a reload, and finished. It saves room IDs and timestamps in that browser. Finishing still says **awaiting staff release**. The few seconds shown demonstrate the controls, not a typical cleaning time.
+
+The command-line [readiness example](../../readiness/README.md) and [public-data pipeline](../../pipeline/README.md) are separate from the bedboard. The readiness example leaves actual bed status unchanged. The saved pipeline example uses public aggregate counts for 2023 and 2024; admission stay lengths are not individual bed-release forecasts.
+
+The [PDF screenshot guide](../walkthrough/nurse-walkthrough.pdf) remains the earlier quick guide with numbered cursor markers. See [the quick test](Quick-Testing.md) for the current practice controls and [the Jev checks](Evaluation-Results.md) for earlier recorded model answers.
+
+These steps demonstrate the local app. They do not establish clinical accuracy, confirm cleaning quality, or authorize a bed's release. Keep real patient information out of this demo.
