@@ -53,3 +53,9 @@
 !container/
 !container/Dockerfile
 !container/Dockerfile.dockerignore
+
+# Keep these excluded even inside an allowed folder.
+**/.env*
+**/.dev.vars*
+**/node_modules
+pipeline/output/

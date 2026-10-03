@@ -1,6 +1,6 @@
 # Make it your own
 
-I kept the app in one file so you can see what it does and change it: `worker/index.js`. Open it in any text editor. Keep a working copy before trying changes. Docker files stay in `container/`.
+The bedboard uses two runtime files: `worker/index.js` contains the page, fictional beds and server routes; `worker/cleaning.js` contains the cleaning timer. Open them in any text editor. Keep a working copy before trying changes. Docker files stay in `container/`.
 
 ## Change a fictional bed
 
@@ -27,7 +27,7 @@ After changing a record, press Ctrl+C to stop the app, then rebuild and start it
 docker compose -f container/compose.yaml up --build
 ```
 
-The new `MAT-06` should show pain 3/5 and an unknown readiness time. To check your changes, run `docker compose -f container/compose.yaml run --rm bedboard npm test` from another terminal. With local Node.js, restart `npm run dev` if needed.
+The new `MAT-06` should show pain 3/5 and an unknown readiness time. To check your changes, run `docker compose -f container/compose.yaml run --rm --build bedboard npm test` from another terminal. With local Node.js, restart `npm run dev` if needed.
 
 ## Change the board size or timeline
 

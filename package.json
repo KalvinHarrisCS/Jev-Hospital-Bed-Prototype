@@ -17,7 +17,8 @@
     "test:readiness": "node --test readiness/test/*.test.mjs",
     "test:readiness:fixtures": "node --test readiness/test/fixtures.test.mjs",
     "readiness:demo": "node readiness/demo.mjs",
-    "check:https": "node scripts/check-https.mjs"
+    "check:https": "node scripts/check-https.mjs",
+    "check:docker-context": "node scripts/check-docker-context.mjs"
   },
   "devDependencies": {
     "wrangler": "4.146.0"
