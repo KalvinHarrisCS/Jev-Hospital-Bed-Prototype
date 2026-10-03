@@ -1,0 +1,5133 @@
+[
+  {
+    "id": "after-break",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "busy-cleaner",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "busy",
+        "taskFinishWindow": [
+          "2026-10-02T10:40:00-04:00",
+          "2026-10-02T10:50:00-04:00"
+        ],
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:40:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T15:00:00.000Z",
+            "2026-10-02T15:20:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T15:00:00.000Z",
+            "2026-10-02T15:20:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "two-rooms",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:30:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:30:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "wait-through-break",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:45:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:45:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "awaiting_cleaning",
+          "departure": {
+            "kind": "observed",
+            "window": [
+              "2026-10-02T09:45:00-04:00",
+              "2026-10-02T09:45:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:45:00-04:00",
+            "source": "fictional observed departure"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:45:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T09:45:00-04:00",
+          "actualStatus": "awaiting_cleaning",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "short-duration-fits-but-maximum-does-not",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:35:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:35:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "awaiting_cleaning",
+          "departure": {
+            "kind": "observed",
+            "window": [
+              "2026-10-02T09:35:00-04:00",
+              "2026-10-02T09:35:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:35:00-04:00",
+            "source": "fictional observed departure"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:35:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T09:35:00-04:00",
+          "actualStatus": "awaiting_cleaning",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "shift-too-short",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T10:50:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "no_continuous_work_slot"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-departure",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": null,
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "equipment-hold",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [
+            "equipment"
+          ],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "blocked",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "unresolved_hold"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "stale-departure",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:29:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "passed-estimate",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T09:40:00-04:00",
+              "2026-10-02T09:50:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "departure_estimate_passed"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "note-unavailable",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "unavailable"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "unavailable"
+        }
+      ]
+    }
+  },
+  {
+    "id": "note-unclear",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "unclear"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "unclear"
+        }
+      ]
+    }
+  },
+  {
+    "id": "note-needs_review",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "needs_review"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "needs_review"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fixed-order-leaves-cleaner-idle",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:50:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:20:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:20:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:20:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:50:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:50:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "finish-exactly-at-break-start",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:30:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:30:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "awaiting_cleaning",
+          "departure": {
+            "kind": "observed",
+            "window": [
+              "2026-10-02T09:30:00-04:00",
+              "2026-10-02T09:30:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:30:00-04:00",
+            "source": "fictional observed departure"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T09:30:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T09:30:00-04:00",
+          "actualStatus": "awaiting_cleaning",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T13:30:00.000Z",
+            "2026-10-02T13:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T13:50:00.000Z",
+            "2026-10-02T14:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T13:50:00.000Z",
+            "2026-10-02T14:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "finish-exactly-at-shift-end",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:30:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T11:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T10:25:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:30:00-04:00",
+              "2026-10-02T10:30:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T10:25:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:30:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:30:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "start-exactly-at-break-end",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T09:45:00-04:00",
+            "2026-10-02T10:00:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:00:00-04:00",
+              "2026-10-02T10:00:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:00:00.000Z",
+            "2026-10-02T14:00:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "inside-departure-window",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T09:50:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:00:00.000Z",
+            "2026-10-02T14:20:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "latest-departure-equals-snapshot",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T09:50:00-04:00",
+              "2026-10-02T10:00:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:00:00.000Z",
+            "2026-10-02T14:00:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "exactly-thirty-minutes-old-is-fresh",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:30:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:30:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "idle-staff-record-is-stale",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:29:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_staff"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "busy-task-estimate-passed",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "busy",
+        "taskFinishWindow": [
+          "2026-10-02T09:40:00-04:00",
+          "2026-10-02T09:50:00-04:00"
+        ],
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "task_estimate_passed"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "latest-task-finish-equals-snapshot",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [],
+        "currentWork": "busy",
+        "taskFinishWindow": [
+          "2026-10-02T09:50:00-04:00",
+          "2026-10-02T10:00:00-04:00"
+        ],
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:10:00.000Z",
+            "2026-10-02T14:20:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "hold-wins-and-keeps-stale-reason",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:29:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [
+            "equipment"
+          ],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "blocked",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_departure",
+            "unresolved_hold"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "held-room-does-not-delay-next-room",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [
+            "equipment"
+          ],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "blocked",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "unresolved_hold"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "review-predecessor-blocks-next-room",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:29:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "unknown-predecessor-blocks-next-room",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": null,
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_duration"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-departure-makes-queue-order-unknown",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": null,
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": null,
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "override-puts-unknown-last",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": null,
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": {
+        "bedIds": [
+          "MAT-02",
+          "MAT-01"
+        ],
+        "reason": "fictional staff-entered order"
+      },
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-02",
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "override-puts-unknown-first",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": null,
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": {
+        "bedIds": [
+          "MAT-01",
+          "MAT-02"
+        ],
+        "reason": "fictional staff-entered order"
+      },
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "equal-departures-use-bed-id-and-preserve-input-order",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:30:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T15:10:00.000Z",
+            "2026-10-02T15:30:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "no-work-slot-blocks-next-room",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              300
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "no_continuous_work_slot"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dependent-keeps-all-direct-reasons-and-precedence",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:29:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:15:00-04:00",
+              "2026-10-02T10:25:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:29:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": null,
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01",
+        "MAT-02"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        },
+        {
+          "bedId": "MAT-02",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_duration",
+            "stale_departure",
+            "upstream_queue_unknown"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "stale-observed-record-keeps-event-type",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "awaiting_cleaning",
+          "departure": {
+            "kind": "observed",
+            "window": [
+              "2026-10-02T09:00:00-04:00",
+              "2026-10-02T09:00:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:00:00-04:00",
+            "source": "fictional observed departure"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "awaiting_cleaning",
+          "status": "needs_review",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "stale_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-staff",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": null,
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": null,
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_staff"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ineligible-role",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "nurse",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "ineligible_cleaner"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ineligible-ward",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "other",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "ineligible_cleaner"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "unknown-staff-work",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "unknown",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_staff_work"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "busy-without-finish",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "busy",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_task_finish"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-staff-update",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": null
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_staff_update"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-break-information",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": null,
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_breaks"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-shift",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": null,
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_shift"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-departure-update",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": null,
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure_update"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-departure-source",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": null
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure_source"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-cleaning-source",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": null
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_cleaning_source"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "note-cannot-fill-missing-departure",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": null,
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "improving"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "missing_departure"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "improving"
+        }
+      ]
+    }
+  },
+  {
+    "id": "break-input-order-does-not-matter",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T12:00:00-04:00",
+            "2026-10-02T12:30:00-04:00"
+          ],
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:30:00.000Z",
+            "2026-10-02T14:30:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:50:00.000Z",
+            "2026-10-02T15:00:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ordered-task-window-after-shift-is-not-invalid",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "busy",
+        "taskFinishWindow": [
+          "2026-10-02T15:00:00-04:00",
+          "2026-10-02T15:30:00-04:00"
+        ],
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:10:00-04:00",
+              "2026-10-02T10:20:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "no_continuous_work_slot"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "no-rooms",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [
+          [
+            "2026-10-02T10:00:00-04:00",
+            "2026-10-02T10:30:00-04:00"
+          ]
+        ],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [],
+      "beds": []
+    }
+  },
+  {
+    "id": "earliest-fits-but-latest-does-not",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T11:00:00-04:00"
+        ],
+        "breaks": [],
+        "currentWork": "idle",
+        "taskFinishWindow": null,
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:20:00-04:00",
+              "2026-10-02T10:40:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "unknown",
+          "cleanerId": "CLEAN-01",
+          "startWindow": null,
+          "completionWindow": null,
+          "readyWindow": null,
+          "release": null,
+          "reasons": [
+            "no_continuous_work_slot"
+          ],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  },
+  {
+    "id": "inside-busy-task-window",
+    "input": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "maxUpdateAgeMinutes": 30,
+      "cleaner": {
+        "cleanerId": "CLEAN-01",
+        "role": "cleaner",
+        "assignedWard": "maternity",
+        "shift": [
+          "2026-10-02T07:00:00-04:00",
+          "2026-10-02T15:00:00-04:00"
+        ],
+        "breaks": [],
+        "currentWork": "busy",
+        "taskFinishWindow": [
+          "2026-10-02T09:50:00-04:00",
+          "2026-10-02T10:20:00-04:00"
+        ],
+        "updatedAt": "2026-10-02T09:55:00-04:00"
+      },
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "ward": "maternity",
+          "actualStatus": "occupied",
+          "departure": {
+            "kind": "estimated",
+            "window": [
+              "2026-10-02T10:00:00-04:00",
+              "2026-10-02T10:00:00-04:00"
+            ],
+            "updatedAt": "2026-10-02T09:55:00-04:00",
+            "source": "fictional nurse-entered estimate"
+          },
+          "cleaning": {
+            "minutes": [
+              20,
+              30
+            ],
+            "source": "fictional cleaning assumption"
+          },
+          "holds": [],
+          "noteStatus": "not_checked"
+        }
+      ],
+      "queueOverride": null,
+      "assumptions": {
+        "travelMinutes": 0,
+        "releaseDelayMinutes": 0,
+        "source": "fictional zero-travel and immediate conditional-release assumptions"
+      }
+    },
+    "expected": {
+      "schemaVersion": 1,
+      "snapshot": "2026-10-02T10:00:00-04:00",
+      "timezone": "America/New_York",
+      "ward": "maternity",
+      "queue": [
+        "MAT-01"
+      ],
+      "beds": [
+        {
+          "bedId": "MAT-01",
+          "snapshot": "2026-10-02T10:00:00-04:00",
+          "actualStatus": "occupied",
+          "status": "estimated",
+          "cleanerId": "CLEAN-01",
+          "startWindow": [
+            "2026-10-02T14:00:00.000Z",
+            "2026-10-02T14:20:00.000Z"
+          ],
+          "completionWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "readyWindow": [
+            "2026-10-02T14:20:00.000Z",
+            "2026-10-02T14:50:00.000Z"
+          ],
+          "release": "pending_staff_release",
+          "reasons": [],
+          "assumptions": {
+            "travelMinutes": 0,
+            "releaseDelayMinutes": 0,
+            "source": "fictional zero-travel and immediate conditional-release assumptions"
+          },
+          "noteStatus": "not_checked"
+        }
+      ]
+    }
+  }
+]

@@ -57,3 +57,33 @@ The [saved public example](../../pipeline/examples/public-2023-2024/README.md) r
 Independent review found two gaps: positive PHI wording could pass the source check, and saving could accept missing provenance. Both now have negative tests and stricter validation. The collector also handles the source's `120 +` label through an explicit recorded mapping.
 
 These checks establish collection, validation and repeatability. The historical data has not been used to validate clinical decisions or individual bed-release predictions. Revision checks are not a transactional snapshot, and file hashes do not certify compliance. [Run the pipeline](../../pipeline/README.md).
+
+## Bed-readiness tests first
+
+At the tests-first commit `fc37e43`, checked October 2, 2026, there were 51 complete fictional scenarios, two forecast invariants and 105 invalid-input assertions. Both fixture checks passed; all 158 forecast/validation assertions failed against the NOT_IMPLEMENTED placeholder. No tests were skipped. This recorded the expected red stage before writing the timing function.
+
+The same 160-test result was reproduced in Docker with network access turned off. The existing app checks and all 163 public-data pipeline tests pass on the host and in Docker. No TypeSafe key or live model call was used.
+
+Independent review checked the scenario arithmetic, fixed queue order, status precedence and separate earliest/latest overlap checks. It identified two missing cases, which were added: only the latest scenario failing to fit, and a busy-task window partly elapsed at the snapshot. Invalid-input checks verify named issues, input immutability and multiple independent errors.
+
+GitHub ran the new suite as part of its required Tests check and blocked the unfinished draft from merging. Planning notes remained outside the repository. The implementation results follow below.
+
+## Bed-readiness implementation
+
+Checked October 2, 2026. All 168 readiness tests now pass with no skipped tests. This includes the original 160 checks, four sparse-array validation regressions and four ordering/precision checks. No original acceptance tests or expected fixture answers were weakened or removed.
+
+The existing app checks and all 163 pipeline tests pass too. The full `npm test` command passes on the host and in Docker with network access turned off. The two-room command prints the expected fixture result on both, without a key or a model call.
+
+Independent review compared 500 fictional forecasts covering 2,500 rooms with a separate calculation, including multiple unsorted breaks, fractional minutes, busy staff, queue dependencies and input immutability. Review found a Unicode ID ordering mismatch and duration precision that could round positive intervals to zero. New tests reproduced both before the fixes. IDs now use code-point order, and duration bounds must resolve to positive whole milliseconds. Sparse-array checks also failed before validation was fixed.
+
+[Run a fictional example or the tests](../../readiness/README.md). This establishes the agreed same-day scheduling calculation, not clinical accuracy or real hospital readiness. The function has not yet been connected to the bedboard. It preserves actual bed status and leaves every estimated ready time pending staff release.
+
+## Bed-readiness review fixes
+
+Checked October 2, 2026. All 200 readiness tests pass, alongside the existing app checks and 163 pipeline tests, on the host and in Docker with network access turned off. The original fixture file and expected answers remain unchanged.
+
+New tests reproduced unapproved departure sources, contradictory bed/departure states and records dated before the observed event. These now require review, return no windows and keep later queued rooms uncertain. The two approved source labels restrict fictional inputs; they do not establish real-world provenance or staff authorization.
+
+Decimal durations such as 16.1 and 32.7 minutes now convert to whole milliseconds with a tightly bounded floating-point tolerance. New tests failed before this fix and check exact shift/break endings too. Genuine fractional milliseconds remain invalid.
+
+The added coverage also checks snapshot clamping, freshness at 30:01 and 30:59, held beds with missing departures, and breaks before a shift. Demo tests check local display, unchanged JSON output and separate adjustable input files. The demo labels New York time; its JSON option preserves UTC forecast endpoints and the original snapshot offset. Planning notes remain outside the repository.
