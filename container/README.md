@@ -1,10 +1,14 @@
-# Docker setup
+# Docker setup for Local Clef
 
-I put the whole app in a container so you can run the same project without installing Node.js yourself. Jev still uses TypeSafe online. Docker does not include Jev's model or an API key.
-
-The core stays in `worker/index.js`; its room-cleaning timer is `worker/cleaning.js`. Docker files stay here in `container/`.
+Docker runs the bedboard app. Install and run Ollama on the host computer separately; the image does not include the model. On Mac, native Ollama can use the Apple GPU. Docker Desktop on Mac does not provide GPU passthrough for Ollama. See the [Ollama FAQ](https://docs.ollama.com/faq).
 
 ## Build and run
+
+Start Ollama **0.35.1 or newer** and download the model:
+
+```sh
+ollama pull clef-flash:9b-q8_0
+```
 
 Start Docker Desktop. Open a terminal in the **project root**, where the main README is, and run:
 
@@ -12,71 +16,53 @@ Start Docker Desktop. Open a terminal in the **project root**, where the main RE
 docker compose -f container/compose.yaml up --build
 ```
 
-Open [localhost:8787](http://localhost:8787). Leave the terminal open. Press **Ctrl+C** to stop. Run that same command again to come back or rebuild after changing the source.
+Open [localhost:8788](http://localhost:8788). Leave the terminal open. Press **Ctrl+C** to stop. Run the same command again to rebuild after changing the source.
 
-No key is needed to browse the board. To try Jev, enter your key in the app's password field, or use the environment setup below. I made the password field the easiest way to get started.
+Compose uses project `jev-clef-local`, image `jev-bedboard:clef-local`, and a localhost-only app port. It connects to native Ollama at `http://host.docker.internal:11434`. No API key is needed. The first download and build need internet access.
 
-To remove the stopped Compose container, run `docker compose -f container/compose.yaml down`. The app saves no patient records.
+Open **Local model setup** and press **Check server setup** to check the app's settings, then **Check note (local Clef)** with a fictional note to test a real request. Settings being present do not prove inference works. [Local Clef setup](../docs/guides/LOCAL-CLEF.md) explains the model request and how to run the app without Docker.
+
+## Optional settings
+
+To change the app port, set `BEDBOARD_PORT` before starting Compose. If your local Ollama service uses a different port, change the port in `OLLAMA_BASE_URL` too.
+
+Mac Terminal or Linux shell:
+
+```sh
+export BEDBOARD_PORT=8789
+export OLLAMA_BASE_URL='http://host.docker.internal:11434'
+docker compose -f container/compose.yaml up --build
+```
+
+Windows PowerShell:
+
+```powershell
+$env:BEDBOARD_PORT = '8789'
+$env:OLLAMA_BASE_URL = 'http://host.docker.internal:11434'
+docker compose -f container/compose.yaml up --build
+```
+
+Open `http://localhost:8789` for these examples. Changes apply to processes started in that terminal; restart Compose after changing a setting. The app accepts loopback addresses and `host.docker.internal` only. Keep Ollama bound to a local address.
 
 ## Run the checks
 
-Run the checks against the current source:
-
 ```sh
 docker compose -f container/compose.yaml run --rm --build bedboard npm test
+docker compose -f container/compose.yaml run --rm --build bedboard npm run check:local
 ```
 
-These checks use made-up data and make no TypeSafe calls. The base image and dependency versions are fixed in the supplied files. See [repeat the setup](../docs/guides/REPRODUCIBILITY.md).
+These checks use fictional data and simulated replies. The local runtime check uses a mock service and does not run Clef. A successful real model response is a separate check, and it does not establish clinical accuracy.
 
-The `--build` flag refreshes the image before the checks run.
-
-To check Docker's build exclusions, run `npm run check:docker-context` from a Git checkout with Node.js and Docker available. It checks the actual copied files using synthetic environment files, dependency folders and generated collection output. It never reads ignored local secret files or collection output and removes its temporary files, image and stopped container.
-
-For an optional network check, run `docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
-
-To change beds or questions, follow [make it your own](../docs/guides/CUSTOMIZE.md), then run the launch command again. The image keeps the source copied during the build. The MIT license is included in the image.
-
-## Supply the key when running
-
-If you want a server key, set it in the **same terminal** before the launch command. These prompts keep the key out of the command you type:
-
-Mac Terminal (zsh):
-
-```zsh
-read -rs 'TYPESAFE_API_KEY?TypeSafe API key: '
-export TYPESAFE_API_KEY
-```
-
-Windows PowerShell 7.1 or newer:
-
-```powershell
-$env:TYPESAFE_API_KEY = Read-Host 'TypeSafe API key' -MaskInput
-```
-
-Compose forwards `TYPESAFE_API_KEY` from that terminal. If it is missing, the app still starts and you can use the password field. The build excludes secret files and Git history. Docker administrators can inspect container environment variables, so use an approved machine. See [key setup](../docs/guides/ENVIRONMENT-SETUP.md) if your key has another variable name.
-
-Press **Check server setup** in the app. It reports presence only, never the key value. A valid key and TypeSafe billing are checked by a successful Ask Jev request, which sends the fictional note to TypeSafe. The host port is bound to localhost.
-
-An export applies to that terminal and the processes it starts. If you add a key while the app is running, press Ctrl+C and run the launch command again in that terminal. Press **Check server setup** after it starts.
+With Node.js and Docker available, `npm run check:docker-context` checks the files copied into the image using synthetic fixtures. It excludes secret files, Git history and generated collection output. The MIT license is included in the image.
 
 ## If it does not start
 
-- **Docker is unavailable:** open Docker Desktop and wait for its engine to be ready. On Windows, use Linux containers.
-- **Port 8787 is already in use:** stop the other app using it. For an older manually started bedboard, run `docker stop obgyn-bedboard`, then run the Compose command.
-- **Different port:** set `BEDBOARD_PORT=8788` in your terminal's environment, then start Compose and open `localhost:8788`.
-- **Permission denied for `/app/node_modules/.mf`:** rebuild with the current Dockerfile. It now gives the app user ownership of its packages and cache folder. I added a regression check for this exact issue.
+- **Docker is unavailable:** start Docker Desktop and wait for its engine to be ready. On Windows, use Linux containers.
+- **Port 8788 is in use:** choose another `BEDBOARD_PORT` using the examples above.
+- **Ollama cannot be reached:** make sure the native app is running and the configured port is correct. `127.0.0.1` inside the app container points to that container; use `host.docker.internal` for the host service on Docker Desktop.
+- **Model missing:** run `ollama list` and confirm `clef-flash:9b-q8_0` was downloaded to the Ollama service the app uses.
+- **System One endpoint missing:** check `ollama --version`; Clef needs 0.35.1 or newer.
 
-## Company computers
+Linux host networking and GPU access need their own Ollama and Docker setup. This Compose file does not supply a GPU runtime or guarantee host access on every Linux installation. Use [the native app setup](../docs/guides/LOCAL-CLEF.md#run-without-docker) if the host connection is unavailable.
 
-Use this where your company allows Docker and access to TypeSafe. Docker itself must already be installed or approved by IT. This is a local demo running Wrangler's development server.
-
-## Verification
-
-I checked the page, key-presence response, and startup as a regular app user. The permission check fails against the old image and passes against the corrected one. Docker builds and HTTPS checks passed on Linux ARM64 and on Linux AMD64 emulated on this Mac. See [what was tested](../docs/testing/VERIFICATION.md) for the full record. Real-key fictional-note checks passed; [their results](../docs/testing/EVALUATION.md) are included. Clinical accuracy and a physical Windows run are still unverified.
-
-## References
-
-- [Docker runtime environment variables](https://docs.docker.com/reference/cli/docker/container/run/#env)
-- [Dockerfile-specific build exclusions](https://docs.docker.com/build/building/context/#dockerignore-files)
-- [Official Node.js image](https://hub.docker.com/_/node/)
-- [Wrangler local server options](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
+This is a local demo using Wrangler's development server. Use a computer where Docker and Ollama are allowed. The [dated verification record](../docs/testing/VERIFICATION.md) describes the original cloud Jev demo; it does not verify this Local Clef setup.

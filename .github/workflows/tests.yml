@@ -27,6 +27,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Check the app
         run: npm run test:app
+      - name: Check the local model connection with a mock server
+        run: npm run check:local
       - name: Check the data pipeline
         run: npm run test:pipeline
       - name: Check bed readiness
