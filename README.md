@@ -1,6 +1,8 @@
 # Jev Hospital Bed Prototype — Local Clef
 
-This `clef-local` branch checks fictional nurse notes with Clef Flash running in Ollama on your computer. The original Jev demo stays on `main`.
+Created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
+
+This demo checks fictional nurse notes with Cloudflare's Clef Flash running in Ollama on your computer. The original TypeSafe-backed Jev demo is preserved in the earlier releases and dated records below.
 
 I kept the demo small: 20 made-up beds, nurse notes, status codes, time estimates and room cleaning timers. Staff review model answers and confirm bed readiness. A countdown or model answer never frees a bed automatically.
 
@@ -14,10 +16,10 @@ Install and start [Ollama](https://ollama.com/download) **0.35.1 or newer**, the
 ollama pull clef-flash:9b-q8_0
 ```
 
-With Docker Desktop running, clone this branch and open its project folder:
+With Docker Desktop running, clone the project and open its folder:
 
 ```sh
-git clone --branch clef-local --single-branch https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype.git
+git clone https://github.com/KalvinHarrisCS/Jev-Hospital-Bed-Prototype.git
 cd Jev-Hospital-Bed-Prototype
 docker compose -f container/compose.yaml up --build
 ```
@@ -74,6 +76,10 @@ https://github.com/user-attachments/assets/60c21a36-537c-4a62-b571-9450f3d46f6c
 - [Data pipeline and saved example](pipeline/README.md)
 - [Historical Jev verification](docs/testing/VERIFICATION.md) and [evaluation](docs/testing/EVALUATION.md)
 
-## Use and share
+## Credit and contact
 
-Use it, change it and share your version. Keep the [MIT license](LICENSE) with the original work. **Provided as is, without warranties.** Read the [demo use and liability notice](docs/security/DEMO-NOTICE.md) and [third-party references](docs/research/THIRD-PARTY.md). The model has its own terms in the [Clef Flash model card](https://huggingface.co/Cloudflare/clef-flash).
+Copyright (c) 2026 Kalvin Harris. All rights reserved. This version is not offered under an open-source license; see the [copyright and permissions notice](LICENSE). Contact Kalvin for permission to reuse or redistribute the original project.
+
+**Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS).**
+
+**Provided as is, without warranties.** Read the [demo use and liability notice](docs/security/DEMO-NOTICE.md) and [third-party references](docs/research/THIRD-PARTY.md). The model has its own terms in the [Clef Flash model card](https://huggingface.co/Cloudflare/clef-flash). Earlier releases retain the permissions under which they were published.

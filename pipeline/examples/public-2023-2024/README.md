@@ -25,6 +25,6 @@ Each histogram total matched its separate count query. Dataset revisions matched
 
 ## Source terms
 
-Source: New York State Department of Health, SPARCS De-Identified Public Use Files, 2023 and 2024. [Open NY terms](https://data.ny.gov/download/77gx-ii52/application/pdf) were reviewed October 2, 2026 and their hash is recorded in the manifest. External source data remains subject to those terms and is outside the project's MIT grant. No State endorsement is implied.
+Source: New York State Department of Health, SPARCS De-Identified Public Use Files, 2023 and 2024. [Open NY terms](https://data.ny.gov/download/77gx-ii52/application/pdf) were reviewed October 2, 2026 and their hash is recorded in the manifest. External source data remains subject to those terms and is outside the project's copyright notice. No State endorsement is implied.
 
 The releases describe their data as de-identified and containing no PHI. That statement describes the source files; it does not make this demo ready for real patient information.

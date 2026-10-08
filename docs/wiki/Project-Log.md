@@ -2,6 +2,8 @@
 
 October 1, 2026, America/New_York.
 
+This is a historical record of the initial release. For current project permissions and attribution, see [copyright and permissions](../../LICENSE).
+
 ## Why I made this
 
 I wanted a small OB/GYN bed demo that I could understand, submit, and give to others. The project includes published examples and a record of what actually passed.
@@ -12,7 +14,7 @@ I wanted a small OB/GYN bed demo that I could understand, submit, and give to ot
 - A simple 20-bed page with status codes, times, pain scores, and milestone counts.
 - A Jev server connection for classifying a made-up nurse note.
 - A screenshot walkthrough with cursor markers.
-- Docker files in their own folder, a dependency lock, portable tests, and an MIT license.
+- Docker files in their own folder, a dependency lock, and portable tests. The initial release included an MIT license; see the notice above for current project permissions.
 
 The first frontend used bed cards. I simplified the submission to a plain table and one app file. Tests and packaging stay outside that file.
 

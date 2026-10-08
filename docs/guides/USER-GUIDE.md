@@ -2,11 +2,11 @@
 
 I put this together to explore a basic hospital question: which bed is available, and when might the next one be ready?
 
-I kept it small: 20 made-up beds, status codes, time estimates, and a place to try Jev on a nurse's progress note. This is a gift to anyone who wants to run it, change it, or learn from it.
+I kept it small: 20 made-up beds, status codes, time estimates, and a place to try Jev on a nurse's progress note. Created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
 
 **Demo only. Not for production or real patient information.** This project has not been assessed for HIPAA compliance or clinical use. [Security and the path to production](../security/DEMO-SECURITY.md) explains the current safeguards, external data flow and what I would update before hospital use.
 
-**Provided as is, without warranties.** The authors and copyright holders disclaim liability to the fullest extent permitted by applicable law. Read the [demo use and liability notice](../security/DEMO-NOTICE.md) and the [MIT license](../../LICENSE) before using or sharing it.
+**Provided as is, without warranties.** The authors and copyright holders disclaim liability to the fullest extent permitted by applicable law. Read the [demo use and liability notice](../security/DEMO-NOTICE.md) and the [copyright and permissions notice](../../LICENSE) before using or sharing it.
 
 The Jev connection was checked against published examples. The included tests let you check your own copy.
 
@@ -88,10 +88,8 @@ I used [TypeSafe's API documentation](https://docs.typesafe.ai/api) and this [pu
 
 Every patient is made up. I chose a 1-5 pain scale for this example. This app saves only cleaning room IDs and timestamps in the browser. It does not save patient notes or decide when someone can leave hospital.
 
-## Reuse and share
+## Credit and contact
 
-Use it, change it, and share your version. Keep the [MIT license](../../LICENSE) with the original code and docs. External research and dependencies keep their own terms; see [references](../research/THIRD-PARTY.md).
+Copyright (c) 2026 Kalvin Harris. All rights reserved. See the [copyright and permissions notice](../../LICENSE) and contact Kalvin for permission to reuse or redistribute the original project. External research and dependencies keep their own terms; see [references](../research/THIRD-PARTY.md).
 
-## License
-
-This project uses the [MIT license](../../LICENSE).
+**Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS).**

@@ -1,6 +1,6 @@
 # Local Clef setup
 
-This `clef-local` branch runs fictional nurse-note checks through Clef Flash in Ollama. No API key is needed. The app keeps `/api/jev` as its browser route and uses Ollama's local `/v1/systemone` endpoint. It has no TypeSafe call or cloud fallback.
+The current app runs fictional nurse-note checks through Clef Flash in Ollama. No API key is needed. The app keeps `/api/jev` as its browser route and uses Ollama's local `/v1/systemone` endpoint. It has no TypeSafe call or cloud fallback.
 
 The first app build, package installation and model download need internet access. Once those are ready, note checks use the local model. This is a demo for fictional data; model answers never release a bed.
 
@@ -14,7 +14,7 @@ ollama pull clef-flash:9b-q8_0
 ollama list
 ```
 
-The app defaults to `clef-flash:9b-q8_0`. It also accepts `clef:27b-q4_k_m`; download that model first and set `OLLAMA_MODEL` in Compose's environment or replace the native command's model argument below. The larger model needs more memory. Other model tags are rejected by this branch. System One needs compatible GGUF weights; ordinary chat models and MLX checkpoints do not work with this endpoint. See the [Ollama decision guide](https://docs.ollama.com/capabilities/decision) and [System One API reference](https://docs.ollama.com/api/systemone).
+The app defaults to `clef-flash:9b-q8_0`. It also accepts `clef:27b-q4_k_m`; download that model first and set `OLLAMA_MODEL` in Compose's environment or replace the native command's model argument below. The larger model needs more memory. Other model tags are rejected by the app. System One needs compatible GGUF weights; ordinary chat models and MLX checkpoints do not work with this endpoint. See the [Ollama decision guide](https://docs.ollama.com/capabilities/decision) and [System One API reference](https://docs.ollama.com/api/systemone).
 
 On Mac, run Ollama natively for Apple GPU access and keep the app in Docker. The [Ollama FAQ](https://docs.ollama.com/faq) explains GPU support, local binding and service configuration. Windows and Linux acceleration depend on your hardware and Ollama setup.
 
@@ -63,4 +63,4 @@ The app tests use simulated replies, and `check:local` runs against a mock local
 
 ## Model reference
 
-Read the [Clef Flash model card](https://huggingface.co/Cloudflare/clef-flash) for model details and its license. The project's MIT license covers the app code.
+Read the [Clef Flash model card](https://huggingface.co/Cloudflare/clef-flash) for model details and its license. The original app code is copyright (c) 2026 Kalvin Harris, all rights reserved; see [copyright and permissions](../../LICENSE).

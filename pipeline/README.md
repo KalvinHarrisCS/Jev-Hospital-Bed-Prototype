@@ -65,4 +65,4 @@ Adding another year or procedure means reviewing its official definition, coding
 
 Next, we can use these summaries as a reference for the fictional bedboard and test a forecast against a simple baseline. The current pipeline does not predict bed release times.
 
-Sources: [2023 release](https://health.data.ny.gov/d/46xm-urtu), [2024 release](https://health.data.ny.gov/d/sf4k-39ay) and [Open NY terms](https://data.ny.gov/download/77gx-ii52/application/pdf). The project's MIT license does not relicense external data.
+Sources: [2023 release](https://health.data.ny.gov/d/46xm-urtu), [2024 release](https://health.data.ny.gov/d/sf4k-39ay) and [Open NY terms](https://data.ny.gov/download/77gx-ii52/application/pdf). The project's copyright and permissions notice does not relicense external data.

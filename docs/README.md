@@ -1,6 +1,6 @@
 # Project documentation
 
-[Back to the Local Clef branch](../README.md)
+[Back to the project](../README.md)
 
 ## Local Clef
 
@@ -13,11 +13,11 @@
 
 - [Security, HIPAA and future production work](security/DEMO-SECURITY.md)
 - [Demo use and liability notice](security/DEMO-NOTICE.md)
-- [MIT license](../LICENSE)
+- [Copyright and permissions](../LICENSE)
 
 ## Original Jev guides and records
 
-These existing documents describe the original TypeSafe-backed Jev demo. Its key setup, cloud checks, screenshots and dated results do not apply to Local Clef. Use the local setup guide above for this branch.
+These existing documents describe the original TypeSafe-backed Jev demo. Its key setup, cloud checks, screenshots and dated results do not apply to Local Clef. Use the local setup guide above for the current app.
 
 - [Original user guide](guides/USER-GUIDE.md)
 - [Original quick test](guides/QUICK-TEST.md)

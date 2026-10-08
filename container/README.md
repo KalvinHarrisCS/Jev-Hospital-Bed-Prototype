@@ -53,7 +53,7 @@ docker compose -f container/compose.yaml run --rm --build bedboard npm run check
 
 These checks use fictional data and simulated replies. The local runtime check uses a mock service and does not run Clef. A successful real model response is a separate check, and it does not establish clinical accuracy.
 
-With Node.js and Docker available, `npm run check:docker-context` checks the files copied into the image using synthetic fixtures. It excludes secret files, Git history and generated collection output. The MIT license is included in the image.
+With Node.js and Docker available, `npm run check:docker-context` checks the files copied into the image using synthetic fixtures. It excludes secret files, Git history and generated collection output. The copyright and permissions notice is included in the image.
 
 ## If it does not start
 

@@ -625,6 +625,10 @@ setInterval(tick, 1000);
       </script>
       <section id="cleaning" class="sheet" aria-label="Room cleaning record"></section>
       <script src="/cleaning.js"></script>
+      <footer>
+        <p>Created by <a href="https://github.com/KalvinHarrisCS">Kalvin Harris</a>. Copyright &copy; 2026 Kalvin Harris. All rights reserved.</p>
+        <p>Want this app retargeted for your use case? Get in touch with <a href="https://github.com/KalvinHarrisCS">Kalvin Harris</a>.</p>
+      </footer>
     </main>
   </body>
 </html>
