@@ -2,5 +2,9 @@
   "name": "obgyn-bedboard-local",
   "main": "worker/index.js",
   "compatibility_date": "2025-04-01",
-  "secrets": { "required": ["TYPESAFE_API_KEY"] }
+  "send_metrics": false,
+  "vars": {
+    "OLLAMA_BASE_URL": "http://127.0.0.1:11434",
+    "OLLAMA_MODEL": "clef-flash:9b-q8_0"
+  }
 }

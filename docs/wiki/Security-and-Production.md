@@ -2,7 +2,7 @@
 
 I built this as a demo, not a production hospital system. Use made-up patients and notes only. Do not enter real patient information or connect it to a hospital record system. This project has not been assessed for HIPAA compliance or clinical use.
 
-The release is provided as is, without warranties, with liability disclaimed to the extent permitted by applicable law. See the [demo use and liability notice](Demo-Use-and-Liability.md) and project's MIT `LICENSE` file.
+The release is provided as is, without warranties, with liability disclaimed to the extent permitted by applicable law. See the [demo use and liability notice](Demo-Use-and-Liability.md) and [copyright and permissions notice](../../LICENSE).
 
 ## What is protected in this demo
 

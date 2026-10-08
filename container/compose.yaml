@@ -1,12 +1,14 @@
-name: obgyn-bedboard
+name: jev-clef-local
 services:
   bedboard:
     build:
       context: ..
       dockerfile: container/Dockerfile
-    image: obgyn-bedboard:demo
+    image: jev-bedboard:clef-local
     ports:
-      - "127.0.0.1:${BEDBOARD_PORT:-8787}:8787"
+      - "127.0.0.1:${BEDBOARD_PORT:-8788}:8787"
     environment:
-      TYPESAFE_API_KEY: "${TYPESAFE_API_KEY:-}"
+      OLLAMA_BASE_URL: "${OLLAMA_BASE_URL:-http://host.docker.internal:11434}"
+      OLLAMA_MODEL: "${OLLAMA_MODEL:-clef-flash:9b-q8_0}"
+      WRANGLER_SEND_METRICS: "false"
     init: true

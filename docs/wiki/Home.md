@@ -2,11 +2,13 @@
 
 I wanted to build something basic for hospital logistics: show which beds are free, which ones are still occupied, and when another bed might be ready.
 
-I kept the app small so someone else can run it and change it. It has 20 made-up beds, status codes, countdowns, pain scores, milestone counts, and an optional Jev connection for progress notes. This is a gift to anyone who wants to use it or learn from it.
+I kept the app small so someone else can run it and change it. It has 20 made-up beds, status codes, countdowns, pain scores, milestone counts, and an optional Jev connection for progress notes. Created by [Kalvin Harris](https://github.com/KalvinHarrisCS). Copyright (c) 2026 Kalvin Harris. All rights reserved.
 
 **Demo only. Not for production or real patient information.** See [Security and production](Security-and-Production.md) for the HIPAA considerations and changes a hospital deployment would need.
 
 **Provided as is, without warranties.** See [Demo use and liability](Demo-Use-and-Liability.md) for the disclaimer and this release's intended use.
+
+**Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS).** See [copyright and permissions](../../LICENSE).
 
 ## Run it
 

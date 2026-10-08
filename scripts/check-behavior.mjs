@@ -7,21 +7,21 @@ import app from '../worker/index.js';
 const html = await (await app.fetch(new Request('https://bedboard.test/'), {})).text();
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const fixture = {
-  model: 'jev-behavior-fixture',
+  model: 'clef-flash:9b-q8_0',
   answers: {
     progress: {type: 'choice', choice: 'improving', probabilities: {improving: 0.98, needs_review: 0.01, unclear: 0.01}, confidence: 0.9},
     delay: {type: 'noul', noul: 0}
   },
   usage: {input_tokens: 100, output_tokens: 20}
 };
-const input = {bedId: 'MAT-02', note: 'Fictional recovery update.', apiKey: 'behavior-only-fake-key'};
+const input = {bedId: 'MAT-02', note: 'Fictional recovery update.'};
 const request = data => new Request('https://bedboard.test/api/jev', {
   method: 'POST', headers: {Origin: 'https://bedboard.test', 'Content-Type': 'application/json'}, body: JSON.stringify(data)
 });
 async function withProvider(provider, run) {
   const original = globalThis.fetch;
   globalThis.fetch = async (url, options) => {
-    assert.equal(url, 'https://api.typesafe.ai/v1/systemone');
+    assert.equal(url, 'http://127.0.0.1:11434/v1/systemone');
     return provider(options);
   };
   try { await run(); } finally { globalThis.fetch = original; }
@@ -38,7 +38,7 @@ async function browser(provider = async () => Response.json(fixture), fictionalB
   const options = [...html.match(/<select id="scenario">([\s\S]*?)<\/select>/)[1].matchAll(/<option value="([^"]*)"(?: data-note="([^"]*)" data-delay="([^"]*)")?>/g)].map(match => ({value: match[1], dataset: {note: match[2], delay: match[3]}}));
   Object.defineProperty(nodes.get('scenario'), 'selectedOptions', {get() { return options.filter(option => option.value === nodes.get('scenario').value); }});
   const context = vm.createContext({document, Date: DemoDate, Intl, setInterval(fn) { tick = fn; }, fetch: async (url, options) => {
-    if (url === '/api/config') return Response.json({configured: false});
+    if (url === '/api/config') return Response.json({provider: 'ollama', model: fixture.model, configured: true});
     assert.equal(url, '/api/jev');
     calls.push(JSON.parse(options.body));
     return provider();
@@ -107,7 +107,7 @@ test('caller-supplied clinical context cannot replace the selected fictional bed
 });
 
 test('incomplete or invalid Choice probabilities/confidence cannot become a successful classification', async () => {
-  // Required fields and 0..1 ranges come from https://docs.typesafe.ai/api.
+  // Choice/Noul field shapes come from https://docs.ollama.com/api/systemone.
   // Deliberately avoid exact-sum/argmax requirements: provider probabilities may be rounded.
   const progress = fixture.answers.progress;
   const {probabilities, ...withoutProbabilities} = progress;
@@ -116,18 +116,16 @@ test('incomplete or invalid Choice probabilities/confidence cannot become a succ
     await withProvider(() => Response.json({...fixture, answers: {...fixture.answers, progress: malformed}}), async () => {
       const response = await app.fetch(request(input), {});
       assert.equal(response.status, 502, 'malformed Choice accepted: ' + JSON.stringify(malformed));
-      assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+      assert.deepEqual(await response.json(), {error: 'Unexpected local model response'});
     });
   }
 });
 
-test('tab key survives clearing the password field and delayed results name the submitted bed', async () => {
+test('keyless delayed results name the submitted bed and do not overwrite a newly selected note', async () => {
   let finish;
   const client = await browser(() => new Promise(resolve => { finish = resolve; }));
-  client.nodes.get('key').value = input.apiKey;
   client.nodes.get('note').value = input.note;
   const first = client.submit();
-  assert.equal(client.nodes.get('key').value, '');
   assert.equal(client.nodes.get('submit').disabled, true);
   assert.equal(client.nodes.get('sample').disabled, true);
   assert.equal(client.nodes.get('scenario').disabled, true);
@@ -179,7 +177,6 @@ test('practice notes show labeled expected answers without a key, provider call 
 test('unclear output asks for note detail and names the submitted bed without judging the nurse', async () => {
   const unclear = {...fixture, answers: {...fixture.answers, progress: {...fixture.answers.progress, choice: 'unclear', probabilities: {improving: 0.01, needs_review: 0.01, unclear: 0.98}}}};
   const client = await browser(async () => Response.json(unclear));
-  client.nodes.get('key').value = input.apiKey;
   client.nodes.get('note').value = 'Fictional administrative update.';
   await client.submit();
   assert.match(client.nodes.get('feedback').textContent, /Submitted note for MAT-02: The note may need more detail/);
@@ -198,7 +195,7 @@ test('Jev choices must be exact allowed strings, not lists that stringify to the
     await withProvider(() => Response.json(malformed), async () => {
       const response = await app.fetch(request(input), {});
       assert.equal(response.status, 502);
-      assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+      assert.deepEqual(await response.json(), {error: 'Unexpected local model response'});
     });
   }
 });
@@ -207,20 +204,21 @@ test('A null provider reply is reported as an unexpected answer', async () => {
   await withProvider(() => Response.json(null), async () => {
     const response = await app.fetch(request(input), {});
     assert.equal(response.status, 502);
-    assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+    assert.deepEqual(await response.json(), {error: 'Unexpected local model response'});
   });
 });
 
 for (const [status, message] of [
-  [401, 'TypeSafe rejected the API key.'],
-  [429, 'TypeSafe rate limit reached. Try again later.'],
+  [401, /Ollama request failed \(HTTP 401\)/],
+  [429, /Ollama request failed \(HTTP 429\)/],
+  [404, /Ollama model or System One endpoint was not found/],
 ]) {
   test('A provider HTTP ' + status + ' response gives the expected guidance', async () => {
     await withProvider(() => new Response('Private provider detail', {status}), async () => {
       const response = await app.fetch(request(input), {});
       assert.equal(response.status, 502);
       assert.equal(response.headers.get('Cache-Control'), 'no-store');
-      assert.deepEqual(await response.json(), {error: message});
+      assert.match((await response.json()).error, message);
     });
   });
 }
@@ -239,7 +237,7 @@ for (const example of invalidAnswerCases) {
     await withProvider(() => Response.json(malformed), async () => {
       const response = await app.fetch(request(input), {});
       assert.equal(response.status, 502);
-      assert.deepEqual(await response.json(), {error: 'Unexpected Jev response'});
+      assert.deepEqual(await response.json(), {error: 'Unexpected local model response'});
     });
   });
 }
@@ -250,16 +248,41 @@ test('browser request failure leaves the note editable and allows a later retry'
     if (fail) throw Error('Fixture connection failure');
     return Response.json(fixture);
   });
-  client.nodes.get('key').value = input.apiKey;
   client.nodes.get('note').value = input.note;
+  const table = client.nodes.get('rows').innerHTML;
   await client.submit();
   assert.equal(client.nodes.get('submit').disabled, false);
   assert.equal(client.nodes.get('note').value, input.note);
   assert.equal(client.nodes.get('result').textContent, 'Fixture connection failure');
   assert.equal(client.nodes.get('feedback').textContent, 'Fixture connection failure', 'failure must be visible while result details are collapsed');
+  assert.equal(client.nodes.get('rows').innerHTML, table, 'failed inference changed bed state');
   fail = false;
   await client.submit();
   assert.equal(client.calls.length, 2);
   assert.equal(client.nodes.get('submit').disabled, false);
-  assert.match(client.nodes.get('result').textContent, /jev-behavior-fixture/);
+  assert.match(client.nodes.get('result').textContent, /clef-flash:9b-q8_0/);
+  assert.equal(client.nodes.get('rows').innerHTML, table, 'retry classification changed bed state');
+});
+
+test('each classification and local-model failure leaves bed status, note and counts alone', async () => {
+  const responses = ['improving', 'needs_review', 'unclear'].map(choice => () => Response.json({
+    ...fixture, answers: {...fixture.answers, progress: {...fixture.answers.progress, choice}},
+  }));
+  for (const error of ['Ollama model or System One endpoint was not found.', 'Ollama request failed (HTTP 503).', 'Ollama connection failed or timed out.']) {
+    responses.push(() => Response.json({error}, {status: 502}));
+  }
+  for (const response of responses) {
+    const client = await browser(response);
+    client.nodes.get('note').value = input.note;
+    const table = client.nodes.get('rows').innerHTML, counts = headerCounts(client);
+    await client.submit();
+    assert.equal(client.calls.length, 1);
+    assert.deepEqual(client.calls[0], input);
+    assert.equal(client.nodes.get('rows').innerHTML, table);
+    assert.deepEqual(headerCounts(client), counts);
+    assert.equal(client.nodes.get('note').value, input.note);
+    assert.equal(client.nodes.get('submit').disabled, false);
+    assert.equal(client.nodes.get('sample').disabled, false);
+    assert.equal(client.nodes.get('scenario').disabled, false);
+  }
 });

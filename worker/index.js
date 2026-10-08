@@ -375,7 +375,7 @@ footer{
     <header>
       <div class="masthead">
         <div>
-          <div class="eyebrow">JEV HOSPITAL BED PROTOTYPE</div>
+          <div class="eyebrow">JEV HOSPITAL BED PROTOTYPE · LOCAL CLEF</div>
           <h1>Bed readiness &amp; nursing update</h1>
           <p class="muted">Maternity · Gynecology · Day surgery</p>
         </div>
@@ -418,25 +418,19 @@ footer{
                     <option value="needs_review" data-note="Pain limits walking. Nursing reassessment is pending; departure is delayed." data-delay="Explicit blocker and pending assessment">Needs review</option>
                     <option value="unclear" data-note="Update received. Recovery trend is not stated." data-delay="No explicit blocker mentioned">Unclear</option>
                 </select></label>
-                <p class="helper">A practice answer is written in advance. Jev checks your submitted note.</p>
+                <p class="helper">A practice answer is written in advance. Local Clef checks your submitted note.</p>
               </fieldset>
-              <div class="actions"><button id="submit">Ask Jev (uses your API)</button><button id="sample" type="button">Show expected answer (no API)</button></div>
+              <div class="actions"><button id="submit">Check note (local Clef)</button><button id="sample" type="button">Show expected answer (no API)</button></div>
               <p id="feedback" role="status" aria-live="polite"></p>
-              <details><summary>Jev connection &amp; setup</summary>
-                <p class="helper">Server variable: <code>TYPESAFE_API_KEY</code></p>
+              <details><summary>Local model setup</summary>
+                <p class="helper">Run Ollama 0.35.1 or newer and pull <code>clef-flash:9b-q8_0</code>. No API key is needed.</p>
                 <button id="check-env" type="button">Check server setup</button>
                 <p id="env-status" role="status" aria-live="polite"></p>
-                <details><summary>Connect Jev with your key (optional)</summary>
-                  <label>TypeSafe API key <input id="key" type="password" autocomplete="off" maxlength="1024" placeholder="Paste your key here"></label>
-                  <p><a href="https://console.typesafe.ai" target="_blank" rel="noopener noreferrer">Get an API key from TypeSafe</a>. Your key is used for this tab only and is not saved.</p>
-                  <details><summary>Windows / Mac environment setup</summary>
-                    <p>This page checks the running server, not your computer. For local use, set <code>TYPESAFE_API_KEY</code> and run the app locally. Windows PowerShell: <code>$env:TYPESAFE_API_KEY</code>. Mac Terminal: <code>export TYPESAFE_API_KEY</code>. See the included Environment Setup guide for complete commands. A configured server key lets you leave the password field blank.</p>
-                  </details>
-                </details>
+                <p class="helper">This checks the server's settings. A successful note check verifies the model connection. The first check can take longer while the model loads.</p>
               </details>
             </form>
             <details><summary>Submitted note &amp; result</summary>
-              <pre id="result" role="status" aria-live="polite">Choose a practice note, or ask Jev with your key.</pre>
+              <pre id="result" role="status" aria-live="polite">Choose a practice note, or check it with local Clef.</pre>
             </details>
           </div>
           <div class="record-footer">Staff confirm departure and bed readiness.</div>
@@ -470,7 +464,6 @@ const byId = id => document.getElementById(id);
 const format = value => new Date(value).toLocaleString('en-US', {timeZone: 'America/New_York'});
 const started = Date.now();
 const base = Date.parse('2026-10-01T10:00:00-04:00');
-let apiKey = '';
 let serverConfigured = false;
 
 byId('bed').innerHTML = beds.map(bed => '<option>' + bed.id + '</option>').join('');
@@ -491,14 +484,14 @@ function updateNote() {
     bed.note;
   byId('scenario').value = '';
   byId('feedback').textContent = '';
-  byId('result').textContent = 'Choose a practice note, or ask Jev with your key.';
+  byId('result').textContent = 'Choose a practice note, or check it with local Clef.';
 }
 
 function loadPracticeNote() {
   const option = byId('scenario').selectedOptions[0];
   if (option.value) byId('note').value = option.dataset.note;
   byId('feedback').textContent = '';
-  byId('result').textContent = 'Practice note loaded. Show the expected answer, or ask Jev.';
+  byId('result').textContent = 'Practice note loaded. Show the expected answer, or check it with local Clef.';
 }
 
 function showExpectedAnswer() {
@@ -539,12 +532,13 @@ async function checkEnv() {
   try {
     const response = await fetch('/api/config');
     if (!response.ok) throw Error();
-    serverConfigured = (await response.json()).configured === true;
+    const setup = await response.json();
+    serverConfigured = setup.provider === 'ollama' && setup.configured === true;
     byId('env-status').textContent = serverConfigured ?
-      ' Server key configured (not yet verified).' : ' No server key; enter a key below.';
+      'Local model configured (not yet verified): ' + setup.model : 'Invalid local model setup';
   } catch {
     serverConfigured = false;
-    byId('env-status').textContent = ' Could not check server setup; enter a key below.';
+    byId('env-status').textContent = 'Could not check local model setup.';
   }
 }
 
@@ -569,11 +563,11 @@ function noteFeedback(choice) {
   return 'The note describes improvement. This does not confirm discharge or bed readiness.';
 }
 
-async function askJev(bedId, note) {
+async function checkNote(bedId, note) {
   const response = await fetch('/api/jev', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({bedId, note, apiKey}),
+    body: JSON.stringify({bedId, note}),
   });
   const data = await response.json();
   if (!response.ok) throw Error(data.error);
@@ -581,7 +575,7 @@ async function askJev(bedId, note) {
 }
 
 function showSubmittedResult(bedId, note, data, requestStarted) {
-  byId('env-status').textContent = ' Last Jev request succeeded.';
+  byId('env-status').textContent = 'Last local Clef request succeeded: ' + data.model;
   byId('feedback').textContent = 'Submitted note for ' + bedId + ': ' + noteFeedback(data.answers.progress.choice);
   const elapsed = ((Date.now() - requestStarted) / 1000).toFixed(1);
   byId('result').textContent = 'Result for ' + bedId + ' (submitted note):\n' + note + '\n' +
@@ -591,10 +585,8 @@ function showSubmittedResult(bedId, note, data, requestStarted) {
 
 async function submitNote(event) {
   event.preventDefault();
-  apiKey = byId('key').value.trim() || apiKey;
-  byId('key').value = '';
-  if (!apiKey && !serverConfigured) {
-    showMessage('Configure TYPESAFE_API_KEY on this server, or enter your key in Jev connection & setup.');
+  if (!serverConfigured) {
+    showMessage('Check local model setup, then try again.');
     return;
   }
   const bedId = byId('bed').value;
@@ -602,9 +594,9 @@ async function submitNote(event) {
   const requestStarted = Date.now();
   setRequestBusy(true);
   byId('feedback').textContent = 'Checking the submitted note…';
-  byId('result').textContent = 'Calling Jev…';
+  byId('result').textContent = 'Checking with local Clef…';
   try {
-    const data = await askJev(bedId, note);
+    const data = await checkNote(bedId, note);
     showSubmittedResult(bedId, note, data, requestStarted);
   } catch (error) {
     showMessage(error.message);
@@ -616,7 +608,7 @@ async function submitNote(event) {
 function markNoteEdited() {
   byId('scenario').value = '';
   byId('feedback').textContent = '';
-  byId('result').textContent = 'Note edited. Show an unchanged practice case, or ask Jev again.';
+  byId('result').textContent = 'Note edited. Show an unchanged practice case, or check it again.';
 }
 
 byId('scenario').onchange = loadPracticeNote;
@@ -633,6 +625,10 @@ setInterval(tick, 1000);
       </script>
       <section id="cleaning" class="sheet" aria-label="Room cleaning record"></section>
       <script src="/cleaning.js"></script>
+      <footer>
+        <p>Created by <a href="https://github.com/KalvinHarrisCS">Kalvin Harris</a>. Copyright &copy; 2026 Kalvin Harris. All rights reserved.</p>
+        <p>Want this app retargeted for your use case? Get in touch with <a href="https://github.com/KalvinHarrisCS">Kalvin Harris</a>.</p>
+      </footer>
     </main>
   </body>
 </html>
@@ -663,15 +659,27 @@ function fileResponse(body, contentType) {
   });
 }
 
-function serverKey(env) {
-  return typeof env.TYPESAFE_API_KEY === 'string' ? env.TYPESAFE_API_KEY.trim() : '';
+function localModel(env) {
+  if (env.OLLAMA_BASE_URL != null && typeof env.OLLAMA_BASE_URL !== 'string') return null;
+  if (env.OLLAMA_MODEL != null && typeof env.OLLAMA_MODEL !== 'string') return null;
+  const model = env.OLLAMA_MODEL?.trim() || 'clef-flash:9b-q8_0';
+  if (!['clef-flash:9b-q8_0', 'clef:27b-q4_k_m'].includes(model)) return null;
+  try {
+    const base = new URL(env.OLLAMA_BASE_URL?.trim() || 'http://127.0.0.1:11434');
+    const hosts = ['localhost', '127.0.0.1', '[::1]', 'host.docker.internal'];
+    if (base.protocol !== 'http:' || !hosts.includes(base.hostname) ||
+        base.username || base.password || base.search || base.hash || base.pathname !== '/') return null;
+    return {url: base.origin + '/v1/systemone', model};
+  } catch {
+    return null;
+  }
 }
 
 function isProbability(value) {
   return Number.isFinite(value) && value >= 0 && value <= 1;
 }
 
-function isValidJevAnswer(data) {
+function isValidAnswer(data) {
   if (typeof data?.model !== 'string' || !data.model.trim()) return false;
   const answers = data.answers;
   const progress = answers?.progress;
@@ -687,12 +695,11 @@ function isValidJevAnswer(data) {
 }
 
 function providerError(status) {
-  if (status === 401) return 'TypeSafe rejected the API key.';
-  if (status === 429) return 'TypeSafe rate limit reached. Try again later.';
-  return 'TypeSafe request failed (HTTP ' + status + ').';
+  if (status === 404) return 'Ollama model or System One endpoint was not found. Check Ollama is 0.35.1 or newer and pull the configured Clef model.';
+  return 'Ollama request failed (HTTP ' + status + ').';
 }
 
-async function askJev(request, env) {
+async function classifyNote(request, env) {
   if (request.headers.get('Origin') !== new URL(request.url).origin) {
     return json({error: 'Same-origin requests only'}, 403);
   }
@@ -705,32 +712,31 @@ async function askJev(request, env) {
     } catch {
       return json({error: 'Invalid request JSON'}, 400);
     }
-    const {bedId, note, apiKey} = input || {};
+    const {bedId, note} = input || {};
     const bed = beds.find(bed => bed.id === bedId);
-    const key = serverKey(env) || apiKey;
     if (!bed || typeof note !== 'string' || !note.trim() || note.length > 2000) {
       return json({error: 'Select a bed and enter a note under 2000 characters'}, 400);
     }
-    if (typeof key !== 'string' || !key.trim() || key.length > 1024) {
-      return json({error: 'TypeSafe API key needed'}, 400);
-    }
+    const local = localModel(env);
+    if (!local) return json({error: 'Invalid local model setup'}, 503);
 
-    const response = await fetch('https://api.typesafe.ai/v1/systemone', {
+    const response = await fetch(local.url, {
       method: 'POST',
-      headers: {Authorization: 'Bearer ' + key, 'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        model: 'jev-latest',
+        model: local.model,
         state: {procedure: bed.procedure, pain: bed.pain ?? null, progress: bed.progress ?? null, note},
         questions,
       }),
-      signal: AbortSignal.timeout(20000),
+      redirect: 'manual',
+      signal: AbortSignal.timeout(120000),
     });
     if (!response.ok) return json({error: providerError(response.status)}, 502);
     const data = await response.json();
-    if (!isValidJevAnswer(data)) return json({error: 'Unexpected Jev response'}, 502);
+    if (!isValidAnswer(data)) return json({error: 'Unexpected local model response'}, 502);
     return json({model: data.model, answers: data.answers, usage: data.usage});
   } catch {
-    return json({error: 'Jev connection failed or timed out. Try again.'}, 502);
+    return json({error: 'Ollama connection failed or timed out. Try again.'}, 502);
   }
 }
 
@@ -744,9 +750,11 @@ export default {
       return fileResponse(cleaning, 'text/javascript; charset=utf-8');
     }
     if (path === '/api/config' && request.method === 'GET') {
-      return json({configured: Boolean(serverKey(env))});
+      const local = localModel(env);
+      return json(local ? {provider: 'ollama', model: local.model, configured: true} :
+        {provider: 'ollama', configured: false, error: 'Invalid local model setup'});
     }
-    if (path === '/api/jev' && request.method === 'POST') return askJev(request, env);
+    if (path === '/api/jev' && request.method === 'POST') return classifyNote(request, env);
     return json({error: 'Not found'}, 404);
   },
 };

@@ -34,7 +34,7 @@ To check Docker's build exclusions, run `npm run check:docker-context` from a Gi
 
 For an optional network check, run `docker compose -f container/compose.yaml run --rm --build bedboard npm run check:https`. It contacts TypeSafe with an intentionally invalid test key and expects an authentication rejection. It checks HTTPS and startup permission errors. A result with your real key is still a separate check.
 
-To change beds or questions, follow [make it your own](Customization.md), then run the launch command again. The image keeps the source copied during the build. The MIT license is included in the image.
+To change beds or questions, follow [make it your own](Customization.md), then run the launch command again. The image keeps the source copied during the build. The copyright and permissions notice is included in the image.
 
 ## Supply the key when running
 

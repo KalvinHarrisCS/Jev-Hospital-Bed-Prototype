@@ -49,7 +49,7 @@ Edit `docs/research/fictional-patient-histories.md` or the pages in `docs/wiki/`
 
 Run `npm test` with Node.js, or use the Docker test command above. Checks use made-up `MAT-02` and `C102` examples; if you replace those cases, update the tests too. The tests need no key and make no TypeSafe calls. They check the software, not clinical correctness.
 
-Share the source, README, lockfile, container folder, tests and license together. Exclude `.env`, `.dev.vars`, Git history and local credentials. Include a short note describing your changes and what you actually tested. You are free to expand your own copy.
+Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS). The original project is all rights reserved; see [copyright and permissions](../../LICENSE). Get permission before modifying or redistributing it. For an authorized shared version, include the source, README, lockfile, container folder, tests and copyright notice. Exclude `.env`, `.dev.vars`, Git history and local credentials, and describe what changed and what was tested.
 
 ## If I took this toward hospital use
 

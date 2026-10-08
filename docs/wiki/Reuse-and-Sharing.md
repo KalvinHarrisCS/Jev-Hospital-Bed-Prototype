@@ -1,11 +1,13 @@
-# Use it and share it
+# Credit and contact
 
-This is a gift. I want someone else to be able to run it, change it, and learn from it.
+This demo is a gift for learning and review, created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
 
-Unzip the source and follow [Docker setup](Container-Setup.md). You do not need my account or my API key. Browsing the board and running the fixture tests need no key. Live Jev calls use your own TypeSafe account.
+Copyright (c) 2026 Kalvin Harris. All rights reserved. This version is not offered under an open-source license. Contact Kalvin for permission to reuse, modify or redistribute the original application, fictional cases or original documentation. See [copyright and permissions](../../LICENSE).
 
-Original code, made-up cases, and original docs use the MIT license. Keep the supplied LICENSE notice with copies. Linked research, dependencies, and TypeSafe keep their own terms.
+**Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS).**
 
-This release is a demo, not for production, patient care or real patient information. It is provided as is, without warranties, with liability disclaimed to the fullest extent permitted by applicable law. Keep the [demo use and liability notice](Demo-Use-and-Liability.md) with the package so someone else can understand the limits.
+Linked research, dependencies, model weights and external services keep their own licenses and terms. Earlier releases retain the permissions under which they were published.
 
-[Make it your own](Customization.md), write down what you changed, and include what you actually tested when sharing a version. Keep keys and local secret files out of the package.
+This project is a demo, not for production, patient care or real patient information. It is provided as is, without warranties, with liability disclaimed to the fullest extent permitted by applicable law. Read the [demo use and liability notice](Demo-Use-and-Liability.md).
+
+For an authorized shared version, keep the copyright and third-party notices, explain what changed and what was tested, and exclude keys and local secret files.

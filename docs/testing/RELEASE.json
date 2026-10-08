@@ -8,7 +8,6 @@
   "wrangler": "4.146.0",
   "ca_certificates": "20250419~deb12u1",
   "openssl": "3.0.22-1~deb12u1",
-  "original_work_license": "MIT",
   "checked_architectures": [
     "linux/arm64 on Mac Docker",
     "linux/amd64 emulated on Mac Docker"
@@ -36,5 +35,7 @@
   "real_patient_data_allowed": false,
   "security_notes": "docs/security/DEMO-SECURITY.md",
   "demo_notice": "docs/security/DEMO-NOTICE.md",
-  "project_title": "Jev Hospital Bed Prototype"
+  "project_title": "Jev Hospital Bed Prototype",
+  "record_scope": "Historical verification of release 1.0.0; current project permissions are in the root LICENSE file.",
+  "historical_original_work_license": "MIT"
 }
