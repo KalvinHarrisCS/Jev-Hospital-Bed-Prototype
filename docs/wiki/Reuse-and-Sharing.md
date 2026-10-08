@@ -1,6 +1,6 @@
 # Credit and contact
 
-Created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
+This demo is a gift for learning and review, created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
 
 Copyright (c) 2026 Kalvin Harris. All rights reserved. This version is not offered under an open-source license. Contact Kalvin for permission to reuse, modify or redistribute the original application, fictional cases or original documentation. See [copyright and permissions](../../LICENSE).
 

@@ -2,7 +2,7 @@
 
 I put this together to explore a basic hospital question: which bed is available, and when might the next one be ready?
 
-I kept it small: 20 made-up beds, status codes, time estimates, and a place to try Jev on a nurse's progress note. Created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
+I kept it small: 20 made-up beds, status codes, time estimates, and a place to try Jev on a nurse's progress note. This demo is a gift for learning and review, created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
 
 **Demo only. Not for production or real patient information.** This project has not been assessed for HIPAA compliance or clinical use. [Security and the path to production](../security/DEMO-SECURITY.md) explains the current safeguards, external data flow and what I would update before hospital use.
 

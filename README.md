@@ -1,6 +1,6 @@
 # Jev Hospital Bed Prototype — Local Clef
 
-Created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
+This demo is a gift for learning and review, created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
 
 This demo checks fictional nurse notes with Cloudflare's Clef Flash running in Ollama on your computer. The original TypeSafe-backed Jev demo is preserved in the earlier releases and dated records below.
 
