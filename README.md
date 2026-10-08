@@ -1,10 +1,10 @@
-# Jev Hospital Bed Prototype — Local Clef
+# Jev Hospital Bed Prototype
 
-This demo is a gift for learning and review, created by [Kalvin Harris](https://github.com/KalvinHarrisCS).
+Created by [Kalvin Harris](https://github.com/KalvinHarrisCS). This demo is a gift for learning and review.
 
-This demo checks fictional nurse notes with Cloudflare's Clef Flash running in Ollama on your computer. The original TypeSafe-backed Jev demo is preserved in the earlier releases and dated records below.
+It shows 20 made-up beds, their status and time estimates, and a room-cleaning timer. You can also check fictional nurse notes with Cloudflare's Clef Flash running in Ollama on your computer.
 
-I kept the demo small: 20 made-up beds, nurse notes, status codes, time estimates and room cleaning timers. Staff review model answers and confirm bed readiness. A countdown or model answer never frees a bed automatically.
+Staff review model answers and confirm bed readiness. A countdown or model answer never frees a bed automatically. The original TypeSafe-backed Jev demo is preserved in the earlier releases and dated records below.
 
 **Demo only. Not for production or real patient information.** This project has not been assessed for HIPAA compliance or clinical use.
 
@@ -78,8 +78,8 @@ https://github.com/user-attachments/assets/60c21a36-537c-4a62-b571-9450f3d46f6c
 
 ## Credit and contact
 
-Copyright (c) 2026 Kalvin Harris. All rights reserved. This version is not offered under an open-source license; see the [copyright and permissions notice](LICENSE). Contact Kalvin for permission to reuse or redistribute the original project.
+The original app, fictional examples and original documentation are copyright (c) 2026 Kalvin Harris. All rights reserved. See [copyright and permissions](LICENSE).
 
-**Want this app retargeted for your use case? Get in touch with [Kalvin Harris](https://github.com/KalvinHarrisCS).**
+**Want this app retargeted for your use case? Get in contact with [Kalvin Harris](https://github.com/KalvinHarrisCS).** For permission to adapt or redistribute the project, contact Kalvin first.
 
 **Provided as is, without warranties.** Read the [demo use and liability notice](docs/security/DEMO-NOTICE.md) and [third-party references](docs/research/THIRD-PARTY.md). The model has its own terms in the [Clef Flash model card](https://huggingface.co/Cloudflare/clef-flash). Earlier releases retain the permissions under which they were published.
